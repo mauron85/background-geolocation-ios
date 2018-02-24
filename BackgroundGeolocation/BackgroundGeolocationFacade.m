@@ -531,8 +531,8 @@ FMDBLogger *sqliteLogger;
 
 - (void) dealloc
 {
-    [locationProvider onDestroy];
-    //    [super dealloc];
+    DDLogDebug(@"%@ #dealloc", TAG);
+    // currently noop
 }
 
 @end
