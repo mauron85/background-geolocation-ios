@@ -93,6 +93,18 @@ static NSString * const Domain = @"com.marianhello";
     return YES;
 }
 
+- (BOOL) startMonitoringSignificantLocationChanges:(NSError * __autoreleasing *)outError
+{
+    [locationManager startMonitoringSignificantLocationChanges];
+    return YES;
+}
+
+- (BOOL) stopMonitoringSignificantLocationChanges:(NSError * __autoreleasing *)outError
+{
+    [locationManager stopMonitoringSignificantLocationChanges];
+    return YES;
+}
+
 - (void) setPausesLocationUpdatesAutomatically:(BOOL)newPausesLocationsUpdatesAutomatically
 {
     locationManager.pausesLocationUpdatesAutomatically = newPausesLocationsUpdatesAutomatically;

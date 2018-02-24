@@ -31,6 +31,8 @@
 
 - (BOOL) start:(NSError * __autoreleasing *)outError;
 - (BOOL) stop:(NSError * __autoreleasing *)outError;
+- (BOOL) startMonitoringSignificantLocationChanges:(NSError * __autoreleasing *)outError;
+- (BOOL) stopMonitoringSignificantLocationChanges:(NSError * __autoreleasing *)outError;
 - (void) setPausesLocationUpdatesAutomatically:(BOOL)newPausesLocationsUpdatesAutomatically;
 - (BOOL) getPausesLocationUpdatesAutomatically;
 - (void) setDistanceFilter:(CLLocationDistance)newDistanceFiler;

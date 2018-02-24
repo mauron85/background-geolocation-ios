@@ -76,7 +76,11 @@ static NSString * const Domain = @"com.marianhello";
 
 - (void) onSwitchMode:(BGOperationMode)mode
 {
-    /* do nothing */
+    if (mode == BACKGROUND) {
+        [locationController startMonitoringSignificantLocationChanges:nil];
+    } else {
+        [locationController stopMonitoringSignificantLocationChanges:nil];
+    }
 }
 
 - (void) onAuthorizationChanged:(BGAuthorizationStatus)authStatus
