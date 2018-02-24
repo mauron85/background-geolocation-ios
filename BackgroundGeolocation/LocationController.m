@@ -143,20 +143,6 @@ static NSString * const Domain = @"com.marianhello";
 
 - (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    switch(error.code) {
-        case kCLErrorLocationUnknown:
-        case kCLErrorNetwork:
-        case kCLErrorRegionMonitoringDenied:
-        case kCLErrorRegionMonitoringSetupDelayed:
-        case kCLErrorRegionMonitoringResponseDelayed:
-        case kCLErrorGeocodeFoundNoResult:
-        case kCLErrorGeocodeFoundPartialResult:
-        case kCLErrorGeocodeCanceled:
-            break;
-        case kCLErrorDenied:
-            break;
-    }
-    
     if (self.delegate && [self.delegate respondsToSelector:@selector(onError:)]) {
         NSDictionary *errorDictionary = @{
                                           NSUnderlyingErrorKey : error
