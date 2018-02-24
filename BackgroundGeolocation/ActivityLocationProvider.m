@@ -75,6 +75,7 @@ static NSString * const Domain = @"com.marianhello";
     
     if (!isStarted) {
         [[SOMotionDetector sharedInstance] startDetection];
+        [self startTracking];
         isStarted = YES;
     }
     
