@@ -120,16 +120,18 @@ FMDBLogger *sqliteLogger;
 
     // ios 8 requires permissions to send local-notifications
     if ([_config isDebugging]) {
-        UIApplication *app = [UIApplication sharedApplication];
-        if ([[UIApplication sharedApplication]respondsToSelector:@selector(currentUserNotificationSettings)]) {
-            UIUserNotificationType wantedTypes = UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert;
-            UIUserNotificationSettings *currentSettings = [app currentUserNotificationSettings];
-            if (!currentSettings || (currentSettings.types != wantedTypes)) {
-                if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-                    [app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:wantedTypes categories:nil]];
+        [self runOnMainThread:^{
+            UIApplication *app = [UIApplication sharedApplication];
+            if ([[UIApplication sharedApplication]respondsToSelector:@selector(currentUserNotificationSettings)]) {
+                UIUserNotificationType wantedTypes = UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert;
+                UIUserNotificationSettings *currentSettings = [app currentUserNotificationSettings];
+                if (!currentSettings || (currentSettings.types != wantedTypes)) {
+                    if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+                        [app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:wantedTypes categories:nil]];
+                    }
                 }
             }
-        }
+        }];
     }
 
     if (isStarted) {
