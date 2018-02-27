@@ -68,6 +68,7 @@ static NSString * const Domain = @"com.marianhello";
 
     if (isStarted) {
         [locationController stop:outError];
+        [locationController stopMonitoringSignificantLocationChanges:nil];
         isStarted = NO;
     }
 
@@ -76,6 +77,10 @@ static NSString * const Domain = @"com.marianhello";
 
 - (void) onSwitchMode:(BGOperationMode)mode
 {
+    if (!isStarted) {
+        return;
+    }
+
     if (mode == BACKGROUND) {
         [locationController startMonitoringSignificantLocationChanges:nil];
     } else {
