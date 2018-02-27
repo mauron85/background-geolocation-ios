@@ -113,8 +113,6 @@
 		41B180381FD1BD4600951D67 /* SQLiteConfigurationDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLiteConfigurationDAO.m; sourceTree = "<group>"; };
 		41B1803A1FD1D8B200951D67 /* SQLiteConfigurationDAOTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLiteConfigurationDAOTest.m; sourceTree = "<group>"; };
 		41B1803C1FD2952400951D67 /* ConfigTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
-		41B1803E1FD2D89800951D67 /* FMDB+Nullable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FMDB+Nullable.h"; sourceTree = "<group>"; };
-		41B1803F1FD2D8B000951D67 /* FMDB+Nullable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FMDB+Nullable.m"; sourceTree = "<group>"; };
 		41BCFA401FE1991800D4000E /* SOMotionActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOMotionActivity.h; sourceTree = "<group>"; };
 		41BCFA411FE19B3000D4000E /* SOMotionActivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOMotionActivity.m; sourceTree = "<group>"; };
 		41BCFA511FE19ED300D4000E /* SOMotionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOMotionDetector.m; sourceTree = "<group>"; };
@@ -246,8 +244,6 @@
 			children = (
 				41E82E6C1D5E351900F65575 /* FMDB.h */,
 				41E82E6D1D5E351900F65575 /* FMDB.m */,
-				41B1803E1FD2D89800951D67 /* FMDB+Nullable.h */,
-				41B1803F1FD2D8B000951D67 /* FMDB+Nullable.m */,
 			);
 			name = FMDB;
 			sourceTree = "<group>";
