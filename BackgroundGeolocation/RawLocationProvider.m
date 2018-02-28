@@ -17,7 +17,6 @@ static NSString * const Domain = @"com.marianhello";
 @implementation RawLocationProvider {
 
     BOOL isStarted;
-    Config *_config;
     LocationController *locationController;
 }
 
@@ -40,12 +39,11 @@ static NSString * const Domain = @"com.marianhello";
 - (BOOL) onConfigure:(Config*)config error:(NSError * __autoreleasing *)outError
 {
     DDLogVerbose(@"%@ configure", TAG);
-    _config = config;
 
-    locationController.pausesLocationUpdatesAutomatically = [_config pauseLocationUpdates];
-    locationController.activityType = [_config decodeActivityType];
-    locationController.distanceFilter = _config.distanceFilter.integerValue; // meters
-    locationController.desiredAccuracy = [_config decodeDesiredAccuracy];
+    locationController.pausesLocationUpdatesAutomatically = [config pauseLocationUpdates];
+    locationController.activityType = [config decodeActivityType];
+    locationController.distanceFilter = config.distanceFilter.integerValue; // meters
+    locationController.desiredAccuracy = [config decodeDesiredAccuracy];
 
     return YES;
 }
@@ -55,36 +53,34 @@ static NSString * const Domain = @"com.marianhello";
     DDLogInfo(@"%@ will start", TAG);
 
     if (!isStarted) {
-        [locationController start:outError];
-        isStarted = YES;
+        [locationController stopMonitoringSignificantLocationChanges];
+        isStarted = [locationController start:outError];
     }
 
-    return YES;
+    return isStarted;
 }
 
 - (BOOL) onStop:(NSError * __autoreleasing *)outError
 {
     DDLogInfo(@"%@ will stop", TAG);
 
-    if (isStarted) {
-        [locationController stop:outError];
-        [locationController stopMonitoringSignificantLocationChanges:nil];
-        isStarted = NO;
+    if (!isStarted) {
+        return YES;
     }
 
-    return YES;
+    [locationController stopMonitoringSignificantLocationChanges];
+    if ([locationController stop:outError]) {
+        isStarted = NO;
+        return YES;
+    }
+
+    return NO;
 }
 
-- (void) onSwitchMode:(BGOperationMode)mode
+- (void) onTerminate
 {
-    if (!isStarted) {
-        return;
-    }
-
-    if (mode == BACKGROUND) {
-        [locationController startMonitoringSignificantLocationChanges:nil];
-    } else {
-        [locationController stopMonitoringSignificantLocationChanges:nil];
+    if (isStarted) {
+        [locationController startMonitoringSignificantLocationChanges];
     }
 }
 

@@ -545,7 +545,7 @@ FMDBLogger *sqliteLogger;
         DDLogInfo(@"%@ #onAppTerminate.", TAG);
         [self stop:nil];
     } else {
-        [self switchMode:BACKGROUND];
+        [locationProvider onTerminate];
     }
 }
 

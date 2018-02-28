@@ -40,4 +40,14 @@
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
 }
 
+- (void) onTerminate
+{
+    // override in sub class
+}
+
+- (void) onSwitchMode:(BGOperationMode)mode
+{
+    // override in sub class
+}
+
 @end

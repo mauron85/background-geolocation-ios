@@ -93,13 +93,13 @@ static NSString * const Domain = @"com.marianhello";
     return YES;
 }
 
-- (BOOL) startMonitoringSignificantLocationChanges:(NSError * __autoreleasing *)outError
+- (BOOL) startMonitoringSignificantLocationChanges
 {
     [locationManager startMonitoringSignificantLocationChanges];
     return YES;
 }
 
-- (BOOL) stopMonitoringSignificantLocationChanges:(NSError * __autoreleasing *)outError
+- (BOOL) stopMonitoringSignificantLocationChanges
 {
     [locationManager stopMonitoringSignificantLocationChanges];
     return YES;
@@ -110,7 +110,7 @@ static NSString * const Domain = @"com.marianhello";
     locationManager.pausesLocationUpdatesAutomatically = newPausesLocationsUpdatesAutomatically;
 }
 
-- (BOOL) getPausesLocationUpdatesAutomatically
+- (BOOL) pausesLocationUpdatesAutomatically
 {
     return locationManager.pausesLocationUpdatesAutomatically;
 }
@@ -120,7 +120,7 @@ static NSString * const Domain = @"com.marianhello";
     locationManager.distanceFilter = newDistanceFiler;
 }
 
-- (CLLocationDistance) getDistanceFilter
+- (CLLocationDistance) distanceFilter
 {
     return locationManager.distanceFilter;
 }
@@ -130,7 +130,7 @@ static NSString * const Domain = @"com.marianhello";
     locationManager.activityType = newActivityType;
 }
 
-- (CLActivityType) getActivityType
+- (CLActivityType) activityType
 {
     return locationManager.activityType;
 }
@@ -140,7 +140,7 @@ static NSString * const Domain = @"com.marianhello";
     locationManager.desiredAccuracy = newDesiredAccuracy;
 }
 
-- (CLLocationAccuracy) setDesiredAccuracy
+- (CLLocationAccuracy) desiredAccuracy
 {
     return locationManager.desiredAccuracy;
 }

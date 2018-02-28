@@ -22,7 +22,6 @@
 @interface LocationController : NSObject <CLLocationManagerDelegate>  {
     
     CLLocationManager* locationManager;
-    CLLocation* location;
     __weak id delegate;
 }
 
@@ -31,16 +30,18 @@
 
 - (BOOL) start:(NSError * __autoreleasing *)outError;
 - (BOOL) stop:(NSError * __autoreleasing *)outError;
-- (BOOL) startMonitoringSignificantLocationChanges:(NSError * __autoreleasing *)outError;
-- (BOOL) stopMonitoringSignificantLocationChanges:(NSError * __autoreleasing *)outError;
+- (BOOL) startMonitoringSignificantLocationChanges;
+- (BOOL) stopMonitoringSignificantLocationChanges;
+//- (void) startMonitoringForRegion:(CLRegion*)region;
+//- (void) stopMonitoringForRegion:(CLRegion*)region;
 - (void) setPausesLocationUpdatesAutomatically:(BOOL)newPausesLocationsUpdatesAutomatically;
-- (BOOL) getPausesLocationUpdatesAutomatically;
+- (BOOL) pausesLocationUpdatesAutomatically;
 - (void) setDistanceFilter:(CLLocationDistance)newDistanceFiler;
-- (CLLocationDistance) getDistanceFilter;
+- (CLLocationDistance) distanceFilter;
 - (void) setActivityType:(CLActivityType)newActivityType;
-- (CLActivityType) getActivityType;
+- (CLActivityType) activityType;
 - (void) setDesiredAccuracy:(CLLocationAccuracy)newDesiredAccuracy;
-- (CLLocationAccuracy) setDesiredAccuracy;
+- (CLLocationAccuracy) desiredAccuracy;
 
 + (LocationController*)sharedInstance; // Singleton method
 

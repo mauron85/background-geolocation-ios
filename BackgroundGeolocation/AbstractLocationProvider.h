@@ -29,6 +29,7 @@
 
 - (void) onCreate;
 - (void) onDestroy;
+- (void) onTerminate;
 - (BOOL) onConfigure:(Config*)config error:(NSError * __autoreleasing *)outError;
 - (BOOL) onStart:(NSError * __autoreleasing *)outError;
 - (BOOL) onStop:(NSError * __autoreleasing *)outError;
@@ -40,6 +41,8 @@
 
 @property (weak, nonatomic) id<ProviderDelegate> delegate;
 
+- (void) onTerminate;
+- (void) onSwitchMode:(BGOperationMode)mode;
 - (void) notify:(NSString*)message;
 
 @end
