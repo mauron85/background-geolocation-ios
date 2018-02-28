@@ -321,19 +321,23 @@ FMDBLogger *sqliteLogger;
 
 - (void) showAppSettings
 {
-    BOOL canGoToSettings = (UIApplicationOpenSettingsURLString != NULL);
-    if (canGoToSettings) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-    }
+    [self runOnMainThread:^{
+        BOOL canGoToSettings = (UIApplicationOpenSettingsURLString != NULL);
+        if (canGoToSettings) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }
+    }];
 }
 
 - (void) showLocationSettings
 {
-    if (@available(iOS 10, *)) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"App-Prefs:root=Privacy&path=LOCATION"]];
-    } else {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"]];
-    }
+    [self runOnMainThread:^{
+        if (@available(iOS 10, *)) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"App-Prefs:root=Privacy&path=LOCATION"]];
+        } else {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"]];
+        }
+    }];
 }
 
 - (Location*) getStationaryLocation
