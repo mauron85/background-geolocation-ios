@@ -167,20 +167,25 @@ static NSString * const Domain = @"com.marianhello";
 
 - (void) locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
+    BGAuthorizationStatus authStatus;
+    
     switch(status) {
         case kCLAuthorizationStatusRestricted:
         case kCLAuthorizationStatusDenied:
-            if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
-                [self.delegate onAuthorizationChanged:DENIED];
-            }
+            authStatus = BG_AUTH_DENIED;
             break;
         case kCLAuthorizationStatusAuthorizedAlways:
-            if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
-                [self.delegate onAuthorizationChanged:ALLOWED];
-            }
+            authStatus = BG_AUTH_ALWAYS;
+            break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            authStatus = BG_AUTH_FOREGROUND;
             break;
         default:
-            break;
+            return;
+    }
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
+        [self.delegate onAuthorizationChanged:authStatus];
     }
 }
 

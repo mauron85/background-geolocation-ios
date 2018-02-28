@@ -28,7 +28,8 @@ typedef NS_ENUM(NSInteger, BGOperationMode) {
 - (BOOL) configure:(Config*)config error:(NSError * __autoreleasing *)outError;
 - (BOOL) start:(NSError * __autoreleasing *)outError;
 - (BOOL) stop:(NSError * __autoreleasing *)outError;
-- (BOOL) isLocationEnabled;
+- (BOOL) locationServicesEnabled;
+- (BGAuthorizationStatus) authorizationStatus;
 - (BOOL) isStarted;
 - (void) showAppSettings;
 - (void) showLocationSettings;

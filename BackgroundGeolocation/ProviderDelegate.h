@@ -24,9 +24,11 @@ typedef NS_ENUM(NSInteger, BGErrorCode) {
 
 
 typedef NS_ENUM(NSInteger, BGAuthorizationStatus) {
-    NOT_DETERMINED = 0,
-    ALLOWED = 1,
-    DENIED = 2
+    BG_AUTH_DENIED = 0,
+    BG_AUTH_ALLOWED = 1,
+    BG_AUTH_ALWAYS = BG_AUTH_ALLOWED,
+    BG_AUTH_FOREGROUND = 2,
+    BG_AUTH_NOT_DETERMINED = 99,
 };
 
 @protocol ProviderDelegate <NSObject>

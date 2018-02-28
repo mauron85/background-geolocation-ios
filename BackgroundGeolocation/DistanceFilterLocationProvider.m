@@ -381,12 +381,17 @@ enum {
         case kCLAuthorizationStatusRestricted:
         case kCLAuthorizationStatusDenied:
             if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
-                [self.delegate onAuthorizationChanged:DENIED];
+                [self.delegate onAuthorizationChanged:BG_AUTH_DENIED];
             }
             break;
         case kCLAuthorizationStatusAuthorizedAlways:
             if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
-                [self.delegate onAuthorizationChanged:ALLOWED];
+                [self.delegate onAuthorizationChanged:BG_AUTH_ALWAYS];
+            }
+            break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
+                [self.delegate onAuthorizationChanged:BG_AUTH_FOREGROUND];
             }
             break;
         default:

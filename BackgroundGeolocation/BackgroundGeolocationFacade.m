@@ -262,13 +262,29 @@ FMDBLogger *sqliteLogger;
     }];
 }
 
-- (BOOL) isLocationEnabled
+- (BOOL) locationServicesEnabled
 {
     if ([CLLocationManager respondsToSelector:@selector(locationServicesEnabled)]) { // iOS 4.x
         return [CLLocationManager locationServicesEnabled];
     }
 
     return NO;
+}
+
+- (BGAuthorizationStatus) authorizationStatus
+{
+    CLAuthorizationStatus authStatus = [CLLocationManager authorizationStatus];
+    switch (authStatus) {
+        case kCLAuthorizationStatusNotDetermined:
+            return BG_AUTH_NOT_DETERMINED;
+        case kCLAuthorizationStatusRestricted:
+        case kCLAuthorizationStatusDenied:
+            return BG_AUTH_DENIED;
+        case kCLAuthorizationStatusAuthorizedAlways:
+            return BG_AUTH_ALWAYS;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            return BG_AUTH_FOREGROUND;
+    }
 }
 
 - (BOOL) isStarted
