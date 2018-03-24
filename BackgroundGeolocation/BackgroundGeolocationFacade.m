@@ -234,7 +234,8 @@ FMDBLogger *sqliteLogger;
     }
 
     [reach stopNotifier];
-    
+    hasConnectivity = YES;
+
     [self runOnMainThread:^{
         isStarted = ![locationProvider onStop:outError];
     }];
