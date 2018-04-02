@@ -332,13 +332,8 @@ FMDBLogger *sqliteLogger;
 
 - (void) showLocationSettings
 {
-    [self runOnMainThread:^{
-        if (@available(iOS 10, *)) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"App-Prefs:root=Privacy&path=LOCATION"]];
-        } else {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"]];
-        }
-    }];
+    // NOOP - Since Apple started rejecting apps using non public url schemes
+    // https://github.com/mauron85/cordova-plugin-background-geolocation/issues/394
 }
 
 - (Location*) getStationaryLocation
