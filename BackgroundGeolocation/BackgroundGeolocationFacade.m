@@ -526,6 +526,11 @@ FMDBLogger *sqliteLogger;
 - (void) onActivityChanged:(Activity *)activity
 {
     DDLogDebug(@"%@ #onActivityChanged %@", TAG, activity);
+
+    if ([self getConfig].isDebugging) {
+        [self notify:[NSString stringWithFormat:@"%@ activity detected: %@ activity, confidence: %@", TAG, activity.type, activity.confidence]];
+    }
+
     [self.delegate onActivityChanged:activity];
 }
 

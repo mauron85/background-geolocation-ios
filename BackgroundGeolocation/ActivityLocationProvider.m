@@ -171,8 +171,6 @@ static NSString * const Domain = @"com.marianhello";
     }
     
     DDLogDebug(@"%@ activityTypeChanged: %@", TAG, type);
-    [self notify:[NSString stringWithFormat:@"%@ activity detected: %@ activity, confidence: %d", TAG, type, confidence]];
-    
     Activity *activity = [[Activity alloc] init];
     activity.type = type;
     activity.confidence = [NSNumber numberWithInt:confidence];
