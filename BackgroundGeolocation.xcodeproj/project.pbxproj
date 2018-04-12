@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412123D6207F582400D23929 /* UncaughtExceptionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 412123D5207F582400D23929 /* UncaughtExceptionLogger.m */; };
+		412123D8207F5C4700D23929 /* UncaughtExceptionLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 412123D4207E9AD600D23929 /* UncaughtExceptionLogger.h */; };
 		412428C71FB5AD2B00B21101 /* BackgroundGeolocationFacade.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E761D5E351900F65575 /* BackgroundGeolocationFacade.h */; };
 		412428C81FB5AD3E00B21101 /* LogReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E7A1D5E351900F65575 /* LogReader.h */; };
 		412428C91FB5ADDA00B21101 /* Location.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E721D5E351900F65575 /* Location.h */; };
@@ -70,6 +72,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				412123D8207F5C4700D23929 /* UncaughtExceptionLogger.h in CopyFiles */,
 				412428D01FB5B43B00B21101 /* BackgroundTaskManager.h in CopyFiles */,
 				412428CC1FB5B04300B21101 /* Config.h in CopyFiles */,
 				412428CA1FB5AE4B00B21101 /* ProviderDelegate.h in CopyFiles */,
@@ -82,6 +85,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		412123D4207E9AD600D23929 /* UncaughtExceptionLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UncaughtExceptionLogger.h; sourceTree = "<group>"; };
+		412123D5207F582400D23929 /* UncaughtExceptionLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UncaughtExceptionLogger.m; sourceTree = "<group>"; };
 		412428CD1FB5B15D00B21101 /* Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
 		41399A041D941BC7005D6B5D /* ActivityLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityLocationProvider.h; sourceTree = "<group>"; };
 		41399A051D941BC7005D6B5D /* ActivityLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityLocationProvider.m; sourceTree = "<group>"; };
@@ -258,6 +263,8 @@
 				41E82E691D5E351900F65575 /* CocoaLumberjack.m */,
 				41E82E6E1D5E351900F65575 /* FMDBLogger.h */,
 				41E82E6F1D5E351900F65575 /* FMDBLogger.m */,
+				412123D4207E9AD600D23929 /* UncaughtExceptionLogger.h */,
+				412123D5207F582400D23929 /* UncaughtExceptionLogger.m */,
 			);
 			name = Logger;
 			sourceTree = "<group>";
@@ -433,6 +440,7 @@
 				41B1804B1FD2E05C00951D67 /* SQLiteConfigurationDAO.m in Sources */,
 				41B1804C1FD2E05C00951D67 /* AbstractLocationProvider.m in Sources */,
 				41B1804D1FD2E05C00951D67 /* ActivityLocationProvider.m in Sources */,
+				412123D6207F582400D23929 /* UncaughtExceptionLogger.m in Sources */,
 				41B1804E1FD2E05C00951D67 /* DistanceFilterLocationProvider.m in Sources */,
 				41B1804F1FD2E05C00951D67 /* RawLocationProvider.m in Sources */,
 				41B180501FD2E05C00951D67 /* LogReader.m in Sources */,

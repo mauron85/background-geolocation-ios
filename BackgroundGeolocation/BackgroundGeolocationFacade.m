@@ -25,6 +25,7 @@
 #import "ActivityLocationProvider.h"
 #import "DistanceFilterLocationProvider.h"
 #import "RawLocationProvider.h"
+#import "UncaughtExceptionLogger.h"
 
 // error messages
 #define CONFIGURE_ERROR_MSG             "Configuration error."
@@ -76,6 +77,9 @@ FMDBLogger *sqliteLogger;
     sqliteLogger.deleteOnEverySave = NO;
     
     [DDLog addLogger:sqliteLogger withLevel:DDLogLevelDebug];
+
+    MAHUncaughtExceptionLogger *logger = mah_get_uncaught_exception_logger();
+    logger->setEnabled(YES);
 
     reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     reach.reachableBlock = ^(Reachability *_reach){
