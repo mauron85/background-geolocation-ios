@@ -384,8 +384,20 @@ FMDBLogger *sqliteLogger;
 
 - (NSArray*) getLogEntries:(NSInteger)limit
 {
-    NSString *path = [[self loggerDirectory] stringByAppendingPathComponent:@"log.sqlite"];
-    NSArray *logs = [LogReader getEntries:path limit:(NSInteger)limit];
+    LogReader *logReader = [[LogReader alloc] initWithLogDirectory:[self loggerDirectory]];
+    return [logReader getEntries:limit startAtOffset:0 minLogLevel:DDLogFlagDebug];
+}
+
+- (NSArray*) getLogEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevelFromString:(NSString *)minLogLevel
+{
+    LogReader *logReader = [[LogReader alloc] initWithLogDirectory:[self loggerDirectory]];
+    return [logReader getLogEntries:limit startAtOffset:offset minLogLevelAsString:minLogLevel];
+}
+
+- (NSArray*) getLogEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevel:(DDLogFlag)minLogLevel
+{
+    LogReader *logReader = [[LogReader alloc] initWithLogDirectory:[self loggerDirectory]];
+    NSArray *logs = [logReader getEntries:limit startAtOffset:offset minLogLevel:minLogLevel];
     return logs;
 }
 

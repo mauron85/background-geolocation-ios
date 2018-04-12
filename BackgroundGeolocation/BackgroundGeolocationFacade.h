@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, BGOperationMode) {
 - (BOOL) deleteAllLocations:(NSError * __autoreleasing *)outError;
 - (Config*) getConfig;
 - (NSArray*) getLogEntries:(NSInteger)limit;
+- (NSArray*) getLogEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevelFromString:(NSString *)minLogLevel;
 - (void) onAppTerminate;
 
 @end

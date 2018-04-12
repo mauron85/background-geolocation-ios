@@ -11,9 +11,14 @@
 
 #define LOG_LEVEL_DEF ddLogLevel
 
-@interface LogReader : NSObject
+@interface LogReader : NSObject {
+@private
+    NSString *logDirectory;
+}
 
-+ (NSArray*) getEntries:(NSString*)dbPath limit:(NSInteger)limit;
+- (id)initWithLogDirectory:(NSString *)aLogDirectory;
+- (NSArray*) getEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevel:(DDLogFlag)minLogLevel;
+- (NSArray*) getLogEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevelAsString:(NSString *)minLogLevel;
 
 @end
 
