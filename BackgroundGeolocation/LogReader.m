@@ -8,8 +8,27 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "CocoaLumberjack.h"
 #import "FMDB.h"
 #import "LogReader.h"
+
+// Convert DDLogFlag to string
+static NSString* logFlag_toString(DDLogFlag logFlag)
+{
+    switch (logFlag) {
+        case DDLogFlagVerbose:
+            return @"TRACE";
+        case DDLogFlagDebug:
+            return @"DEBUG";
+        case DDLogFlagInfo:
+            return @"INFO";
+        case DDLogFlagWarning:
+            return @"WARN";
+        case DDLogFlagError:
+            return @"ERROR";
+    }
+    return @"N/A";
+}
 
 @implementation LogReader : NSObject
 
@@ -30,9 +49,9 @@
     while([rs next]) {
         NSMutableDictionary *entry = [NSMutableDictionary dictionaryWithCapacity:4];
         [entry setObject:[NSNumber numberWithInt:[rs intForColumnIndex:0]] forKey:@"context"];
-        [entry setObject:[NSNumber numberWithInt:[rs intForColumnIndex:1]] forKey:@"level"];
+        [entry setObject:logFlag_toString([rs intForColumnIndex:1]) forKey:@"level"];
         [entry setObject:[rs stringForColumnIndex:2] forKey:@"message"];
-        [entry setObject:[NSNumber numberWithInt:[rs doubleForColumnIndex:3]] forKey:@"timestamp"];
+        [entry setObject:[NSNumber numberWithDouble:[rs doubleForColumnIndex:3] * 1000] forKey:@"timestamp"];
         [logs addObject:entry];
     }
     [rs close];
