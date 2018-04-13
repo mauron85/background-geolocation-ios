@@ -10,6 +10,7 @@
 #import <sqlite3.h>
 #import "CocoaLumberjack.h"
 #import "FMDB.h"
+#import "ZIMSqlSelectStatement.h"
 #import "LogReader.h"
 
 // Convert DDLogFlag to string
@@ -47,7 +48,7 @@ static DDLogFlag string_toLogFlag(NSString *logFlag)
     if ([@"ERROR" isEqualToString:logFlag]) {
         return DDLogFlagError;
     }
-
+    
     return DDLogFlagVerbose; // maybe we should throw exception instead
 }
 
@@ -63,12 +64,36 @@ static DDLogFlag string_toLogFlag(NSString *logFlag)
     return self;
 }
 
-- (NSArray*) getLogEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevelAsString:(NSString *)minLogLevel;
+- (NSString*) prepareSQL:(NSInteger)limit fromLogEntryId:(NSInteger)entryId minLogLevel:(NSInteger)minLogLevel
 {
-    return [self getEntries:limit startAtOffset:offset minLogLevel:string_toLogFlag(minLogLevel)];
+    ZIMSqlSelectStatement *sql = [[ZIMSqlSelectStatement alloc] init];
+    [sql column: @"rowid"];
+    [sql column: @"context"];
+    [sql column: @"level"];
+    [sql column: @"message"];
+    [sql column: @"timestamp"];
+    [sql from: @"logs"];
+    [sql where: @"level" operator: ZIMSqlOperatorLessThanOrEqualTo value: [NSNumber numberWithInteger:minLogLevel]];
+    if (entryId > 0) {
+        if (limit >= 0) {
+            [sql where: @"rowid" operator: ZIMSqlOperatorLessThan value: [NSNumber numberWithInteger:entryId]];
+        } else {
+            [sql where: @"rowid" operator: ZIMSqlOperatorGreaterThan value: [NSNumber numberWithInteger:entryId]];
+        }
+    }
+    [sql orderBy: @"timestamp" descending:limit >= 0];
+    [sql orderBy: @"rowid" descending:limit >= 0];
+    [sql limit: ABS(limit)];
+    
+    return [sql statement];
 }
 
-- (NSArray*) getEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevel:(DDLogFlag)minLogLevel;
+- (NSArray*) getLogEntries:(NSInteger)limit fromLogEntryId:(NSInteger)entryId minLogLevelAsString:(NSString *)minLogLevel;
+{
+    return [self getEntries:limit fromLogEntryId:entryId minLogLevel:string_toLogFlag(minLogLevel)];
+}
+
+- (NSArray*) getEntries:(NSInteger)limit fromLogEntryId:(NSInteger)entryId minLogLevel:(DDLogFlag)minLogLevel;
 {
     NSMutableArray *logs = [[NSMutableArray alloc] init];
     NSString *dbPath = [logDirectory stringByAppendingPathComponent:@"log.sqlite"];
@@ -78,12 +103,11 @@ static DDLogFlag string_toLogFlag(NSString *logFlag)
         database = nil;
         return nil;
     }
-
-    NSString *sql = [NSString stringWithFormat:@"SELECT ROWID, context, level, message, timestamp FROM logs WHERE level <= %d ORDER BY timestamp %@ LIMIT %ld OFFSET %ld", (int)minLogLevel, limit >= 0 ? @"DESC" : @"ASC", (long)ABS(limit), (long)offset];
-    FMResultSet *rs = [database executeQuery:sql];
+    
+    FMResultSet *rs = [database executeQuery:[self prepareSQL:limit fromLogEntryId:entryId minLogLevel:minLogLevel]];
     while([rs next]) {
         NSMutableDictionary *entry = [NSMutableDictionary dictionaryWithCapacity:4];
-        [entry setObject:[NSNumber numberWithInt:[rs intForColumnIndex:0]] forKey:@"rowid"];
+        [entry setObject:[NSNumber numberWithInt:[rs intForColumnIndex:0]] forKey:@"id"];
         [entry setObject:[NSNumber numberWithInt:[rs intForColumnIndex:1]] forKey:@"context"];
         [entry setObject:logFlag_toString([rs intForColumnIndex:2]) forKey:@"level"];
         [entry setObject:[rs stringForColumnIndex:3] forKey:@"message"];

@@ -11,14 +11,17 @@
 
 #define LOG_LEVEL_DEF ddLogLevel
 
+#import "CocoaLumberjack.h"
+
 @interface LogReader : NSObject {
 @private
     NSString *logDirectory;
 }
 
 - (id)initWithLogDirectory:(NSString *)aLogDirectory;
-- (NSArray*) getEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevel:(DDLogFlag)minLogLevel;
-- (NSArray*) getLogEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevelAsString:(NSString *)minLogLevel;
+- (NSString*) prepareSQL:(NSInteger)limit fromLogEntryId:(NSInteger)entryId minLogLevel:(NSInteger)minLogLevel;
+- (NSArray*) getEntries:(NSInteger)limit fromLogEntryId:(NSInteger)entryId minLogLevel:(DDLogFlag)minLogLevel;
+- (NSArray*) getLogEntries:(NSInteger)limit fromLogEntryId:(NSInteger)offset minLogLevelAsString:(NSString *)minLogLevel;
 
 @end
 

@@ -385,19 +385,19 @@ FMDBLogger *sqliteLogger;
 - (NSArray*) getLogEntries:(NSInteger)limit
 {
     LogReader *logReader = [[LogReader alloc] initWithLogDirectory:[self loggerDirectory]];
-    return [logReader getEntries:limit startAtOffset:0 minLogLevel:DDLogFlagDebug];
+    return [logReader getEntries:limit fromLogEntryId:0 minLogLevel:DDLogFlagDebug];
 }
 
-- (NSArray*) getLogEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevelFromString:(NSString *)minLogLevel
+- (NSArray*) getLogEntries:(NSInteger)limit fromLogEntryId:(NSInteger)entryId minLogLevelFromString:(NSString *)minLogLevel
 {
     LogReader *logReader = [[LogReader alloc] initWithLogDirectory:[self loggerDirectory]];
-    return [logReader getLogEntries:limit startAtOffset:offset minLogLevelAsString:minLogLevel];
+    return [logReader getLogEntries:limit fromLogEntryId:entryId minLogLevelAsString:minLogLevel];
 }
 
-- (NSArray*) getLogEntries:(NSInteger)limit startAtOffset:(NSInteger)offset minLogLevel:(DDLogFlag)minLogLevel
+- (NSArray*) getLogEntries:(NSInteger)limit fromLogEntryId:(NSInteger)entryId minLogLevel:(DDLogFlag)minLogLevel
 {
     LogReader *logReader = [[LogReader alloc] initWithLogDirectory:[self loggerDirectory]];
-    NSArray *logs = [logReader getEntries:limit startAtOffset:offset minLogLevel:minLogLevel];
+    NSArray *logs = [logReader getEntries:limit fromLogEntryId:entryId minLogLevel:minLogLevel];
     return logs;
 }
 

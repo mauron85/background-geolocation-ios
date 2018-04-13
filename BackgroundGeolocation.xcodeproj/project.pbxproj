@@ -15,6 +15,11 @@
 		412428CA1FB5AE4B00B21101 /* ProviderDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41399A081D941BC7005D6B5D /* ProviderDelegate.h */; };
 		412428CC1FB5B04300B21101 /* Config.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E6A1D5E351900F65575 /* Config.h */; };
 		412428D01FB5B43B00B21101 /* BackgroundTaskManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E641D5E351900F65575 /* BackgroundTaskManager.h */; };
+		41369C212080F23D00EB449C /* NSString+ZIMString.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C172080F23D00EB449C /* NSString+ZIMString.m */; };
+		41369C222080F23D00EB449C /* ZIMSqlExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C1B2080F23D00EB449C /* ZIMSqlExpression.m */; };
+		41369C232080F23D00EB449C /* ZIMSqlSelectStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C1C2080F23D00EB449C /* ZIMSqlSelectStatement.m */; };
+		41369C252080F27800EB449C /* LogReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C242080F27800EB449C /* LogReaderTest.m */; };
+		41369C262080F2A100EB449C /* NSString+ZIMString.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C172080F23D00EB449C /* NSString+ZIMString.m */; };
 		4148982B1FB593B900323454 /* libBackgroundGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 418F75461D02DC3D0045FEA0 /* libBackgroundGeolocation.a */; };
 		414898381FB593E300323454 /* SQLiteHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898311FB593E200323454 /* SQLiteHelperTest.m */; };
 		414898391FB593E300323454 /* LocationUploaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898321FB593E300323454 /* LocationUploaderTest.m */; };
@@ -88,6 +93,16 @@
 		412123D4207E9AD600D23929 /* UncaughtExceptionLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UncaughtExceptionLogger.h; sourceTree = "<group>"; };
 		412123D5207F582400D23929 /* UncaughtExceptionLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UncaughtExceptionLogger.m; sourceTree = "<group>"; };
 		412428CD1FB5B15D00B21101 /* Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		41369C172080F23D00EB449C /* NSString+ZIMString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZIMString.m"; sourceTree = "<group>"; };
+		41369C182080F23D00EB449C /* NSString+ZIMString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZIMString.h"; sourceTree = "<group>"; };
+		41369C192080F23D00EB449C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		41369C1B2080F23D00EB449C /* ZIMSqlExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIMSqlExpression.m; sourceTree = "<group>"; };
+		41369C1C2080F23D00EB449C /* ZIMSqlSelectStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZIMSqlSelectStatement.m; sourceTree = "<group>"; };
+		41369C1D2080F23D00EB449C /* ZIMSqlDataManipulationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIMSqlDataManipulationCommand.h; sourceTree = "<group>"; };
+		41369C1E2080F23D00EB449C /* ZIMSqlExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIMSqlExpression.h; sourceTree = "<group>"; };
+		41369C1F2080F23D00EB449C /* ZIMSqlSelectStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIMSqlSelectStatement.h; sourceTree = "<group>"; };
+		41369C202080F23D00EB449C /* ZIMSqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIMSqlStatement.h; sourceTree = "<group>"; };
+		41369C242080F27800EB449C /* LogReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogReaderTest.m; sourceTree = "<group>"; };
 		41399A041D941BC7005D6B5D /* ActivityLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityLocationProvider.h; sourceTree = "<group>"; };
 		41399A051D941BC7005D6B5D /* ActivityLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityLocationProvider.m; sourceTree = "<group>"; };
 		41399A061D941BC7005D6B5D /* DistanceFilterLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceFilterLocationProvider.h; sourceTree = "<group>"; };
@@ -180,9 +195,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41369C152080F23D00EB449C /* SQLQueryBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				41369C162080F23D00EB449C /* ext */,
+				41369C192080F23D00EB449C /* README.md */,
+				41369C1A2080F23D00EB449C /* sql */,
+			);
+			path = SQLQueryBuilder;
+			sourceTree = "<group>";
+		};
+		41369C162080F23D00EB449C /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				41369C172080F23D00EB449C /* NSString+ZIMString.m */,
+				41369C182080F23D00EB449C /* NSString+ZIMString.h */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
+		41369C1A2080F23D00EB449C /* sql */ = {
+			isa = PBXGroup;
+			children = (
+				41369C1B2080F23D00EB449C /* ZIMSqlExpression.m */,
+				41369C1C2080F23D00EB449C /* ZIMSqlSelectStatement.m */,
+				41369C1D2080F23D00EB449C /* ZIMSqlDataManipulationCommand.h */,
+				41369C1E2080F23D00EB449C /* ZIMSqlExpression.h */,
+				41369C1F2080F23D00EB449C /* ZIMSqlSelectStatement.h */,
+				41369C202080F23D00EB449C /* ZIMSqlStatement.h */,
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
 		414898271FB593B900323454 /* BackgroundGeolocationTests */ = {
 			isa = PBXGroup;
 			children = (
+				41369C242080F27800EB449C /* LogReaderTest.m */,
 				41B1803C1FD2952400951D67 /* ConfigTest.m */,
 				418E0B6D1FD84D6200E24CB0 /* LocationTest.m */,
 				414898371FB593E300323454 /* BackgroundLocationTest.m */,
@@ -219,6 +267,7 @@
 		418F75481D02DC3D0045FEA0 /* BackgroundGeolocation */ = {
 			isa = PBXGroup;
 			children = (
+				41369C152080F23D00EB449C /* SQLQueryBuilder */,
 				41BCFA501FE19ED300D4000E /* SOMotionDetector */,
 				41FE81251FB114F100E4FC65 /* SQLite */,
 				41FE81241FB114C900E4FC65 /* Providers */,
@@ -413,6 +462,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41369C262080F2A100EB449C /* NSString+ZIMString.m in Sources */,
+				41369C252080F27800EB449C /* LogReaderTest.m in Sources */,
 				4148983E1FB593E300323454 /* BackgroundLocationTest.m in Sources */,
 				41B1803B1FD1D8B200951D67 /* SQLiteConfigurationDAOTest.m in Sources */,
 				418E0B6E1FD84D6200E24CB0 /* LocationTest.m in Sources */,
@@ -441,12 +492,15 @@
 				41B1804C1FD2E05C00951D67 /* AbstractLocationProvider.m in Sources */,
 				41B1804D1FD2E05C00951D67 /* ActivityLocationProvider.m in Sources */,
 				412123D6207F582400D23929 /* UncaughtExceptionLogger.m in Sources */,
+				41369C232080F23D00EB449C /* ZIMSqlSelectStatement.m in Sources */,
 				41B1804E1FD2E05C00951D67 /* DistanceFilterLocationProvider.m in Sources */,
 				41B1804F1FD2E05C00951D67 /* RawLocationProvider.m in Sources */,
+				41369C222080F23D00EB449C /* ZIMSqlExpression.m in Sources */,
 				41B180501FD2E05C00951D67 /* LogReader.m in Sources */,
 				41B180511FD2E05C00951D67 /* CocoaLumberjack.m in Sources */,
 				41B180521FD2E05C00951D67 /* FMDBLogger.m in Sources */,
 				41BCFA421FE19B3000D4000E /* SOMotionActivity.m in Sources */,
+				41369C212080F23D00EB449C /* NSString+ZIMString.m in Sources */,
 				41B180531FD2E05C00951D67 /* FMDB.m in Sources */,
 				41B180551FD2E05C00951D67 /* BackgroundTaskManager.m in Sources */,
 				41B180561FD2E05C00951D67 /* BackgroundSync.m in Sources */,
