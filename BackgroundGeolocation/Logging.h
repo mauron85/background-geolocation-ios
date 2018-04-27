@@ -9,6 +9,7 @@
 #ifndef Logging_h
 #define Logging_h
 
+#define LOG_LEVEL_DEF ddLogLevel
 #import "CocoaLumberjack.h"
 
 // we will override this global level later

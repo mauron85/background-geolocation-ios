@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
-#import "CocoaLumberjack.h"
 #import "FMDB.h"
 #import "ZIMSqlSelectStatement.h"
 #import "LogReader.h"

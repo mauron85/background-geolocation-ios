@@ -9,9 +9,7 @@
 #ifndef LogReader_h
 #define LogReader_h
 
-#define LOG_LEVEL_DEF ddLogLevel
-
-#import "CocoaLumberjack.h"
+#import "Logging.h"
 
 @interface LogReader : NSObject {
 @private
