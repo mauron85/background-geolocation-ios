@@ -9,7 +9,7 @@
 #ifndef SQLiteConfigurationDAO_h
 #define SQLiteConfigurationDAO_h
 
-@class Config;
+#import "Config.h"
 
 @interface SQLiteConfigurationDAO : NSObject
 
