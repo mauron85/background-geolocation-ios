@@ -7,53 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		412123D6207F582400D23929 /* UncaughtExceptionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 412123D5207F582400D23929 /* UncaughtExceptionLogger.m */; };
-		412123D8207F5C4700D23929 /* UncaughtExceptionLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 412123D4207E9AD600D23929 /* UncaughtExceptionLogger.h */; };
-		412428C71FB5AD2B00B21101 /* BackgroundGeolocationFacade.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E761D5E351900F65575 /* BackgroundGeolocationFacade.h */; };
-		412428C81FB5AD3E00B21101 /* LogReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E7A1D5E351900F65575 /* LogReader.h */; };
-		412428C91FB5ADDA00B21101 /* Location.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E721D5E351900F65575 /* Location.h */; };
-		412428CA1FB5AE4B00B21101 /* ProviderDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41399A081D941BC7005D6B5D /* ProviderDelegate.h */; };
-		412428CC1FB5B04300B21101 /* Config.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E6A1D5E351900F65575 /* Config.h */; };
-		412428D01FB5B43B00B21101 /* BackgroundTaskManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E641D5E351900F65575 /* BackgroundTaskManager.h */; };
+		412123D6207F582400D23929 /* MAURUncaughtExceptionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 412123D5207F582400D23929 /* MAURUncaughtExceptionLogger.m */; };
+		412123D8207F5C4700D23929 /* MAURUncaughtExceptionLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 412123D4207E9AD600D23929 /* MAURUncaughtExceptionLogger.h */; };
+		412428C71FB5AD2B00B21101 /* MAURBackgroundGeolocationFacade.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E761D5E351900F65575 /* MAURBackgroundGeolocationFacade.h */; };
+		412428C81FB5AD3E00B21101 /* MAURLogReader.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E7A1D5E351900F65575 /* MAURLogReader.h */; };
+		412428C91FB5ADDA00B21101 /* MAURLocation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E721D5E351900F65575 /* MAURLocation.h */; };
+		412428CA1FB5AE4B00B21101 /* MAURProviderDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41399A081D941BC7005D6B5D /* MAURProviderDelegate.h */; };
+		412428CC1FB5B04300B21101 /* MAURConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E6A1D5E351900F65575 /* MAURConfig.h */; };
+		412428D01FB5B43B00B21101 /* MAURBackgroundTaskManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 41E82E641D5E351900F65575 /* MAURBackgroundTaskManager.h */; };
 		41369C212080F23D00EB449C /* NSString+ZIMString.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C172080F23D00EB449C /* NSString+ZIMString.m */; };
 		41369C222080F23D00EB449C /* ZIMSqlExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C1B2080F23D00EB449C /* ZIMSqlExpression.m */; };
 		41369C232080F23D00EB449C /* ZIMSqlSelectStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C1C2080F23D00EB449C /* ZIMSqlSelectStatement.m */; };
-		41369C252080F27800EB449C /* LogReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C242080F27800EB449C /* LogReaderTest.m */; };
+		41369C252080F27800EB449C /* MAURLogReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C242080F27800EB449C /* MAURLogReaderTest.m */; };
 		41369C262080F2A100EB449C /* NSString+ZIMString.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C172080F23D00EB449C /* NSString+ZIMString.m */; };
 		4148982B1FB593B900323454 /* libBackgroundGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 418F75461D02DC3D0045FEA0 /* libBackgroundGeolocation.a */; };
-		414898381FB593E300323454 /* SQLiteHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898311FB593E200323454 /* SQLiteHelperTest.m */; };
-		414898391FB593E300323454 /* LocationUploaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898321FB593E300323454 /* LocationUploaderTest.m */; };
-		4148983A1FB593E300323454 /* SQLiteLocationDAOThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898331FB593E300323454 /* SQLiteLocationDAOThreadTest.m */; };
-		4148983B1FB593E300323454 /* SQLiteLocationDAOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898341FB593E300323454 /* SQLiteLocationDAOTests.m */; };
-		4148983C1FB593E300323454 /* GeolocationOpenHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898351FB593E300323454 /* GeolocationOpenHelperTest.m */; };
-		4148983D1FB593E300323454 /* SQLiteOpenHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898361FB593E300323454 /* SQLiteOpenHelperTest.m */; };
-		4148983E1FB593E300323454 /* BackgroundLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898371FB593E300323454 /* BackgroundLocationTest.m */; };
-		4185A96C1FE79636008515B4 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4185A96A1FE79635008515B4 /* Activity.m */; };
-		418E0B6E1FD84D6200E24CB0 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 418E0B6D1FD84D6200E24CB0 /* LocationTest.m */; };
-		41B1803B1FD1D8B200951D67 /* SQLiteConfigurationDAOTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B1803A1FD1D8B200951D67 /* SQLiteConfigurationDAOTest.m */; };
-		41B1803D1FD2952400951D67 /* ConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B1803C1FD2952400951D67 /* ConfigTest.m */; };
-		41B180451FD2E05C00951D67 /* GeolocationOpenHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E711D5E351900F65575 /* GeolocationOpenHelper.m */; };
-		41B180461FD2E05C00951D67 /* ConfigurationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B180351FD1B64F00951D67 /* ConfigurationContract.m */; };
-		41B180471FD2E05C00951D67 /* LocationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E751D5E351900F65575 /* LocationContract.m */; };
-		41B180481FD2E05C00951D67 /* SQLiteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7F1D5E351900F65575 /* SQLiteHelper.m */; };
-		41B180491FD2E05C00951D67 /* SQLiteOpenHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E831D5E351900F65575 /* SQLiteOpenHelper.m */; };
-		41B1804A1FD2E05C00951D67 /* SQLiteLocationDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E811D5E351900F65575 /* SQLiteLocationDAO.m */; };
-		41B1804B1FD2E05C00951D67 /* SQLiteConfigurationDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B180381FD1BD4600951D67 /* SQLiteConfigurationDAO.m */; };
-		41B1804C1FD2E05C00951D67 /* AbstractLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 41399A0A1D941BC7005D6B5D /* AbstractLocationProvider.m */; };
-		41B1804D1FD2E05C00951D67 /* ActivityLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 41399A051D941BC7005D6B5D /* ActivityLocationProvider.m */; };
-		41B1804E1FD2E05C00951D67 /* DistanceFilterLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 41399A071D941BC7005D6B5D /* DistanceFilterLocationProvider.m */; };
-		41B1804F1FD2E05C00951D67 /* RawLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198B21D1FB08A2B00DCC96D /* RawLocationProvider.m */; };
-		41B180501FD2E05C00951D67 /* LogReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7B1D5E351900F65575 /* LogReader.m */; };
+		414898381FB593E300323454 /* MAURSQLiteHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898311FB593E200323454 /* MAURSQLiteHelperTest.m */; };
+		414898391FB593E300323454 /* MAURLocationUploaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898321FB593E300323454 /* MAURLocationUploaderTest.m */; };
+		4148983A1FB593E300323454 /* MAURSQLiteLocationDAOThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898331FB593E300323454 /* MAURSQLiteLocationDAOThreadTest.m */; };
+		4148983B1FB593E300323454 /* MAURSQLiteLocationDAOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898341FB593E300323454 /* MAURSQLiteLocationDAOTests.m */; };
+		4148983C1FB593E300323454 /* MAURGeolocationOpenHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898351FB593E300323454 /* MAURGeolocationOpenHelperTest.m */; };
+		4148983D1FB593E300323454 /* MAURSQLiteOpenHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898361FB593E300323454 /* MAURSQLiteOpenHelperTest.m */; };
+		4148983E1FB593E300323454 /* MAURBackgroundLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898371FB593E300323454 /* MAURBackgroundLocationTest.m */; };
+		4185A96C1FE79636008515B4 /* MAURActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4185A96A1FE79635008515B4 /* MAURActivity.m */; };
+		418E0B6E1FD84D6200E24CB0 /* MAURLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 418E0B6D1FD84D6200E24CB0 /* MAURLocationTest.m */; };
+		41B1803B1FD1D8B200951D67 /* MAURSQLiteConfigurationDAOTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B1803A1FD1D8B200951D67 /* MAURSQLiteConfigurationDAOTest.m */; };
+		41B1803D1FD2952400951D67 /* MAURConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B1803C1FD2952400951D67 /* MAURConfigTest.m */; };
+		41B180451FD2E05C00951D67 /* MAURGeolocationOpenHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E711D5E351900F65575 /* MAURGeolocationOpenHelper.m */; };
+		41B180461FD2E05C00951D67 /* MAURConfigurationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B180351FD1B64F00951D67 /* MAURConfigurationContract.m */; };
+		41B180471FD2E05C00951D67 /* MAURLocationContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E751D5E351900F65575 /* MAURLocationContract.m */; };
+		41B180481FD2E05C00951D67 /* MAURSQLiteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7F1D5E351900F65575 /* MAURSQLiteHelper.m */; };
+		41B180491FD2E05C00951D67 /* MAURSQLiteOpenHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E831D5E351900F65575 /* MAURSQLiteOpenHelper.m */; };
+		41B1804A1FD2E05C00951D67 /* MAURSQLiteLocationDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E811D5E351900F65575 /* MAURSQLiteLocationDAO.m */; };
+		41B1804B1FD2E05C00951D67 /* MAURSQLiteConfigurationDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B180381FD1BD4600951D67 /* MAURSQLiteConfigurationDAO.m */; };
+		41B1804C1FD2E05C00951D67 /* MAURAbstractLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 41399A0A1D941BC7005D6B5D /* MAURAbstractLocationProvider.m */; };
+		41B1804D1FD2E05C00951D67 /* MAURActivityLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 41399A051D941BC7005D6B5D /* MAURActivityLocationProvider.m */; };
+		41B1804E1FD2E05C00951D67 /* MAURDistanceFilterLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 41399A071D941BC7005D6B5D /* MAURDistanceFilterLocationProvider.m */; };
+		41B1804F1FD2E05C00951D67 /* MAURRawLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198B21D1FB08A2B00DCC96D /* MAURRawLocationProvider.m */; };
+		41B180501FD2E05C00951D67 /* MAURLogReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7B1D5E351900F65575 /* MAURLogReader.m */; };
 		41B180511FD2E05C00951D67 /* CocoaLumberjack.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E691D5E351900F65575 /* CocoaLumberjack.m */; };
 		41B180521FD2E05C00951D67 /* FMDBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6F1D5E351900F65575 /* FMDBLogger.m */; };
 		41B180531FD2E05C00951D67 /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6D1D5E351900F65575 /* FMDB.m */; };
-		41B180551FD2E05C00951D67 /* BackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E651D5E351900F65575 /* BackgroundTaskManager.m */; };
-		41B180561FD2E05C00951D67 /* BackgroundSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E791D5E351900F65575 /* BackgroundSync.m */; };
+		41B180551FD2E05C00951D67 /* MAURBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */; };
+		41B180561FD2E05C00951D67 /* MAURBackgroundSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E791D5E351900F65575 /* MAURBackgroundSync.m */; };
 		41B180571FD2E05C00951D67 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7D1D5E351900F65575 /* Reachability.m */; };
-		41B180581FD2E05C00951D67 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6B1D5E351900F65575 /* Config.m */; };
-		41B180591FD2E05C00951D67 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E731D5E351900F65575 /* Location.m */; };
-		41B1805A1FD2E05C00951D67 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198B2201FB08D7700DCC96D /* LocationController.m */; };
-		41B1805B1FD2E05C00951D67 /* BackgroundGeolocationFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E771D5E351900F65575 /* BackgroundGeolocationFacade.m */; };
+		41B180581FD2E05C00951D67 /* MAURConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6B1D5E351900F65575 /* MAURConfig.m */; };
+		41B180591FD2E05C00951D67 /* MAURLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E731D5E351900F65575 /* MAURLocation.m */; };
+		41B1805A1FD2E05C00951D67 /* MAURLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198B2201FB08D7700DCC96D /* MAURLocationController.m */; };
+		41B1805B1FD2E05C00951D67 /* MAURBackgroundGeolocationFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E771D5E351900F65575 /* MAURBackgroundGeolocationFacade.m */; };
 		41BCFA421FE19B3000D4000E /* SOMotionActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA411FE19B3000D4000E /* SOMotionActivity.m */; };
 		41BCFA5A1FE19ED300D4000E /* SOMotionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA511FE19ED300D4000E /* SOMotionDetector.m */; };
 		41BCFA5B1FE19ED300D4000E /* SOLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA521FE19ED300D4000E /* SOLocationManager.m */; };
@@ -77,22 +77,22 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				412123D8207F5C4700D23929 /* UncaughtExceptionLogger.h in CopyFiles */,
-				412428D01FB5B43B00B21101 /* BackgroundTaskManager.h in CopyFiles */,
-				412428CC1FB5B04300B21101 /* Config.h in CopyFiles */,
-				412428CA1FB5AE4B00B21101 /* ProviderDelegate.h in CopyFiles */,
-				412428C91FB5ADDA00B21101 /* Location.h in CopyFiles */,
-				412428C81FB5AD3E00B21101 /* LogReader.h in CopyFiles */,
-				412428C71FB5AD2B00B21101 /* BackgroundGeolocationFacade.h in CopyFiles */,
+				412123D8207F5C4700D23929 /* MAURUncaughtExceptionLogger.h in CopyFiles */,
+				412428D01FB5B43B00B21101 /* MAURBackgroundTaskManager.h in CopyFiles */,
+				412428CC1FB5B04300B21101 /* MAURConfig.h in CopyFiles */,
+				412428CA1FB5AE4B00B21101 /* MAURProviderDelegate.h in CopyFiles */,
+				412428C91FB5ADDA00B21101 /* MAURLocation.h in CopyFiles */,
+				412428C81FB5AD3E00B21101 /* MAURLogReader.h in CopyFiles */,
+				412428C71FB5AD2B00B21101 /* MAURBackgroundGeolocationFacade.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		412123D4207E9AD600D23929 /* UncaughtExceptionLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UncaughtExceptionLogger.h; sourceTree = "<group>"; };
-		412123D5207F582400D23929 /* UncaughtExceptionLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UncaughtExceptionLogger.m; sourceTree = "<group>"; };
-		412428CD1FB5B15D00B21101 /* Logging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
+		412123D4207E9AD600D23929 /* MAURUncaughtExceptionLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURUncaughtExceptionLogger.h; sourceTree = "<group>"; };
+		412123D5207F582400D23929 /* MAURUncaughtExceptionLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURUncaughtExceptionLogger.m; sourceTree = "<group>"; };
+		412428CD1FB5B15D00B21101 /* MAURLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURLogging.h; sourceTree = "<group>"; };
 		41369C172080F23D00EB449C /* NSString+ZIMString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZIMString.m"; sourceTree = "<group>"; };
 		41369C182080F23D00EB449C /* NSString+ZIMString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZIMString.h"; sourceTree = "<group>"; };
 		41369C192080F23D00EB449C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -102,37 +102,37 @@
 		41369C1E2080F23D00EB449C /* ZIMSqlExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIMSqlExpression.h; sourceTree = "<group>"; };
 		41369C1F2080F23D00EB449C /* ZIMSqlSelectStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIMSqlSelectStatement.h; sourceTree = "<group>"; };
 		41369C202080F23D00EB449C /* ZIMSqlStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZIMSqlStatement.h; sourceTree = "<group>"; };
-		41369C242080F27800EB449C /* LogReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogReaderTest.m; sourceTree = "<group>"; };
-		41399A041D941BC7005D6B5D /* ActivityLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityLocationProvider.h; sourceTree = "<group>"; };
-		41399A051D941BC7005D6B5D /* ActivityLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityLocationProvider.m; sourceTree = "<group>"; };
-		41399A061D941BC7005D6B5D /* DistanceFilterLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceFilterLocationProvider.h; sourceTree = "<group>"; };
-		41399A071D941BC7005D6B5D /* DistanceFilterLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceFilterLocationProvider.m; sourceTree = "<group>"; };
-		41399A081D941BC7005D6B5D /* ProviderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderDelegate.h; sourceTree = "<group>"; };
-		41399A091D941BC7005D6B5D /* AbstractLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLocationProvider.h; sourceTree = "<group>"; };
-		41399A0A1D941BC7005D6B5D /* AbstractLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractLocationProvider.m; sourceTree = "<group>"; };
+		41369C242080F27800EB449C /* MAURLogReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLogReaderTest.m; sourceTree = "<group>"; };
+		41399A041D941BC7005D6B5D /* MAURActivityLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURActivityLocationProvider.h; sourceTree = "<group>"; };
+		41399A051D941BC7005D6B5D /* MAURActivityLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURActivityLocationProvider.m; sourceTree = "<group>"; };
+		41399A061D941BC7005D6B5D /* MAURDistanceFilterLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURDistanceFilterLocationProvider.h; sourceTree = "<group>"; };
+		41399A071D941BC7005D6B5D /* MAURDistanceFilterLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURDistanceFilterLocationProvider.m; sourceTree = "<group>"; };
+		41399A081D941BC7005D6B5D /* MAURProviderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURProviderDelegate.h; sourceTree = "<group>"; };
+		41399A091D941BC7005D6B5D /* MAURAbstractLocationProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURAbstractLocationProvider.h; sourceTree = "<group>"; };
+		41399A0A1D941BC7005D6B5D /* MAURAbstractLocationProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURAbstractLocationProvider.m; sourceTree = "<group>"; };
 		414898261FB593B900323454 /* BackgroundGeolocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundGeolocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4148982A1FB593B900323454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		414898311FB593E200323454 /* SQLiteHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteHelperTest.m; sourceTree = "<group>"; };
-		414898321FB593E300323454 /* LocationUploaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationUploaderTest.m; sourceTree = "<group>"; };
-		414898331FB593E300323454 /* SQLiteLocationDAOThreadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteLocationDAOThreadTest.m; sourceTree = "<group>"; };
-		414898341FB593E300323454 /* SQLiteLocationDAOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteLocationDAOTests.m; sourceTree = "<group>"; };
-		414898351FB593E300323454 /* GeolocationOpenHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeolocationOpenHelperTest.m; sourceTree = "<group>"; };
-		414898361FB593E300323454 /* SQLiteOpenHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteOpenHelperTest.m; sourceTree = "<group>"; };
-		414898371FB593E300323454 /* BackgroundLocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLocationTest.m; sourceTree = "<group>"; };
-		4185A96A1FE79635008515B4 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
-		4185A96B1FE79635008515B4 /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
-		418E0B6D1FD84D6200E24CB0 /* LocationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
+		414898311FB593E200323454 /* MAURSQLiteHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteHelperTest.m; sourceTree = "<group>"; };
+		414898321FB593E300323454 /* MAURLocationUploaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLocationUploaderTest.m; sourceTree = "<group>"; };
+		414898331FB593E300323454 /* MAURSQLiteLocationDAOThreadTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteLocationDAOThreadTest.m; sourceTree = "<group>"; };
+		414898341FB593E300323454 /* MAURSQLiteLocationDAOTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteLocationDAOTests.m; sourceTree = "<group>"; };
+		414898351FB593E300323454 /* MAURGeolocationOpenHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURGeolocationOpenHelperTest.m; sourceTree = "<group>"; };
+		414898361FB593E300323454 /* MAURSQLiteOpenHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteOpenHelperTest.m; sourceTree = "<group>"; };
+		414898371FB593E300323454 /* MAURBackgroundLocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURBackgroundLocationTest.m; sourceTree = "<group>"; };
+		4185A96A1FE79635008515B4 /* MAURActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURActivity.m; sourceTree = "<group>"; };
+		4185A96B1FE79635008515B4 /* MAURActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURActivity.h; sourceTree = "<group>"; };
+		418E0B6D1FD84D6200E24CB0 /* MAURLocationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURLocationTest.m; sourceTree = "<group>"; };
 		418F75461D02DC3D0045FEA0 /* libBackgroundGeolocation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBackgroundGeolocation.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4198B21C1FB089C900DCC96D /* RawLocationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RawLocationProvider.h; sourceTree = "<group>"; };
-		4198B21D1FB08A2B00DCC96D /* RawLocationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RawLocationProvider.m; sourceTree = "<group>"; };
-		4198B21F1FB08D7700DCC96D /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
-		4198B2201FB08D7700DCC96D /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
-		41B180341FD1B4EB00951D67 /* ConfigurationContract.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigurationContract.h; sourceTree = "<group>"; };
-		41B180351FD1B64F00951D67 /* ConfigurationContract.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigurationContract.m; sourceTree = "<group>"; };
-		41B180371FD1BD1300951D67 /* SQLiteConfigurationDAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLiteConfigurationDAO.h; sourceTree = "<group>"; };
-		41B180381FD1BD4600951D67 /* SQLiteConfigurationDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLiteConfigurationDAO.m; sourceTree = "<group>"; };
-		41B1803A1FD1D8B200951D67 /* SQLiteConfigurationDAOTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLiteConfigurationDAOTest.m; sourceTree = "<group>"; };
-		41B1803C1FD2952400951D67 /* ConfigTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfigTest.m; sourceTree = "<group>"; };
+		4198B21C1FB089C900DCC96D /* MAURRawLocationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURRawLocationProvider.h; sourceTree = "<group>"; };
+		4198B21D1FB08A2B00DCC96D /* MAURRawLocationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURRawLocationProvider.m; sourceTree = "<group>"; };
+		4198B21F1FB08D7700DCC96D /* MAURLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURLocationController.h; sourceTree = "<group>"; };
+		4198B2201FB08D7700DCC96D /* MAURLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLocationController.m; sourceTree = "<group>"; };
+		41B180341FD1B4EB00951D67 /* MAURConfigurationContract.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURConfigurationContract.h; sourceTree = "<group>"; };
+		41B180351FD1B64F00951D67 /* MAURConfigurationContract.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURConfigurationContract.m; sourceTree = "<group>"; };
+		41B180371FD1BD1300951D67 /* MAURSQLiteConfigurationDAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURSQLiteConfigurationDAO.h; sourceTree = "<group>"; };
+		41B180381FD1BD4600951D67 /* MAURSQLiteConfigurationDAO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteConfigurationDAO.m; sourceTree = "<group>"; };
+		41B1803A1FD1D8B200951D67 /* MAURSQLiteConfigurationDAOTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteConfigurationDAOTest.m; sourceTree = "<group>"; };
+		41B1803C1FD2952400951D67 /* MAURConfigTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURConfigTest.m; sourceTree = "<group>"; };
 		41BCFA401FE1991800D4000E /* SOMotionActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SOMotionActivity.h; sourceTree = "<group>"; };
 		41BCFA411FE19B3000D4000E /* SOMotionActivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SOMotionActivity.m; sourceTree = "<group>"; };
 		41BCFA511FE19ED300D4000E /* SOMotionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOMotionDetector.m; sourceTree = "<group>"; };
@@ -144,36 +144,36 @@
 		41BCFA571FE19ED300D4000E /* SOMotionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMotionDetector.h; sourceTree = "<group>"; };
 		41BCFA581FE19ED300D4000E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		41BCFA591FE19ED300D4000E /* SOStepDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOStepDetector.m; sourceTree = "<group>"; };
-		41E82E641D5E351900F65575 /* BackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTaskManager.h; sourceTree = "<group>"; };
-		41E82E651D5E351900F65575 /* BackgroundTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTaskManager.m; sourceTree = "<group>"; };
+		41E82E641D5E351900F65575 /* MAURBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURBackgroundTaskManager.h; sourceTree = "<group>"; };
+		41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURBackgroundTaskManager.m; sourceTree = "<group>"; };
 		41E82E681D5E351900F65575 /* CocoaLumberjack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaLumberjack.h; sourceTree = "<group>"; };
 		41E82E691D5E351900F65575 /* CocoaLumberjack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaLumberjack.m; sourceTree = "<group>"; };
-		41E82E6A1D5E351900F65575 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		41E82E6B1D5E351900F65575 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		41E82E6A1D5E351900F65575 /* MAURConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURConfig.h; sourceTree = "<group>"; };
+		41E82E6B1D5E351900F65575 /* MAURConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURConfig.m; sourceTree = "<group>"; };
 		41E82E6C1D5E351900F65575 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		41E82E6D1D5E351900F65575 /* FMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDB.m; sourceTree = "<group>"; };
 		41E82E6E1D5E351900F65575 /* FMDBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBLogger.h; sourceTree = "<group>"; };
 		41E82E6F1D5E351900F65575 /* FMDBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBLogger.m; sourceTree = "<group>"; };
-		41E82E701D5E351900F65575 /* GeolocationOpenHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeolocationOpenHelper.h; sourceTree = "<group>"; };
-		41E82E711D5E351900F65575 /* GeolocationOpenHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeolocationOpenHelper.m; sourceTree = "<group>"; };
-		41E82E721D5E351900F65575 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		41E82E731D5E351900F65575 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		41E82E741D5E351900F65575 /* LocationContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationContract.h; sourceTree = "<group>"; };
-		41E82E751D5E351900F65575 /* LocationContract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationContract.m; sourceTree = "<group>"; };
-		41E82E761D5E351900F65575 /* BackgroundGeolocationFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundGeolocationFacade.h; sourceTree = "<group>"; };
-		41E82E771D5E351900F65575 /* BackgroundGeolocationFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundGeolocationFacade.m; sourceTree = "<group>"; };
-		41E82E781D5E351900F65575 /* BackgroundSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundSync.h; sourceTree = "<group>"; };
-		41E82E791D5E351900F65575 /* BackgroundSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundSync.m; sourceTree = "<group>"; };
-		41E82E7A1D5E351900F65575 /* LogReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogReader.h; sourceTree = "<group>"; };
-		41E82E7B1D5E351900F65575 /* LogReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogReader.m; sourceTree = "<group>"; };
+		41E82E701D5E351900F65575 /* MAURGeolocationOpenHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURGeolocationOpenHelper.h; sourceTree = "<group>"; };
+		41E82E711D5E351900F65575 /* MAURGeolocationOpenHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURGeolocationOpenHelper.m; sourceTree = "<group>"; };
+		41E82E721D5E351900F65575 /* MAURLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURLocation.h; sourceTree = "<group>"; };
+		41E82E731D5E351900F65575 /* MAURLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLocation.m; sourceTree = "<group>"; };
+		41E82E741D5E351900F65575 /* MAURLocationContract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURLocationContract.h; sourceTree = "<group>"; };
+		41E82E751D5E351900F65575 /* MAURLocationContract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLocationContract.m; sourceTree = "<group>"; };
+		41E82E761D5E351900F65575 /* MAURBackgroundGeolocationFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURBackgroundGeolocationFacade.h; sourceTree = "<group>"; };
+		41E82E771D5E351900F65575 /* MAURBackgroundGeolocationFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURBackgroundGeolocationFacade.m; sourceTree = "<group>"; };
+		41E82E781D5E351900F65575 /* MAURBackgroundSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURBackgroundSync.h; sourceTree = "<group>"; };
+		41E82E791D5E351900F65575 /* MAURBackgroundSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURBackgroundSync.m; sourceTree = "<group>"; };
+		41E82E7A1D5E351900F65575 /* MAURLogReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURLogReader.h; sourceTree = "<group>"; };
+		41E82E7B1D5E351900F65575 /* MAURLogReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLogReader.m; sourceTree = "<group>"; };
 		41E82E7C1D5E351900F65575 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		41E82E7D1D5E351900F65575 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		41E82E7E1D5E351900F65575 /* SQLiteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteHelper.h; sourceTree = "<group>"; };
-		41E82E7F1D5E351900F65575 /* SQLiteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteHelper.m; sourceTree = "<group>"; };
-		41E82E801D5E351900F65575 /* SQLiteLocationDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteLocationDAO.h; sourceTree = "<group>"; };
-		41E82E811D5E351900F65575 /* SQLiteLocationDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteLocationDAO.m; sourceTree = "<group>"; };
-		41E82E821D5E351900F65575 /* SQLiteOpenHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteOpenHelper.h; sourceTree = "<group>"; };
-		41E82E831D5E351900F65575 /* SQLiteOpenHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteOpenHelper.m; sourceTree = "<group>"; };
+		41E82E7E1D5E351900F65575 /* MAURSQLiteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURSQLiteHelper.h; sourceTree = "<group>"; };
+		41E82E7F1D5E351900F65575 /* MAURSQLiteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteHelper.m; sourceTree = "<group>"; };
+		41E82E801D5E351900F65575 /* MAURSQLiteLocationDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURSQLiteLocationDAO.h; sourceTree = "<group>"; };
+		41E82E811D5E351900F65575 /* MAURSQLiteLocationDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteLocationDAO.m; sourceTree = "<group>"; };
+		41E82E821D5E351900F65575 /* MAURSQLiteOpenHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURSQLiteOpenHelper.h; sourceTree = "<group>"; };
+		41E82E831D5E351900F65575 /* MAURSQLiteOpenHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteOpenHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,17 +230,17 @@
 		414898271FB593B900323454 /* BackgroundGeolocationTests */ = {
 			isa = PBXGroup;
 			children = (
-				41369C242080F27800EB449C /* LogReaderTest.m */,
-				41B1803C1FD2952400951D67 /* ConfigTest.m */,
-				418E0B6D1FD84D6200E24CB0 /* LocationTest.m */,
-				414898371FB593E300323454 /* BackgroundLocationTest.m */,
-				414898351FB593E300323454 /* GeolocationOpenHelperTest.m */,
-				414898321FB593E300323454 /* LocationUploaderTest.m */,
-				414898311FB593E200323454 /* SQLiteHelperTest.m */,
-				414898341FB593E300323454 /* SQLiteLocationDAOTests.m */,
-				414898331FB593E300323454 /* SQLiteLocationDAOThreadTest.m */,
-				41B1803A1FD1D8B200951D67 /* SQLiteConfigurationDAOTest.m */,
-				414898361FB593E300323454 /* SQLiteOpenHelperTest.m */,
+				41369C242080F27800EB449C /* MAURLogReaderTest.m */,
+				41B1803C1FD2952400951D67 /* MAURConfigTest.m */,
+				418E0B6D1FD84D6200E24CB0 /* MAURLocationTest.m */,
+				414898371FB593E300323454 /* MAURBackgroundLocationTest.m */,
+				414898351FB593E300323454 /* MAURGeolocationOpenHelperTest.m */,
+				414898321FB593E300323454 /* MAURLocationUploaderTest.m */,
+				414898311FB593E200323454 /* MAURSQLiteHelperTest.m */,
+				414898341FB593E300323454 /* MAURSQLiteLocationDAOTests.m */,
+				414898331FB593E300323454 /* MAURSQLiteLocationDAOThreadTest.m */,
+				41B1803A1FD1D8B200951D67 /* MAURSQLiteConfigurationDAOTest.m */,
+				414898361FB593E300323454 /* MAURSQLiteOpenHelperTest.m */,
 				4148982A1FB593B900323454 /* Info.plist */,
 			);
 			path = BackgroundGeolocationTests;
@@ -273,22 +273,22 @@
 				41FE81241FB114C900E4FC65 /* Providers */,
 				4198B26F1FB0FA0C00DCC96D /* Logger */,
 				4198B26E1FB0F9E400DCC96D /* FMDB */,
-				41E82E641D5E351900F65575 /* BackgroundTaskManager.h */,
-				41E82E651D5E351900F65575 /* BackgroundTaskManager.m */,
-				41E82E781D5E351900F65575 /* BackgroundSync.h */,
-				41E82E791D5E351900F65575 /* BackgroundSync.m */,
+				41E82E641D5E351900F65575 /* MAURBackgroundTaskManager.h */,
+				41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */,
+				41E82E781D5E351900F65575 /* MAURBackgroundSync.h */,
+				41E82E791D5E351900F65575 /* MAURBackgroundSync.m */,
 				41E82E7C1D5E351900F65575 /* Reachability.h */,
 				41E82E7D1D5E351900F65575 /* Reachability.m */,
-				41E82E6A1D5E351900F65575 /* Config.h */,
-				41E82E6B1D5E351900F65575 /* Config.m */,
-				4185A96B1FE79635008515B4 /* Activity.h */,
-				4185A96A1FE79635008515B4 /* Activity.m */,
-				41E82E721D5E351900F65575 /* Location.h */,
-				41E82E731D5E351900F65575 /* Location.m */,
-				4198B21F1FB08D7700DCC96D /* LocationController.h */,
-				4198B2201FB08D7700DCC96D /* LocationController.m */,
-				41E82E761D5E351900F65575 /* BackgroundGeolocationFacade.h */,
-				41E82E771D5E351900F65575 /* BackgroundGeolocationFacade.m */,
+				41E82E6A1D5E351900F65575 /* MAURConfig.h */,
+				41E82E6B1D5E351900F65575 /* MAURConfig.m */,
+				4185A96B1FE79635008515B4 /* MAURActivity.h */,
+				4185A96A1FE79635008515B4 /* MAURActivity.m */,
+				41E82E721D5E351900F65575 /* MAURLocation.h */,
+				41E82E731D5E351900F65575 /* MAURLocation.m */,
+				4198B21F1FB08D7700DCC96D /* MAURLocationController.h */,
+				4198B2201FB08D7700DCC96D /* MAURLocationController.m */,
+				41E82E761D5E351900F65575 /* MAURBackgroundGeolocationFacade.h */,
+				41E82E771D5E351900F65575 /* MAURBackgroundGeolocationFacade.m */,
 			);
 			path = BackgroundGeolocation;
 			sourceTree = "<group>";
@@ -305,15 +305,15 @@
 		4198B26F1FB0FA0C00DCC96D /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				412428CD1FB5B15D00B21101 /* Logging.h */,
-				41E82E7A1D5E351900F65575 /* LogReader.h */,
-				41E82E7B1D5E351900F65575 /* LogReader.m */,
+				412428CD1FB5B15D00B21101 /* MAURLogging.h */,
+				41E82E7A1D5E351900F65575 /* MAURLogReader.h */,
+				41E82E7B1D5E351900F65575 /* MAURLogReader.m */,
 				41E82E681D5E351900F65575 /* CocoaLumberjack.h */,
 				41E82E691D5E351900F65575 /* CocoaLumberjack.m */,
 				41E82E6E1D5E351900F65575 /* FMDBLogger.h */,
 				41E82E6F1D5E351900F65575 /* FMDBLogger.m */,
-				412123D4207E9AD600D23929 /* UncaughtExceptionLogger.h */,
-				412123D5207F582400D23929 /* UncaughtExceptionLogger.m */,
+				412123D4207E9AD600D23929 /* MAURUncaughtExceptionLogger.h */,
+				412123D5207F582400D23929 /* MAURUncaughtExceptionLogger.m */,
 			);
 			name = Logger;
 			sourceTree = "<group>";
@@ -339,15 +339,15 @@
 		41FE81241FB114C900E4FC65 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				41399A081D941BC7005D6B5D /* ProviderDelegate.h */,
-				41399A091D941BC7005D6B5D /* AbstractLocationProvider.h */,
-				41399A0A1D941BC7005D6B5D /* AbstractLocationProvider.m */,
-				41399A041D941BC7005D6B5D /* ActivityLocationProvider.h */,
-				41399A051D941BC7005D6B5D /* ActivityLocationProvider.m */,
-				41399A061D941BC7005D6B5D /* DistanceFilterLocationProvider.h */,
-				41399A071D941BC7005D6B5D /* DistanceFilterLocationProvider.m */,
-				4198B21C1FB089C900DCC96D /* RawLocationProvider.h */,
-				4198B21D1FB08A2B00DCC96D /* RawLocationProvider.m */,
+				41399A081D941BC7005D6B5D /* MAURProviderDelegate.h */,
+				41399A091D941BC7005D6B5D /* MAURAbstractLocationProvider.h */,
+				41399A0A1D941BC7005D6B5D /* MAURAbstractLocationProvider.m */,
+				41399A041D941BC7005D6B5D /* MAURActivityLocationProvider.h */,
+				41399A051D941BC7005D6B5D /* MAURActivityLocationProvider.m */,
+				41399A061D941BC7005D6B5D /* MAURDistanceFilterLocationProvider.h */,
+				41399A071D941BC7005D6B5D /* MAURDistanceFilterLocationProvider.m */,
+				4198B21C1FB089C900DCC96D /* MAURRawLocationProvider.h */,
+				4198B21D1FB08A2B00DCC96D /* MAURRawLocationProvider.m */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -355,20 +355,20 @@
 		41FE81251FB114F100E4FC65 /* SQLite */ = {
 			isa = PBXGroup;
 			children = (
-				41E82E701D5E351900F65575 /* GeolocationOpenHelper.h */,
-				41E82E711D5E351900F65575 /* GeolocationOpenHelper.m */,
-				41B180341FD1B4EB00951D67 /* ConfigurationContract.h */,
-				41B180351FD1B64F00951D67 /* ConfigurationContract.m */,
-				41E82E741D5E351900F65575 /* LocationContract.h */,
-				41E82E751D5E351900F65575 /* LocationContract.m */,
-				41E82E7E1D5E351900F65575 /* SQLiteHelper.h */,
-				41E82E7F1D5E351900F65575 /* SQLiteHelper.m */,
-				41E82E821D5E351900F65575 /* SQLiteOpenHelper.h */,
-				41E82E831D5E351900F65575 /* SQLiteOpenHelper.m */,
-				41E82E801D5E351900F65575 /* SQLiteLocationDAO.h */,
-				41E82E811D5E351900F65575 /* SQLiteLocationDAO.m */,
-				41B180371FD1BD1300951D67 /* SQLiteConfigurationDAO.h */,
-				41B180381FD1BD4600951D67 /* SQLiteConfigurationDAO.m */,
+				41E82E701D5E351900F65575 /* MAURGeolocationOpenHelper.h */,
+				41E82E711D5E351900F65575 /* MAURGeolocationOpenHelper.m */,
+				41B180341FD1B4EB00951D67 /* MAURConfigurationContract.h */,
+				41B180351FD1B64F00951D67 /* MAURConfigurationContract.m */,
+				41E82E741D5E351900F65575 /* MAURLocationContract.h */,
+				41E82E751D5E351900F65575 /* MAURLocationContract.m */,
+				41E82E7E1D5E351900F65575 /* MAURSQLiteHelper.h */,
+				41E82E7F1D5E351900F65575 /* MAURSQLiteHelper.m */,
+				41E82E821D5E351900F65575 /* MAURSQLiteOpenHelper.h */,
+				41E82E831D5E351900F65575 /* MAURSQLiteOpenHelper.m */,
+				41E82E801D5E351900F65575 /* MAURSQLiteLocationDAO.h */,
+				41E82E811D5E351900F65575 /* MAURSQLiteLocationDAO.m */,
+				41B180371FD1BD1300951D67 /* MAURSQLiteConfigurationDAO.h */,
+				41B180381FD1BD4600951D67 /* MAURSQLiteConfigurationDAO.m */,
 			);
 			name = SQLite;
 			sourceTree = "<group>";
@@ -463,17 +463,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				41369C262080F2A100EB449C /* NSString+ZIMString.m in Sources */,
-				41369C252080F27800EB449C /* LogReaderTest.m in Sources */,
-				4148983E1FB593E300323454 /* BackgroundLocationTest.m in Sources */,
-				41B1803B1FD1D8B200951D67 /* SQLiteConfigurationDAOTest.m in Sources */,
-				418E0B6E1FD84D6200E24CB0 /* LocationTest.m in Sources */,
-				4148983C1FB593E300323454 /* GeolocationOpenHelperTest.m in Sources */,
-				414898391FB593E300323454 /* LocationUploaderTest.m in Sources */,
-				41B1803D1FD2952400951D67 /* ConfigTest.m in Sources */,
-				414898381FB593E300323454 /* SQLiteHelperTest.m in Sources */,
-				4148983B1FB593E300323454 /* SQLiteLocationDAOTests.m in Sources */,
-				4148983D1FB593E300323454 /* SQLiteOpenHelperTest.m in Sources */,
-				4148983A1FB593E300323454 /* SQLiteLocationDAOThreadTest.m in Sources */,
+				41369C252080F27800EB449C /* MAURLogReaderTest.m in Sources */,
+				4148983E1FB593E300323454 /* MAURBackgroundLocationTest.m in Sources */,
+				41B1803B1FD1D8B200951D67 /* MAURSQLiteConfigurationDAOTest.m in Sources */,
+				418E0B6E1FD84D6200E24CB0 /* MAURLocationTest.m in Sources */,
+				4148983C1FB593E300323454 /* MAURGeolocationOpenHelperTest.m in Sources */,
+				414898391FB593E300323454 /* MAURLocationUploaderTest.m in Sources */,
+				41B1803D1FD2952400951D67 /* MAURConfigTest.m in Sources */,
+				414898381FB593E300323454 /* MAURSQLiteHelperTest.m in Sources */,
+				4148983B1FB593E300323454 /* MAURSQLiteLocationDAOTests.m in Sources */,
+				4148983D1FB593E300323454 /* MAURSQLiteOpenHelperTest.m in Sources */,
+				4148983A1FB593E300323454 /* MAURSQLiteLocationDAOThreadTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,35 +481,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41B180451FD2E05C00951D67 /* GeolocationOpenHelper.m in Sources */,
-				41B180461FD2E05C00951D67 /* ConfigurationContract.m in Sources */,
-				41B180471FD2E05C00951D67 /* LocationContract.m in Sources */,
+				41B180451FD2E05C00951D67 /* MAURGeolocationOpenHelper.m in Sources */,
+				41B180461FD2E05C00951D67 /* MAURConfigurationContract.m in Sources */,
+				41B180471FD2E05C00951D67 /* MAURLocationContract.m in Sources */,
 				41BCFA5C1FE19ED300D4000E /* SOStepDetector.m in Sources */,
-				41B180481FD2E05C00951D67 /* SQLiteHelper.m in Sources */,
-				41B180491FD2E05C00951D67 /* SQLiteOpenHelper.m in Sources */,
-				41B1804A1FD2E05C00951D67 /* SQLiteLocationDAO.m in Sources */,
-				41B1804B1FD2E05C00951D67 /* SQLiteConfigurationDAO.m in Sources */,
-				41B1804C1FD2E05C00951D67 /* AbstractLocationProvider.m in Sources */,
-				41B1804D1FD2E05C00951D67 /* ActivityLocationProvider.m in Sources */,
-				412123D6207F582400D23929 /* UncaughtExceptionLogger.m in Sources */,
+				41B180481FD2E05C00951D67 /* MAURSQLiteHelper.m in Sources */,
+				41B180491FD2E05C00951D67 /* MAURSQLiteOpenHelper.m in Sources */,
+				41B1804A1FD2E05C00951D67 /* MAURSQLiteLocationDAO.m in Sources */,
+				41B1804B1FD2E05C00951D67 /* MAURSQLiteConfigurationDAO.m in Sources */,
+				41B1804C1FD2E05C00951D67 /* MAURAbstractLocationProvider.m in Sources */,
+				41B1804D1FD2E05C00951D67 /* MAURActivityLocationProvider.m in Sources */,
+				412123D6207F582400D23929 /* MAURUncaughtExceptionLogger.m in Sources */,
 				41369C232080F23D00EB449C /* ZIMSqlSelectStatement.m in Sources */,
-				41B1804E1FD2E05C00951D67 /* DistanceFilterLocationProvider.m in Sources */,
-				41B1804F1FD2E05C00951D67 /* RawLocationProvider.m in Sources */,
+				41B1804E1FD2E05C00951D67 /* MAURDistanceFilterLocationProvider.m in Sources */,
+				41B1804F1FD2E05C00951D67 /* MAURRawLocationProvider.m in Sources */,
 				41369C222080F23D00EB449C /* ZIMSqlExpression.m in Sources */,
-				41B180501FD2E05C00951D67 /* LogReader.m in Sources */,
+				41B180501FD2E05C00951D67 /* MAURLogReader.m in Sources */,
 				41B180511FD2E05C00951D67 /* CocoaLumberjack.m in Sources */,
 				41B180521FD2E05C00951D67 /* FMDBLogger.m in Sources */,
 				41BCFA421FE19B3000D4000E /* SOMotionActivity.m in Sources */,
 				41369C212080F23D00EB449C /* NSString+ZIMString.m in Sources */,
 				41B180531FD2E05C00951D67 /* FMDB.m in Sources */,
-				41B180551FD2E05C00951D67 /* BackgroundTaskManager.m in Sources */,
-				41B180561FD2E05C00951D67 /* BackgroundSync.m in Sources */,
-				4185A96C1FE79636008515B4 /* Activity.m in Sources */,
+				41B180551FD2E05C00951D67 /* MAURBackgroundTaskManager.m in Sources */,
+				41B180561FD2E05C00951D67 /* MAURBackgroundSync.m in Sources */,
+				4185A96C1FE79636008515B4 /* MAURActivity.m in Sources */,
 				41B180571FD2E05C00951D67 /* Reachability.m in Sources */,
-				41B180581FD2E05C00951D67 /* Config.m in Sources */,
-				41B180591FD2E05C00951D67 /* Location.m in Sources */,
-				41B1805A1FD2E05C00951D67 /* LocationController.m in Sources */,
-				41B1805B1FD2E05C00951D67 /* BackgroundGeolocationFacade.m in Sources */,
+				41B180581FD2E05C00951D67 /* MAURConfig.m in Sources */,
+				41B180591FD2E05C00951D67 /* MAURLocation.m in Sources */,
+				41B1805A1FD2E05C00951D67 /* MAURLocationController.m in Sources */,
+				41B1805B1FD2E05C00951D67 /* MAURBackgroundGeolocationFacade.m in Sources */,
 				41BCFA5A1FE19ED300D4000E /* SOMotionDetector.m in Sources */,
 				41BCFA5B1FE19ED300D4000E /* SOLocationManager.m in Sources */,
 			);
