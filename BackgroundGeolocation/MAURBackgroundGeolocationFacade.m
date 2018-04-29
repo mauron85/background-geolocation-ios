@@ -37,7 +37,7 @@ static NSString * const TAG = @"BgGeo";
 
 FMDBLogger *sqliteLogger;
 
-@interface MAURBackgroundGeolocationFacade () <ProviderDelegate>
+@interface MAURBackgroundGeolocationFacade () <MAURProviderDelegate>
 @end
 
 @implementation MAURBackgroundGeolocationFacade {
@@ -52,7 +52,7 @@ FMDBLogger *sqliteLogger;
     MAURConfig *_config;
 
     MAURLocation *stationaryLocation;
-    MAURAbstractLocationProvider<LocationProvider> *locationProvider;
+    MAURAbstractLocationProvider<MAURLocationProvider> *locationProvider;
     MAURBackgroundSync *uploader;
     Reachability *reach;
 }
@@ -168,7 +168,7 @@ FMDBLogger *sqliteLogger;
                 NSLocalizedDescriptionKey: NSLocalizedString(@CONFIGURE_ERROR_MSG, nil),
                 NSUnderlyingErrorKey : error
                 };
-            *outError = [NSError errorWithDomain:BGGeolocationDomain code:BG_CONFIGURE_ERROR userInfo:userInfo];
+            *outError = [NSError errorWithDomain:BGGeolocationDomain code:MAURBGConfigureError userInfo:userInfo];
         }
 
         return NO;
@@ -276,19 +276,19 @@ FMDBLogger *sqliteLogger;
     return NO;
 }
 
-- (BGAuthorizationStatus) authorizationStatus
+- (MAURLocationAuthorizationStatus) authorizationStatus
 {
     CLAuthorizationStatus authStatus = [CLLocationManager authorizationStatus];
     switch (authStatus) {
         case kCLAuthorizationStatusNotDetermined:
-            return BG_AUTH_NOT_DETERMINED;
+            return MAURLocationAuthorizationNotDetermined;
         case kCLAuthorizationStatusRestricted:
         case kCLAuthorizationStatusDenied:
-            return BG_AUTH_DENIED;
+            return MAURLocationAuthorizationDenied;
         case kCLAuthorizationStatusAuthorizedAlways:
-            return BG_AUTH_ALWAYS;
+            return MAURLocationAuthorizationAlways;
         case kCLAuthorizationStatusAuthorizedWhenInUse:
-            return BG_AUTH_FOREGROUND;
+            return MAURLocationAuthorizationForeground;
     }
 }
 
@@ -297,10 +297,10 @@ FMDBLogger *sqliteLogger;
     return isStarted;
 }
 
-- (MAURAbstractLocationProvider<LocationProvider>*) getProvider:(int)providerId error:(NSError * __autoreleasing *)outError
+- (MAURAbstractLocationProvider<MAURLocationProvider>*) getProvider:(int)providerId error:(NSError * __autoreleasing *)outError
 {
     NSDictionary *errorDictionary;
-    MAURAbstractLocationProvider<LocationProvider> *locationProvider = nil;
+    MAURAbstractLocationProvider<MAURLocationProvider> *locationProvider = nil;
     switch (providerId) {
         case DISTANCE_FILTER_PROVIDER:
             locationProvider = [[MAURDistanceFilterLocationProvider alloc] init];
@@ -316,7 +316,7 @@ FMDBLogger *sqliteLogger;
                 errorDictionary = @{
                                     NSLocalizedDescriptionKey: NSLocalizedString(@UNKNOWN_LOCATION_PROVIDER_MSG, nil),
                                     };
-                *outError = [NSError errorWithDomain:BGGeolocationDomain code:BG_CONFIGURE_ERROR userInfo:errorDictionary];
+                *outError = [NSError errorWithDomain:BGGeolocationDomain code:MAURBGConfigureError userInfo:errorDictionary];
             }
             return nil;
     }
@@ -519,7 +519,7 @@ FMDBLogger *sqliteLogger;
     }
 }
 
-- (void) onAuthorizationChanged:(BGAuthorizationStatus)authStatus
+- (void) onAuthorizationChanged:(MAURLocationAuthorizationStatus)authStatus
 {
     [self.delegate onAuthorizationChanged:authStatus];
 }

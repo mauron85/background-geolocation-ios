@@ -13,27 +13,27 @@
 #import "MAURActivity.h"
 //#import "MAURLocationController.h"
 
-typedef NS_ENUM(NSInteger, BGErrorCode) {
-    BG_PERMISSION_DENIED = 1000,
-    BG_SETTINGS_ERROR    = 1001,
-    BG_CONFIGURE_ERROR   = 1002,
-    BG_SERVICE_ERROR     = 1003,
-    BG_JSON_ERROR        = 1004,
-    BG_NOT_IMPLEMENTED   = 9999
+typedef NS_ENUM(NSInteger, MAURBGErrorCode) {
+    MAURBGPermissionDenied = 1000,
+    MAURBGSettingsError    = 1001,
+    MAURBGConfigureError   = 1002,
+    MAURBGServiceError     = 1003,
+    MAURBGJsonError        = 1004,
+    MAURBGNotImplemented   = 9999
 };
 
 
-typedef NS_ENUM(NSInteger, BGAuthorizationStatus) {
-    BG_AUTH_DENIED = 0,
-    BG_AUTH_ALLOWED = 1,
-    BG_AUTH_ALWAYS = BG_AUTH_ALLOWED,
-    BG_AUTH_FOREGROUND = 2,
-    BG_AUTH_NOT_DETERMINED = 99,
+typedef NS_ENUM(NSInteger, MAURLocationAuthorizationStatus) {
+    MAURLocationAuthorizationDenied = 0,
+    MAURLocationAuthorizationAllowed = 1,
+    MAURLocationAuthorizationAlways = MAURLocationAuthorizationAllowed,
+    MAURLocationAuthorizationForeground = 2,
+    MAURLocationAuthorizationNotDetermined = 99,
 };
 
-@protocol ProviderDelegate <NSObject>
+@protocol MAURProviderDelegate <NSObject>
 
-- (void) onAuthorizationChanged:(BGAuthorizationStatus)authStatus;
+- (void) onAuthorizationChanged:(MAURLocationAuthorizationStatus)authStatus;
 - (void) onLocationChanged:(MAURLocation*)location;
 - (void) onStationaryChanged:(MAURLocation*)location;
 - (void) onLocationPause;

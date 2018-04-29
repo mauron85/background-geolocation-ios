@@ -122,7 +122,7 @@ static NSString * const Domain = @"com.marianhello";
     /* do nothing */
 }
 
-- (void) onAuthorizationChanged:(BGAuthorizationStatus)authStatus
+- (void) onAuthorizationChanged:(MAURLocationAuthorizationStatus)authStatus
 {
     [self.delegate onAuthorizationChanged:authStatus];
 }

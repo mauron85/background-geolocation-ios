@@ -53,7 +53,7 @@ static NSString * const Domain = @"com.marianhello";
                                                   NSLocalizedDescriptionKey: NSLocalizedString(@LOCATION_DENIED, nil)
                                                   };
 
-                *outError = [NSError errorWithDomain:Domain code:BG_PERMISSION_DENIED userInfo:errorDictionary];
+                *outError = [NSError errorWithDomain:Domain code:MAURBGPermissionDenied userInfo:errorDictionary];
             }
             
             return NO;
@@ -64,7 +64,7 @@ static NSString * const Domain = @"com.marianhello";
                 NSDictionary *errorDictionary = @{
                                                   NSLocalizedDescriptionKey: NSLocalizedString(@LOCATION_RESTRICTED, nil)
                                                   };
-                *outError = [NSError errorWithDomain:Domain code:BG_PERMISSION_DENIED userInfo:errorDictionary];
+                *outError = [NSError errorWithDomain:Domain code:MAURBGPermissionDenied userInfo:errorDictionary];
             }
             
             return NO;
@@ -159,7 +159,7 @@ static NSString * const Domain = @"com.marianhello";
         NSDictionary *errorDictionary = @{
                                           NSUnderlyingErrorKey : error
                                           };
-        NSError *outError = [NSError errorWithDomain:Domain code:BG_SERVICE_ERROR userInfo:errorDictionary];
+        NSError *outError = [NSError errorWithDomain:Domain code:MAURBGServiceError userInfo:errorDictionary];
 
         [self.delegate onError:outError];
     }
@@ -167,18 +167,18 @@ static NSString * const Domain = @"com.marianhello";
 
 - (void) locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
-    BGAuthorizationStatus authStatus;
+    MAURLocationAuthorizationStatus authStatus;
     
     switch(status) {
         case kCLAuthorizationStatusRestricted:
         case kCLAuthorizationStatusDenied:
-            authStatus = BG_AUTH_DENIED;
+            authStatus = MAURLocationAuthorizationDenied;
             break;
         case kCLAuthorizationStatusAuthorizedAlways:
-            authStatus = BG_AUTH_ALWAYS;
+            authStatus = MAURLocationAuthorizationAlways;
             break;
         case kCLAuthorizationStatusAuthorizedWhenInUse:
-            authStatus = BG_AUTH_FOREGROUND;
+            authStatus = MAURLocationAuthorizationForeground;
             break;
         default:
             return;

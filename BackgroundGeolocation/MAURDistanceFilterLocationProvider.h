@@ -13,7 +13,7 @@
 #import "MAURAbstractLocationProvider.h"
 #import "MAURConfig.h"
 
-@interface MAURDistanceFilterLocationProvider : MAURAbstractLocationProvider<LocationProvider>
+@interface MAURDistanceFilterLocationProvider : MAURAbstractLocationProvider<MAURLocationProvider>
 
 @end
 

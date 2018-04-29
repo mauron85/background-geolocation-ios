@@ -25,7 +25,7 @@
 #define acquiredLocationSound   1052
 #define locationErrorSound      1073
 
-@protocol LocationProvider <NSObject>
+@protocol MAURLocationProvider <NSObject>
 
 - (void) onCreate;
 - (void) onDestroy;
@@ -39,7 +39,7 @@
 
 @interface MAURAbstractLocationProvider : NSObject//<LocationProvider>
 
-@property (weak, nonatomic) id<ProviderDelegate> delegate;
+@property (weak, nonatomic) id<MAURProviderDelegate> delegate;
 
 - (void) onTerminate;
 - (void) onSwitchMode:(BGOperationMode)mode;

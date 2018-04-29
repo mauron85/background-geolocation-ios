@@ -84,7 +84,7 @@ static NSString * const Domain = @"com.marianhello";
     }
 }
 
-- (void) onAuthorizationChanged:(BGAuthorizationStatus)authStatus
+- (void) onAuthorizationChanged:(MAURLocationAuthorizationStatus)authStatus
 {
     [self.delegate onAuthorizationChanged:authStatus];
 }

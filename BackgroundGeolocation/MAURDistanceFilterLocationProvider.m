@@ -110,7 +110,7 @@ enum {
                                                   NSLocalizedDescriptionKey: NSLocalizedString(@LOCATION_DENIED, nil)
                                                   };
                 
-                *outError = [NSError errorWithDomain:Domain code:BG_PERMISSION_DENIED userInfo:errorDictionary];
+                *outError = [NSError errorWithDomain:Domain code:MAURBGPermissionDenied userInfo:errorDictionary];
             }
             
             return NO;
@@ -121,7 +121,7 @@ enum {
                 NSDictionary *errorDictionary = @{
                                                   NSLocalizedDescriptionKey: NSLocalizedString(@LOCATION_RESTRICTED, nil)
                                                   };
-                *outError = [NSError errorWithDomain:Domain code:BG_PERMISSION_DENIED userInfo:errorDictionary];
+                *outError = [NSError errorWithDomain:Domain code:MAURBGPermissionDenied userInfo:errorDictionary];
             }
             
             return NO;
@@ -364,7 +364,7 @@ enum {
         NSDictionary *errorDictionary = @{
                                           NSUnderlyingErrorKey : error
                                           };
-        NSError *outError = [NSError errorWithDomain:Domain code:BG_SERVICE_ERROR userInfo:errorDictionary];
+        NSError *outError = [NSError errorWithDomain:Domain code:MAURBGServiceError userInfo:errorDictionary];
         
         [self.delegate onError:outError];
     }
@@ -381,17 +381,17 @@ enum {
         case kCLAuthorizationStatusRestricted:
         case kCLAuthorizationStatusDenied:
             if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
-                [self.delegate onAuthorizationChanged:BG_AUTH_DENIED];
+                [self.delegate onAuthorizationChanged:MAURLocationAuthorizationDenied];
             }
             break;
         case kCLAuthorizationStatusAuthorizedAlways:
             if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
-                [self.delegate onAuthorizationChanged:BG_AUTH_ALWAYS];
+                [self.delegate onAuthorizationChanged:MAURLocationAuthorizationAlways];
             }
             break;
         case kCLAuthorizationStatusAuthorizedWhenInUse:
             if (self.delegate && [self.delegate respondsToSelector:@selector(onAuthorizationChanged:)]) {
-                [self.delegate onAuthorizationChanged:BG_AUTH_FOREGROUND];
+                [self.delegate onAuthorizationChanged:MAURLocationAuthorizationForeground];
             }
             break;
         default:

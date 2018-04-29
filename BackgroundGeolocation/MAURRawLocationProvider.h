@@ -11,7 +11,7 @@
 
 #import "MAURAbstractLocationProvider.h"
 
-@interface MAURRawLocationProvider : MAURAbstractLocationProvider<LocationProvider>
+@interface MAURRawLocationProvider : MAURAbstractLocationProvider<MAURLocationProvider>
 
 @end
 

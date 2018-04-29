@@ -23,13 +23,13 @@ typedef NS_ENUM(NSInteger, BGOperationMode) {
 
 @interface MAURBackgroundGeolocationFacade : NSObject
 
-@property (weak, nonatomic) id<ProviderDelegate> delegate;
+@property (weak, nonatomic) id<MAURProviderDelegate> delegate;
 
 - (BOOL) configure:(MAURConfig*)config error:(NSError * __autoreleasing *)outError;
 - (BOOL) start:(NSError * __autoreleasing *)outError;
 - (BOOL) stop:(NSError * __autoreleasing *)outError;
 - (BOOL) locationServicesEnabled;
-- (BGAuthorizationStatus) authorizationStatus;
+- (MAURLocationAuthorizationStatus) authorizationStatus;
 - (BOOL) isStarted;
 - (void) showAppSettings;
 - (void) showLocationSettings;
