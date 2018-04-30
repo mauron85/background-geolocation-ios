@@ -44,7 +44,7 @@ FMDBLogger *sqliteLogger;
     BOOL isStarted;
     BOOL hasConnectivity;
 
-    BGOperationMode operationMode;
+    MAUROperationalMode operationMode;
 
     UILocalNotification *localNotification;
 
@@ -250,7 +250,7 @@ FMDBLogger *sqliteLogger;
 /**
  * toggle between foreground and background operation mode
  */
-- (void) switchMode:(BGOperationMode)mode
+- (void) switchMode:(MAUROperationalMode)mode
 {
     DDLogInfo(@"%@ #switchMode %lu", TAG, (unsigned long)mode);
 
@@ -259,7 +259,7 @@ FMDBLogger *sqliteLogger;
     if (!isStarted) return;
 
     if ([self getConfig].isDebugging) {
-        AudioServicesPlaySystemSound (operationMode  == FOREGROUND ? paceChangeYesSound : paceChangeNoSound);
+        AudioServicesPlaySystemSound (operationMode  == MAURForegroundMode ? paceChangeYesSound : paceChangeNoSound);
     }
    
     [self runOnMainThread:^{
@@ -469,7 +469,7 @@ FMDBLogger *sqliteLogger;
     MAURConfig *config = [self getConfig];
     if ([config isDebugging]) {
         [self notify:[NSString stringWithFormat:@"Stationary update: %s\nSPD: %0.0f | DF: %ld | ACY: %0.0f | RAD: %0.0f",
-                      ((operationMode == FOREGROUND) ? "FG" : "BG"),
+                      ((operationMode == MAURForegroundMode) ? "FG" : "BG"),
                       [location.speed doubleValue],
                       (long) nil, //locationProvider.distanceFilter,
                       [location.accuracy doubleValue],
@@ -499,7 +499,7 @@ FMDBLogger *sqliteLogger;
 
     if ([config isDebugging]) {
         [self notify:[NSString stringWithFormat:@"Location update: %s\nSPD: %0.0f | DF: %ld | ACY: %0.0f",
-                      ((operationMode == FOREGROUND) ? "FG" : "BG"),
+                      ((operationMode == MAURForegroundMode) ? "FG" : "BG"),
                       [location.speed doubleValue],
                       (long) nil, //locationProvider.distanceFilter,
                       [location.accuracy doubleValue]

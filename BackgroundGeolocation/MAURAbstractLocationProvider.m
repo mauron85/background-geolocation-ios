@@ -45,7 +45,7 @@
     // override in sub class
 }
 
-- (void) onSwitchMode:(BGOperationMode)mode
+- (void) onSwitchMode:(MAUROperationalMode)mode
 {
     // override in sub class
 }

@@ -33,7 +33,7 @@
 - (BOOL) onConfigure:(MAURConfig*)config error:(NSError * __autoreleasing *)outError;
 - (BOOL) onStart:(NSError * __autoreleasing *)outError;
 - (BOOL) onStop:(NSError * __autoreleasing *)outError;
-- (void) onSwitchMode:(BGOperationMode)mode;
+- (void) onSwitchMode:(MAUROperationalMode)mode;
 
 @end
 
@@ -42,7 +42,7 @@
 @property (weak, nonatomic) id<MAURProviderDelegate> delegate;
 
 - (void) onTerminate;
-- (void) onSwitchMode:(BGOperationMode)mode;
+- (void) onSwitchMode:(MAUROperationalMode)mode;
 - (void) notify:(NSString*)message;
 
 @end

@@ -16,11 +16,6 @@
 #import "MAURLocation.h"
 #import "MAURConfig.h"
 
-typedef NS_ENUM(NSInteger, BGOperationMode) {
-    BACKGROUND = 0,
-    FOREGROUND = 1
-};
-
 @interface MAURBackgroundGeolocationFacade : NSObject
 
 @property (weak, nonatomic) id<MAURProviderDelegate> delegate;
@@ -33,7 +28,7 @@ typedef NS_ENUM(NSInteger, BGOperationMode) {
 - (BOOL) isStarted;
 - (void) showAppSettings;
 - (void) showLocationSettings;
-- (void) switchMode:(BGOperationMode)mode;
+- (void) switchMode:(MAUROperationalMode)mode;
 - (MAURLocation*)getStationaryLocation;
 - (NSArray<MAURLocation*>*) getLocations;
 - (NSArray<MAURLocation*>*) getValidLocations;

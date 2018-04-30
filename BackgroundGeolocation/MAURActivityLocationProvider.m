@@ -117,7 +117,7 @@ static NSString * const Domain = @"com.marianhello";
     }
 }
 
-- (void) onSwitchMode:(BGOperationMode)mode
+- (void) onSwitchMode:(MAUROperationalMode)mode
 {
     /* do nothing */
 }

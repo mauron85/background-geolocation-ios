@@ -22,13 +22,17 @@ typedef NS_ENUM(NSInteger, MAURBGErrorCode) {
     MAURBGNotImplemented   = 9999
 };
 
-
 typedef NS_ENUM(NSInteger, MAURLocationAuthorizationStatus) {
     MAURLocationAuthorizationDenied = 0,
     MAURLocationAuthorizationAllowed = 1,
     MAURLocationAuthorizationAlways = MAURLocationAuthorizationAllowed,
     MAURLocationAuthorizationForeground = 2,
     MAURLocationAuthorizationNotDetermined = 99,
+};
+
+typedef NS_ENUM(NSInteger, MAUROperationalMode) {
+    MAURBackgroundMode = 0,
+    MAURForegroundMode = 1
 };
 
 @protocol MAURProviderDelegate <NSObject>

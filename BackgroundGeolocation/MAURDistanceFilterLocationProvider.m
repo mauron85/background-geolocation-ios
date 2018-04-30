@@ -39,7 +39,7 @@ enum {
     CLCircularRegion *stationaryRegion;
     NSDate *stationarySince;
 
-    BGOperationMode operationMode;
+    MAUROperationalMode operationMode;
     NSDate *aquireStartTime;
     
     CLLocationManager *locationManager;
@@ -141,7 +141,7 @@ enum {
 #endif
     }
     
-    [self switchMode:FOREGROUND];
+    [self switchMode:MAURForegroundMode];
     
     return YES;
 }
@@ -160,7 +160,7 @@ enum {
     return YES;
 }
 
-- (void) onSwitchMode:(BGOperationMode)mode
+- (void) onSwitchMode:(MAUROperationalMode)mode
 {
     [self switchMode:mode];
 }
@@ -168,18 +168,18 @@ enum {
 /**
  * toggle between foreground and background operation mode
  */
-- (void) switchMode:(BGOperationMode)mode
+- (void) switchMode:(MAUROperationalMode)mode
 {
     DDLogInfo(@"%@ switchMode %lu", TAG, (unsigned long)mode);
     
     operationMode = mode;
     
-    if (operationMode == FOREGROUND || !_config.saveBatteryOnBackground) {
+    if (operationMode == MAURForegroundMode || !_config.saveBatteryOnBackground) {
         isAcquiringSpeed = YES;
         isAcquiringStationaryLocation = NO;
         [self stopMonitoringForRegion];
         [self stopMonitoringSignificantLocationChanges];
-    } else if (operationMode == BACKGROUND) {
+    } else if (operationMode == MAURBackgroundMode) {
         isAcquiringSpeed = NO;
         isAcquiringStationaryLocation = YES;
         [self startMonitoringSignificantLocationChanges];
@@ -198,17 +198,17 @@ enum {
 {
     DDLogDebug(@"%@ didUpdateLocations (operationMode: %lu)", TAG, (unsigned long)operationMode);
     
-    BGOperationMode actAsInMode = operationMode;
+    MAUROperationalMode actAsInMode = operationMode;
     
-    if (actAsInMode == BACKGROUND) {
-        if ([_config saveBatteryOnBackground] == NO) actAsInMode = FOREGROUND;
+    if (actAsInMode == MAURBackgroundMode) {
+        if ([_config saveBatteryOnBackground] == NO) actAsInMode = MAURForegroundMode;
     }
     
-    if (actAsInMode == FOREGROUND) {
+    if (actAsInMode == MAURForegroundMode) {
         if (!isUpdatingLocation) [self startUpdatingLocation];
     }
     
-    if (actAsInMode == BACKGROUND) {
+    if (actAsInMode == MAURBackgroundMode) {
         if (!isAcquiringStationaryLocation && !stationaryRegion) {
             // Perhaps our GPS signal was interupted, re-acquire a stationaryLocation now.
             [self switchMode:operationMode];
@@ -287,7 +287,7 @@ enum {
         locationManager.distanceFilter = [self calculateDistanceFilter:[bestLocation.speed floatValue]];
         [self startUpdatingLocation];
         
-    } else if (actAsInMode == FOREGROUND) {
+    } else if (actAsInMode == MAURForegroundMode) {
         // Adjust distanceFilter incrementally based upon current speed
         float newDistanceFilter = [self calculateDistanceFilter:[bestLocation.speed floatValue]];
         if (newDistanceFilter != locationManager.distanceFilter) {
