@@ -301,40 +301,6 @@ enum {
     return [NSString stringWithFormat:@"Location: id=%@ time=%@ lat=%@ lon=%@ accu=%@ aaccu=%@ speed=%@ bear=%@ alt=%@", locationId, time, latitude, longitude, accuracy, altitudeAccuracy, speed, heading, altitude];
 }
 
-- (BOOL) postAsJSON:(NSString*)url withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary*)httpHeaders error:(NSError * __autoreleasing *)outError
-{
-
-    NSArray *locations = [[NSArray alloc] initWithObjects:[self toResultFromTemplate:locationTemplate], nil];
-    //    NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
-    NSData *data = [NSJSONSerialization dataWithJSONObject:locations options:0 error:outError];
-    if (!data) {
-        return NO;
-    }
-    
-    NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPMethod:@"POST"];
-    if (httpHeaders != nil) {
-        for(id key in httpHeaders) {
-            id value = [httpHeaders objectForKey:key];
-            [request addValue:value forHTTPHeaderField:key];
-        }
-    }
-    [request setHTTPBody:[jsonStr dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // Create url connection and fire request
-    NSHTTPURLResponse* urlResponse = nil;
-    [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:outError];
-    
-    if (*outError == nil && [urlResponse statusCode] == 200) {
-        return YES;
-    }
-
-    return NO;
-}
-
 -(id) copyWithZone: (NSZone *) zone
 {
     MAURLocation *copy = [[[self class] allocWithZone: zone] init];

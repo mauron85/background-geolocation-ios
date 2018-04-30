@@ -1,4 +1,4 @@
-////
+//
 //  MAURBackgroundGeolocationFacade.m
 //
 //  Created by Marian Hello on 04/06/16.
@@ -14,11 +14,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "MAURBackgroundGeolocationFacade.h"
-#import "MAURBackgroundSync.h"
+#import "MAURPostLocationTask.h"
 #import "MAURSQLiteConfigurationDAO.h"
 #import "MAURSQLiteLocationDAO.h"
 #import "MAURBackgroundTaskManager.h"
-#import "Reachability.h"
 #import "MAURLogging.h"
 #import "FMDBLogger.h"
 #import "MAURLogReader.h"
@@ -42,30 +41,27 @@ FMDBLogger *sqliteLogger;
 
 @implementation MAURBackgroundGeolocationFacade {
     BOOL isStarted;
-    BOOL hasConnectivity;
-
     MAUROperationalMode operationMode;
-
+    
     UILocalNotification *localNotification;
-
+    
     // configurable options
     MAURConfig *_config;
-
+    
     MAURLocation *stationaryLocation;
     MAURAbstractLocationProvider<MAURLocationProvider> *locationProvider;
-    MAURBackgroundSync *uploader;
-    Reachability *reach;
+    MAURPostLocationTask *postLocationTask;
 }
 
 
 - (instancetype) init
 {
     self = [super init];
-
+    
     if (self == nil) {
         return self;
     }
-   
+    
     [DDLog addLogger:[DDASLLogger sharedInstance] withLevel:DDLogLevelInfo];
     [DDLog addLogger:[DDTTYLogger sharedInstance] withLevel:DDLogLevelDebug];
     
@@ -77,31 +73,17 @@ FMDBLogger *sqliteLogger;
     sqliteLogger.deleteOnEverySave = NO;
     
     [DDLog addLogger:sqliteLogger withLevel:DDLogLevelDebug];
-
+    
     MAHUncaughtExceptionLogger *logger = mah_get_uncaught_exception_logger();
     logger->setEnabled(YES);
-
-    reach = [Reachability reachabilityWithHostname:@"www.google.com"];
-    reach.reachableBlock = ^(Reachability *_reach){
-        // keep in mind this is called on a background thread
-        // and if you are updating the UI it needs to happen
-        // on the main thread:
-        DDLogInfo(@"Network is now reachable");
-        hasConnectivity = YES;
-        [_reach stopNotifier];
-    };
-
-    reach.unreachableBlock = ^(Reachability *reach) {
-        DDLogInfo(@"Network is now unreachable");
-        hasConnectivity = NO;
-    };
-
+    
+    postLocationTask = [[MAURPostLocationTask alloc] init];
+    
     localNotification = [[UILocalNotification alloc] init];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
-
+    
     isStarted = NO;
-    hasConnectivity = YES;
-
+    
     return self;
 }
 
@@ -113,15 +95,17 @@ FMDBLogger *sqliteLogger;
 - (BOOL) configure:(MAURConfig*)config error:(NSError * __autoreleasing *)outError
 {
     __block NSError *error = nil;
-
+    
     MAURConfig *currentConfig = [self getConfig];
     _config = [MAURConfig merge:currentConfig withConfig:config];
     
     DDLogInfo(@"%@ #configure: %@", TAG, _config);
     
+    postLocationTask.config = _config;
+    
     MAURSQLiteConfigurationDAO* configDAO = [MAURSQLiteConfigurationDAO sharedInstance];
     [configDAO persistConfiguration:_config];
-
+    
     // ios 8 requires permissions to send local-notifications
     if ([_config isDebugging]) {
         [self runOnMainThread:^{
@@ -137,26 +121,26 @@ FMDBLogger *sqliteLogger;
             }
         }];
     }
-
+    
     if (isStarted) {
         // Note: CLLocationManager must be created on a thread with an active run loop (main thread)
         [self runOnMainThread:^{
-
+            
             // requesting new provider
             if (![currentConfig.locationProvider isEqual:_config.locationProvider]) {
                 [locationProvider onDestroy]; // destroy current provider
                 locationProvider = [self getProvider:_config.locationProvider.intValue error:&error];
             }
-
+            
             if (locationProvider == nil) {
                 return;
             }
-
+            
             // trap configuration errors
             if (![locationProvider onConfigure:_config error:&error]) {
                 return;
             }
-
+            
             isStarted = [locationProvider onStart:&error];
             locationProvider.delegate = self;
         }];
@@ -165,19 +149,15 @@ FMDBLogger *sqliteLogger;
     if (error != nil) {
         if (outError != nil) {
             NSDictionary *userInfo = @{
-                NSLocalizedDescriptionKey: NSLocalizedString(@CONFIGURE_ERROR_MSG, nil),
-                NSUnderlyingErrorKey : error
-                };
+                                       NSLocalizedDescriptionKey: NSLocalizedString(@CONFIGURE_ERROR_MSG, nil),
+                                       NSUnderlyingErrorKey : error
+                                       };
             *outError = [NSError errorWithDomain:BGGeolocationDomain code:MAURBGConfigureError userInfo:userInfo];
         }
-
+        
         return NO;
     }
-   
-    if ([_config hasValidSyncUrl] && uploader == nil) {
-        uploader = [[MAURBackgroundSync alloc] init];
-    }
-
+    
     return YES;
 }
 
@@ -189,7 +169,7 @@ FMDBLogger *sqliteLogger;
 - (BOOL) start:(NSError * __autoreleasing *)outError
 {
     DDLogInfo(@"%@ #start: %d", TAG, isStarted);
-
+    
     if (isStarted) {
         return NO;
     }
@@ -197,14 +177,17 @@ FMDBLogger *sqliteLogger;
     __block NSError *error = nil;
     MAURConfig *config = [self getConfig];
     
+    postLocationTask.config = config;
+    [postLocationTask start];
+    
     // Note: CLLocationManager must be created on a thread with an active run loop (main thread)
     [self runOnMainThread:^{
         locationProvider = [self getProvider:config.locationProvider.intValue error:&error];
-
+        
         if (locationProvider == nil) {
             return;
         }
-
+        
         // trap configuration errors
         if (![locationProvider onConfigure:config error:&error]) {
             return;
@@ -213,16 +196,16 @@ FMDBLogger *sqliteLogger;
         isStarted = [locationProvider onStart:&error];
         locationProvider.delegate = self;
     }];
-
+    
     
     if (!isStarted) {
         if (outError != nil) {
             *outError = error;
         }
-
+        
         return NO;
     }
-  
+    
     return isStarted;
 }
 
@@ -232,18 +215,17 @@ FMDBLogger *sqliteLogger;
 - (BOOL) stop:(NSError * __autoreleasing *)outError
 {
     DDLogInfo(@"%@ #stop", TAG);
-
+    
     if (!isStarted) {
         return YES;
     }
-
-    [reach stopNotifier];
-    hasConnectivity = YES;
-
+    
+    [postLocationTask stop];
+    
     [self runOnMainThread:^{
         isStarted = ![locationProvider onStop:outError];
     }];
-
+    
     return isStarted;
 }
 
@@ -253,15 +235,15 @@ FMDBLogger *sqliteLogger;
 - (void) switchMode:(MAUROperationalMode)mode
 {
     DDLogInfo(@"%@ #switchMode %lu", TAG, (unsigned long)mode);
-
+    
     operationMode = mode;
-
+    
     if (!isStarted) return;
-
+    
     if ([self getConfig].isDebugging) {
         AudioServicesPlaySystemSound (operationMode  == MAURForegroundMode ? paceChangeYesSound : paceChangeNoSound);
     }
-   
+    
     [self runOnMainThread:^{
         [locationProvider onSwitchMode:mode];
     }];
@@ -272,7 +254,7 @@ FMDBLogger *sqliteLogger;
     if ([CLLocationManager respondsToSelector:@selector(locationServicesEnabled)]) { // iOS 4.x
         return [CLLocationManager locationServicesEnabled];
     }
-
+    
     return NO;
 }
 
@@ -340,18 +322,18 @@ FMDBLogger *sqliteLogger;
     // https://github.com/mauron85/cordova-plugin-background-geolocation/issues/394
 }
 
-- (MAURLocation*) getStationaryLocation
+- (Location*) getStationaryLocation
 {
     return stationaryLocation;
 }
 
-- (NSArray<MAURLocation*>*) getLocations
+- (NSArray<Location*>*) getLocations
 {
     MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
     return [locationDAO getAllLocations];
 }
 
-- (NSArray<MAURLocation*>*) getValidLocations
+- (NSArray<Location*>*) getValidLocations
 {
     MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
     return [locationDAO getValidLocations];
@@ -378,7 +360,7 @@ FMDBLogger *sqliteLogger;
             _config = [[MAURConfig alloc] initWithDefaults];
         }
     }
-
+    
     return _config;
 }
 
@@ -399,38 +381,6 @@ FMDBLogger *sqliteLogger;
     MAURLogReader *logReader = [[MAURLogReader alloc] initWithLogDirectory:[self loggerDirectory]];
     NSArray *logs = [logReader getEntries:limit fromLogEntryId:entryId minLogLevel:minLogLevel];
     return logs;
-}
-
-- (void) post:(MAURLocation *)location
-{
-    MAURConfig *config = [self getConfig];
-    
-    MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
-    // TODO: investigate location id always 0
-    location.locationId = [locationDAO persistLocation:location limitRows:config.maxLocations.integerValue];
-
-    if (hasConnectivity && [config hasValidUrl]) {
-        NSError *error = nil;
-        if ([location postAsJSON:config.url withTemplate:config._template withHttpHeaders:config.httpHeaders error:&error]) {
-            MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
-            if (location.locationId != nil) {
-                [locationDAO deleteLocation:location.locationId error:nil];
-            }
-        } else {
-            DDLogWarn(@"%@ postJSON failed: error: %@", TAG, error.userInfo[@"NSLocalizedDescription"]);
-            hasConnectivity = [reach isReachable];
-            [reach startNotifier];
-        }
-    }
-}
-
-- (void) sync
-{
-    MAURConfig *config = [self getConfig];
-
-    if ([config hasValidSyncUrl]) {
-        [uploader sync:config.syncUrl onLocationThreshold:config.syncThreshold.integerValue withTemplate:config._template withHttpHeaders:config.httpHeaders];
-    }
 }
 
 - (void) notify:(NSString*)message
@@ -457,7 +407,7 @@ FMDBLogger *sqliteLogger;
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : NSTemporaryDirectory();
-
+    
     return [basePath stringByAppendingPathComponent:@"SQLiteLogger"];
 }
 
@@ -465,7 +415,9 @@ FMDBLogger *sqliteLogger;
 {
     DDLogDebug(@"%@ #onStationaryChanged", TAG);
     stationaryLocation = location;
-
+    
+    [postLocationTask add:location];
+    
     MAURConfig *config = [self getConfig];
     if ([config isDebugging]) {
         [self notify:[NSString stringWithFormat:@"Stationary update: %s\nSPD: %0.0f | DF: %ld | ACY: %0.0f | RAD: %0.0f",
@@ -478,12 +430,7 @@ FMDBLogger *sqliteLogger;
         
         AudioServicesPlaySystemSound (locationSyncSound);
     }
-
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self post:location];
-        [self sync];
-    });
-
+    
     // Any javascript stationaryRegion event-listeners?
     if (self.delegate && [self.delegate respondsToSelector:@selector(onStationaryChanged:)]) {
         [self.delegate onStationaryChanged:location];
@@ -495,8 +442,9 @@ FMDBLogger *sqliteLogger;
     DDLogDebug(@"%@ #onLocationChanged %@", TAG, location);
     stationaryLocation = nil;
     
+    [postLocationTask add:location];
+    
     MAURConfig *config = [self getConfig];
-
     if ([config isDebugging]) {
         [self notify:[NSString stringWithFormat:@"Location update: %s\nSPD: %0.0f | DF: %ld | ACY: %0.0f",
                       ((operationMode == MAURForegroundMode) ? "FG" : "BG"),
@@ -508,11 +456,6 @@ FMDBLogger *sqliteLogger;
         AudioServicesPlaySystemSound (locationSyncSound);
     }
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        [self post:location];
-        [self sync];
-    });
-
     // Delegate to main module
     if (self.delegate && [self.delegate respondsToSelector:@selector(onLocationChanged:)]) {
         [self.delegate onLocationChanged:location];
@@ -542,11 +485,11 @@ FMDBLogger *sqliteLogger;
 - (void) onActivityChanged:(MAURActivity *)activity
 {
     DDLogDebug(@"%@ #onActivityChanged %@", TAG, activity);
-
+    
     if ([self getConfig].isDebugging) {
         [self notify:[NSString stringWithFormat:@"%@ activity detected: %@ activity, confidence: %@", TAG, activity.type, activity.confidence]];
     }
-
+    
     [self.delegate onActivityChanged:activity];
 }
 

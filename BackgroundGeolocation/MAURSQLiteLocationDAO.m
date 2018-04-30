@@ -181,7 +181,7 @@
 
 }
 
-- (NSNumber*) getLocationsCount
+- (NSNumber*) getLocationsForSyncCount
 {
     __block NSNumber* rowCount = nil;
 

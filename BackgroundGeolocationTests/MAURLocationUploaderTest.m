@@ -47,7 +47,7 @@
     }
     
     MAURBackgroundSync *uploader = [[MAURBackgroundSync alloc] init];
-    [uploader sync:@"http://192.168.81.15:3000/testSync" onLocationThreshold:10 withTemplate:nil withHttpHeaders:nil];
+    [uploader sync:@"http://192.168.81.15:3000/testSync" withTemplate:nil withHttpHeaders:nil];
     sleep(5);
     
 }

@@ -54,13 +54,9 @@
     }
 }
 
-- (void) sync:(NSString*)url onLocationThreshold:(NSInteger)threshold withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary*)httpHeaders
+- (void) sync:(NSString*)url withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary*)httpHeaders
 {
     MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
-    NSNumber *locationsCount = [locationDAO getLocationsCount];
-    
-    if (locationsCount && [locationsCount integerValue] < threshold) return;
-    
     NSArray *locations = [locationDAO getLocationsForSync];
     
     NSMutableArray *jsonArray = [[NSMutableArray alloc] initWithCapacity:[locations count]];

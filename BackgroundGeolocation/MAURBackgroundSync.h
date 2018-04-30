@@ -14,7 +14,7 @@
 
 - (instancetype) init;
 - (NSString*) status;
-- (void) sync:(NSString*)url onLocationThreshold:(NSInteger)threshold withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary*)httpHeaders;
+- (void) sync:(NSString*)url withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary*)httpHeaders;
 - (void) cancel;
 
 @end

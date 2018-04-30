@@ -47,7 +47,6 @@ typedef NS_ENUM(NSInteger, MAURLocationStatus) {
 - (double) distanceFromLocation:(MAURLocation*)location;
 - (BOOL) isBetterLocation:(MAURLocation*)location;
 - (BOOL) isBeyond:(MAURLocation*)location radius:(NSInteger)radius;
-- (BOOL) postAsJSON:(NSString*)url withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary*)httpHeaders error:(NSError * __autoreleasing *)outError;
 - (id) copyWithZone: (NSZone *)zone;
 
 @end

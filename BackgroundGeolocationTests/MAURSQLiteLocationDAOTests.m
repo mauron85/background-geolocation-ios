@@ -43,12 +43,14 @@
     location.provider = @"TEST";
     location.locationProvider = [NSNumber numberWithInt:-1];
     
-    [locationDAO persistLocation:location];
+    NSNumber *locationId = [locationDAO persistLocation:location];
     
     NSArray<MAURLocation*> *locations = [locationDAO getAllLocations];
     MAURLocation *result = [locations firstObject];
     
+    XCTAssertTrue([locationId isEqualToNumber:[NSNumber numberWithInt:1]], @"LocationId is %lu expecting 1",(unsigned long)locationId);
     XCTAssertEqual([locations count], 1, @"Number of stored location is %lu expecting 1", (unsigned long)[locations count]);
+    XCTAssertTrue([result.locationId isEqualToNumber:[NSNumber numberWithInt:1]], @"LocationId is %lu expecting 1",(unsigned long)result.locationId);
     XCTAssertTrue([result.time isEqualToDate:[NSDate dateWithTimeIntervalSince1970:1465511097774.577]], "Location time is %@ expecting %@", result.time, [NSDate dateWithTimeIntervalSince1970:1465511097774.577]);
     XCTAssertTrue([result.accuracy isEqualToNumber:[NSNumber numberWithDouble:5]], "Location accuracy is %@ expecting %@", result.accuracy, [NSNumber numberWithDouble:5]);
     XCTAssertTrue([result.speed isEqualToNumber:[NSNumber numberWithDouble:31.67]], "Location speed is %@ expecting %@", result.speed, [NSNumber numberWithDouble:31.67]);
@@ -192,18 +194,30 @@
     }
 }
 
-
-- (void)testPersistLocationWithRowLimit {
-    int maxRows = 100;
+- (void)testPersistLocationWithZeroRowLimit {
+    int maxRows = 0;
     MAURSQLiteLocationDAO *locationDAO = [MAURSQLiteLocationDAO sharedInstance];
-    MAURLocation *location;
     
     for (int i = 0; i < maxRows * 2; i++) {
         [locationDAO persistLocation:nil limitRows:maxRows];
     }
     
     NSArray<MAURLocation*> *locations = [locationDAO getAllLocations];
-    XCTAssertEqual([locations count], maxRows, @"Number of stored location is %lu expecting 2000", (unsigned long)[locations count]);
+    XCTAssertEqual([locations count], maxRows, @"Number of stored location is %lu expecting 0", (unsigned long)[locations count]);
+}
+
+- (void)testPersistLocationWithRowLimit {
+    int maxRows = 100;
+    MAURSQLiteLocationDAO *locationDAO = [MAURSQLiteLocationDAO sharedInstance];
+
+    NSNumber *locationId = nil;
+    for (int i = 1; i <= maxRows * 2; i++) {
+        locationId = [locationDAO persistLocation:nil limitRows:maxRows];
+        XCTAssertTrue([locationId isEqualToNumber:[NSNumber numberWithInt:i > 100 ? i - 100 : i]], @"LocationId is %@ expecting %i", locationId, i);
+    }
+    
+    NSArray<MAURLocation*> *locations = [locationDAO getAllLocations];
+    XCTAssertEqual([locations count], maxRows, @"Number of stored location is %lu expecting 100", (unsigned long)[locations count]);
 }
 
 - (void)testPersistLocationWithRowLimitWhenMaxRowsReduced {
