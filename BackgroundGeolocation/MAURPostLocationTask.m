@@ -82,6 +82,7 @@ static NSString * const TAG = @"MAURPostLocationTask";
         if ([self.config hasValidSyncUrl]) {
             NSNumber *locationsCount = [locationDAO getLocationsForSyncCount];
             if (locationsCount && [locationsCount integerValue] >= self.config.syncThreshold.integerValue) {
+                DDLogDebug(@"%@ Attempt to sync locations: %@ threshold: %@", TAG, locationsCount, self.config.syncThreshold);
                 [self sync];
             }
         }

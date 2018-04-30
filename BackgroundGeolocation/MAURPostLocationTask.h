@@ -19,6 +19,7 @@
 - (void) add:(MAURLocation*)location;
 - (void) start;
 - (void) stop;
+- (void) sync;
 
 @end
 

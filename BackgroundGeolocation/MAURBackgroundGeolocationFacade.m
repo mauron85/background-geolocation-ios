@@ -383,6 +383,11 @@ FMDBLogger *sqliteLogger;
     return logs;
 }
 
+- (void) forceSync
+{
+    [postLocationTask sync];
+}
+
 - (void) notify:(NSString*)message
 {
     localNotification.fireDate = [NSDate date];
