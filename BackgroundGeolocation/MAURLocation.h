@@ -11,6 +11,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+typedef NS_ENUM(NSInteger, MAURLocationStatus) {
+    MAURLocationDeleted = 0,
+    MAURLocationPostPending = 1,
+    MAURLocationSyncPending = 2,
+};
+
 @interface MAURLocation : NSObject <NSCopying>
 
 @property (nonatomic, retain) NSNumber *locationId;

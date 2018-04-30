@@ -25,7 +25,7 @@
         @{ @"name": @LC_COLUMN_NAME_LONGITUDE, @"type": [SQLColumnType sqlColumnWithType: kReal]},
         @{ @"name": @LC_COLUMN_NAME_PROVIDER, @"type": [SQLColumnType sqlColumnWithType: kText]},
         @{ @"name": @LC_COLUMN_NAME_LOCATION_PROVIDER, @"type": [SQLColumnType sqlColumnWithType: kText]},
-        @{ @"name": @LC_COLUMN_NAME_VALID, @"type": [SQLColumnType sqlColumnWithType: kInteger]},
+        @{ @"name": @LC_COLUMN_NAME_STATUS, @"type": [SQLColumnType sqlColumnWithType: kInteger]},
         @{ @"name": @LC_COLUMN_NAME_RECORDED_AT, @"type": [SQLColumnType sqlColumnWithType: kInteger]}
     ];
     

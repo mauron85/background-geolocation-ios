@@ -21,7 +21,7 @@
 #define LC_COLUMN_NAME_LONGITUDE           "longitude"
 #define LC_COLUMN_NAME_PROVIDER            "provider"
 #define LC_COLUMN_NAME_LOCATION_PROVIDER   "service_provider"
-#define LC_COLUMN_NAME_VALID               "valid"
+#define LC_COLUMN_NAME_STATUS              "valid"
 #define LC_COLUMN_NAME_RECORDED_AT         "recorded_at"
 
 @interface MAURLocationContract : NSObject

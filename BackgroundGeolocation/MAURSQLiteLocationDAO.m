@@ -54,10 +54,10 @@
     @COMMA_SEP @LC_COLUMN_NAME_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_RECORDED_AT
-    @" FROM " @LC_TABLE_NAME @" WHERE " @LC_COLUMN_NAME_VALID @" = 1 ORDER BY " @LC_COLUMN_NAME_RECORDED_AT;
+    @" FROM " @LC_TABLE_NAME @" WHERE " @LC_COLUMN_NAME_STATUS @" = ? ORDER BY " @LC_COLUMN_NAME_RECORDED_AT;
 
     [queue inDatabase:^(FMDatabase *database) {
-        FMResultSet *rs = [database executeQuery:sql];
+        FMResultSet *rs = [database executeQuery:sql, [NSString stringWithFormat:@"%ld", MAURLocationPostPending]];
         while([rs next]) {
             MAURLocation *location = [[MAURLocation alloc] init];
             location.locationId = [NSNumber numberWithLongLong:[rs longLongIntForColumnIndex:0]];
@@ -100,7 +100,7 @@
     @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE
     @COMMA_SEP @LC_COLUMN_NAME_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER
-    @COMMA_SEP @LC_COLUMN_NAME_VALID
+    @COMMA_SEP @LC_COLUMN_NAME_STATUS
     @COMMA_SEP @LC_COLUMN_NAME_RECORDED_AT
     @" FROM " @LC_TABLE_NAME @" ORDER BY " @LC_COLUMN_NAME_RECORDED_AT;
 
@@ -150,9 +150,9 @@
         @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE
         @COMMA_SEP @LC_COLUMN_NAME_PROVIDER
         @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER
-        @" FROM " @LC_TABLE_NAME @" WHERE " @LC_COLUMN_NAME_VALID @" = 1 ORDER BY " @LC_COLUMN_NAME_RECORDED_AT;
+        @" FROM " @LC_TABLE_NAME @" WHERE " @LC_COLUMN_NAME_STATUS @" = ? ORDER BY " @LC_COLUMN_NAME_RECORDED_AT;
 
-        FMResultSet *rs = [database executeQuery:sql];
+        FMResultSet *rs = [database executeQuery:sql, [NSString stringWithFormat:@"%ld", MAURLocationPostPending]];
         while([rs next]) {
             MAURLocation *location = [[MAURLocation alloc] init];
             location.locationId = [NSNumber numberWithLongLong:[rs longLongIntForColumnIndex:0]];
@@ -171,8 +171,8 @@
         }
         [rs close];
 
-        sql = @"UPDATE " @LC_TABLE_NAME @" SET " @LC_COLUMN_NAME_VALID @" = 0";
-        if (![database executeUpdate:sql]) {
+        sql = @"UPDATE " @LC_TABLE_NAME @" SET " @LC_COLUMN_NAME_STATUS @" = ?";
+        if (![database executeUpdate:sql, [NSString stringWithFormat:@"%ld", MAURLocationDeleted]]) {
             NSLog(@"Deleting all location failed code: %d: message: %@", [database lastErrorCode], [database lastErrorMessage]);
         }
     }];
@@ -186,9 +186,9 @@
     __block NSNumber* rowCount = nil;
 
     [queue inTransaction:^(FMDatabase *database, BOOL *rollback) {
-        NSString *sql = @"SELECT COUNT(*) FROM " @LC_TABLE_NAME @" WHERE " @LC_COLUMN_NAME_VALID @" = 1";
+        NSString *sql = @"SELECT COUNT(*) FROM " @LC_TABLE_NAME @" WHERE " @LC_COLUMN_NAME_STATUS @" = ?";
 
-        FMResultSet *rs = [database executeQuery:sql];
+        FMResultSet *rs = [database executeQuery:sql, [NSString stringWithFormat:@"%ld", MAURLocationPostPending]];
         if ([rs next]) {
             rowCount = [NSNumber numberWithInt:[rs intForColumnIndex:0]];
         }
@@ -214,7 +214,7 @@
     @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE
     @COMMA_SEP @LC_COLUMN_NAME_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER
-    @COMMA_SEP @LC_COLUMN_NAME_VALID
+    @COMMA_SEP @LC_COLUMN_NAME_STATUS
     @COMMA_SEP @LC_COLUMN_NAME_RECORDED_AT
     @") VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -298,7 +298,7 @@
         @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE @EQ_BIND
         @COMMA_SEP @LC_COLUMN_NAME_PROVIDER @EQ_BIND
         @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER @EQ_BIND
-        @COMMA_SEP @LC_COLUMN_NAME_VALID @EQ_BIND
+        @COMMA_SEP @LC_COLUMN_NAME_STATUS @EQ_BIND
         @COMMA_SEP @LC_COLUMN_NAME_RECORDED_AT @EQ_BIND
         @" WHERE " @LC_COLUMN_NAME_ID @EQ_BIND;
 
@@ -330,10 +330,10 @@
 - (BOOL) deleteLocation:(NSNumber*)locationId error:(NSError * __autoreleasing *)outError
 {
     __block BOOL success;
-    NSString *sql = @"UPDATE " @LC_TABLE_NAME @" SET " @LC_COLUMN_NAME_VALID @" = 0 WHERE " @LC_COLUMN_NAME_ID @" = ?";
+    NSString *sql = @"UPDATE " @LC_TABLE_NAME @" SET " @LC_COLUMN_NAME_STATUS @" = ? WHERE " @LC_COLUMN_NAME_ID @" = ?";
 
     [queue inDatabase:^(FMDatabase *database) {
-        if ([database executeUpdate:sql, locationId]) {
+        if ([database executeUpdate:sql, [NSString stringWithFormat:@"%ld", MAURLocationDeleted], locationId]) {
             success = YES;
         } else {
             int errorCode = [database lastErrorCode];
@@ -357,10 +357,10 @@
 - (BOOL) deleteAllLocations:(NSError * __autoreleasing *)outError
 {
     __block BOOL success;
-    NSString *sql = @"UPDATE " @LC_TABLE_NAME @" SET " @LC_COLUMN_NAME_VALID @" = 0";
+    NSString *sql = @"UPDATE " @LC_TABLE_NAME @" SET " @LC_COLUMN_NAME_STATUS @" = ?";
 
     [queue inDatabase:^(FMDatabase *database) {
-        if ([database executeUpdate:sql]) {
+        if ([database executeUpdate:sql], [NSString stringWithFormat:@"%ld", MAURLocationDeleted]) {
             success = YES;
         } else {
             int errorCode = [database lastErrorCode];
