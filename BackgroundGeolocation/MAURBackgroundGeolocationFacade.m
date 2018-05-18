@@ -322,18 +322,18 @@ FMDBLogger *sqliteLogger;
     // https://github.com/mauron85/cordova-plugin-background-geolocation/issues/394
 }
 
-- (Location*) getStationaryLocation
+- (MAURLocation*) getStationaryLocation
 {
     return stationaryLocation;
 }
 
-- (NSArray<Location*>*) getLocations
+- (NSArray<MAURLocation*>*) getLocations
 {
     MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
     return [locationDAO getAllLocations];
 }
 
-- (NSArray<Location*>*) getValidLocations
+- (NSArray<MAURLocation*>*) getValidLocations
 {
     MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
     return [locationDAO getValidLocations];
@@ -345,7 +345,7 @@ FMDBLogger *sqliteLogger;
     return [locationDAO deleteLocation:locationId error:outError];
 }
 
-- (BOOL) deleteAllLocations:(NSError * __autoreleasing *)outError;
+- (BOOL) deleteAllLocations:(NSError * __autoreleasing *)outError
 {
     MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
     return [locationDAO deleteAllLocations:outError];
