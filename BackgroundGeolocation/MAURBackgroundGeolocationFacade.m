@@ -25,11 +25,18 @@
 #import "MAURDistanceFilterLocationProvider.h"
 #import "MAURRawLocationProvider.h"
 #import "MAURUncaughtExceptionLogger.h"
+#import "INTULocationManager.h"
 
 // error messages
 #define CONFIGURE_ERROR_MSG             "Configuration error."
 #define SERVICE_ERROR_MSG               "Cannot start service error."
 #define UNKNOWN_LOCATION_PROVIDER_MSG   "Unknown location provider."
+
+// Position errors
+// https://developer.mozilla.org/en-US/docs/Web/API/PositionError
+#define PERMISSION_DENIED       1
+#define POSITION_UNAVAILABLE    2
+#define TIMEOUT                 3
 
 static NSString * const BGGeolocationDomain = @"com.marianhello";
 static NSString * const TAG = @"BgGeo";
@@ -349,6 +356,52 @@ FMDBLogger *sqliteLogger;
 {
     MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
     return [locationDAO deleteAllLocations:outError];
+}
+
+- (MAURLocation*)getCurrentLocation:(int)timeout maximumAge:(long)maximumAge
+                 enableHighAccuracy:(BOOL)enableHighAccuracy
+                              error:(NSError * __autoreleasing *)outError
+{
+    __block NSError *error = nil;
+    __block CLLocation *location = nil;
+
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    [self runOnMainThread:^{
+        INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+        float timeoutInSeconds = ceil((float)timeout/1000);
+        [locationManager requestLocationWithDesiredAccuracy:enableHighAccuracy ? INTULocationAccuracyRoom : INTULocationAccuracyCity
+                                                    timeout:timeoutInSeconds
+                                       delayUntilAuthorized:YES    // This parameter is optional, defaults to NO if omitted
+                                                      block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+                                                          if (status == INTULocationStatusSuccess) {
+                                                              // Request succeeded, meaning achievedAccuracy is at least the requested accuracy, and
+                                                              // currentLocation contains the device's current location.
+                                                              location = currentLocation;
+                                                          }
+                                                          else if (status == INTULocationStatusTimedOut) {
+                                                              // Wasn't able to locate the user with the requested accuracy within the timeout interval.
+                                                              // However, currentLocation contains the best location available (if any) as of right now,
+                                                              // and achievedAccuracy has info on the accuracy/recency of the location in currentLocation.
+                                                              error = [NSError errorWithDomain:BGGeolocationDomain code:TIMEOUT userInfo:nil];
+                                                          }
+                                                          else {
+                                                              // An error occurred, more info is available by looking at the specific status returned.
+                                                              error = [NSError errorWithDomain:BGGeolocationDomain code:POSITION_UNAVAILABLE userInfo:nil];
+                                                          }
+                                                          dispatch_semaphore_signal(sema);
+                                                      }];
+    }];
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+
+    if (location != nil) {
+        return [MAURLocation fromCLLocation:location];
+    }
+
+    if (outError != nil) {
+        *outError = error;
+    }
+
+    return nil;
 }
 
 - (MAURConfig*) getConfig

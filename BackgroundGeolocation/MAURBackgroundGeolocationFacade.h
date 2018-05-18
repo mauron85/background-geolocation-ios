@@ -34,6 +34,9 @@
 - (NSArray<MAURLocation*>*) getValidLocations;
 - (BOOL) deleteLocation:(NSNumber*)locationId error:(NSError * __autoreleasing *)outError;
 - (BOOL) deleteAllLocations:(NSError * __autoreleasing *)outError;
+- (MAURLocation*)getCurrentLocation:(int)timeout maximumAge:(long)maximumAge
+                 enableHighAccuracy:(BOOL)enableHighAccuracy
+                              error:(NSError * __autoreleasing *)outError;
 - (MAURConfig*) getConfig;
 - (NSArray*) getLogEntries:(NSInteger)limit;
 - (NSArray*) getLogEntries:(NSInteger)limit fromLogEntryId:(NSInteger)entryId minLogLevelFromString:(NSString *)minLogLevel;

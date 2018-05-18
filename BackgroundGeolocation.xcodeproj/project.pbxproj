@@ -31,6 +31,10 @@
 		4152F1B82094F8EA00BFE338 /* MAURPostLocationTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152F1B62094F8EA00BFE338 /* MAURPostLocationTask.m */; };
 		4185A96C1FE79636008515B4 /* MAURActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4185A96A1FE79635008515B4 /* MAURActivity.m */; };
 		418E0B6E1FD84D6200E24CB0 /* MAURLocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 418E0B6D1FD84D6200E24CB0 /* MAURLocationTest.m */; };
+		41973E9520AECC4A00A7BE7D /* INTURequestIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 41973E8C20AECC4A00A7BE7D /* INTURequestIDGenerator.m */; };
+		41973E9620AECC4A00A7BE7D /* INTULocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41973E8D20AECC4A00A7BE7D /* INTULocationManager.m */; };
+		41973E9720AECC4A00A7BE7D /* INTULocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41973E9220AECC4A00A7BE7D /* INTULocationRequest.m */; };
+		41973E9820AECC4A00A7BE7D /* INTUHeadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41973E9420AECC4A00A7BE7D /* INTUHeadingRequest.m */; };
 		41B1803B1FD1D8B200951D67 /* MAURSQLiteConfigurationDAOTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B1803A1FD1D8B200951D67 /* MAURSQLiteConfigurationDAOTest.m */; };
 		41B1803D1FD2952400951D67 /* MAURConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B1803C1FD2952400951D67 /* MAURConfigTest.m */; };
 		41B180451FD2E05C00951D67 /* MAURGeolocationOpenHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E711D5E351900F65575 /* MAURGeolocationOpenHelper.m */; };
@@ -126,6 +130,16 @@
 		4185A96B1FE79635008515B4 /* MAURActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURActivity.h; sourceTree = "<group>"; };
 		418E0B6D1FD84D6200E24CB0 /* MAURLocationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURLocationTest.m; sourceTree = "<group>"; };
 		418F75461D02DC3D0045FEA0 /* libBackgroundGeolocation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBackgroundGeolocation.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		41973E8B20AECC4A00A7BE7D /* INTULocationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationRequest.h; sourceTree = "<group>"; };
+		41973E8C20AECC4A00A7BE7D /* INTURequestIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTURequestIDGenerator.m; sourceTree = "<group>"; };
+		41973E8D20AECC4A00A7BE7D /* INTULocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTULocationManager.m; sourceTree = "<group>"; };
+		41973E8E20AECC4A00A7BE7D /* INTUHeadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTUHeadingRequest.h; sourceTree = "<group>"; };
+		41973E8F20AECC4A00A7BE7D /* INTULocationRequestDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationRequestDefines.h; sourceTree = "<group>"; };
+		41973E9020AECC4A00A7BE7D /* INTULocationManager+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INTULocationManager+Internal.h"; sourceTree = "<group>"; };
+		41973E9120AECC4A00A7BE7D /* INTURequestIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTURequestIDGenerator.h; sourceTree = "<group>"; };
+		41973E9220AECC4A00A7BE7D /* INTULocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTULocationRequest.m; sourceTree = "<group>"; };
+		41973E9320AECC4A00A7BE7D /* INTULocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationManager.h; sourceTree = "<group>"; };
+		41973E9420AECC4A00A7BE7D /* INTUHeadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTUHeadingRequest.m; sourceTree = "<group>"; };
 		4198B21C1FB089C900DCC96D /* MAURRawLocationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURRawLocationProvider.h; sourceTree = "<group>"; };
 		4198B21D1FB08A2B00DCC96D /* MAURRawLocationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURRawLocationProvider.m; sourceTree = "<group>"; };
 		4198B21F1FB08D7700DCC96D /* MAURLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURLocationController.h; sourceTree = "<group>"; };
@@ -270,6 +284,7 @@
 		418F75481D02DC3D0045FEA0 /* BackgroundGeolocation */ = {
 			isa = PBXGroup;
 			children = (
+				41973E8A20AECC4A00A7BE7D /* INTULocationManager */,
 				41369C152080F23D00EB449C /* SQLQueryBuilder */,
 				41BCFA501FE19ED300D4000E /* SOMotionDetector */,
 				41FE81251FB114F100E4FC65 /* SQLite */,
@@ -296,6 +311,23 @@
 				41E82E771D5E351900F65575 /* MAURBackgroundGeolocationFacade.m */,
 			);
 			path = BackgroundGeolocation;
+			sourceTree = "<group>";
+		};
+		41973E8A20AECC4A00A7BE7D /* INTULocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				41973E8B20AECC4A00A7BE7D /* INTULocationRequest.h */,
+				41973E8C20AECC4A00A7BE7D /* INTURequestIDGenerator.m */,
+				41973E8D20AECC4A00A7BE7D /* INTULocationManager.m */,
+				41973E8E20AECC4A00A7BE7D /* INTUHeadingRequest.h */,
+				41973E8F20AECC4A00A7BE7D /* INTULocationRequestDefines.h */,
+				41973E9020AECC4A00A7BE7D /* INTULocationManager+Internal.h */,
+				41973E9120AECC4A00A7BE7D /* INTURequestIDGenerator.h */,
+				41973E9220AECC4A00A7BE7D /* INTULocationRequest.m */,
+				41973E9320AECC4A00A7BE7D /* INTULocationManager.h */,
+				41973E9420AECC4A00A7BE7D /* INTUHeadingRequest.m */,
+			);
+			path = INTULocationManager;
 			sourceTree = "<group>";
 		};
 		4198B26E1FB0F9E400DCC96D /* FMDB */ = {
@@ -489,6 +521,7 @@
 				41B180451FD2E05C00951D67 /* MAURGeolocationOpenHelper.m in Sources */,
 				41B180461FD2E05C00951D67 /* MAURConfigurationContract.m in Sources */,
 				41B180471FD2E05C00951D67 /* MAURLocationContract.m in Sources */,
+				41973E9520AECC4A00A7BE7D /* INTURequestIDGenerator.m in Sources */,
 				41BCFA5C1FE19ED300D4000E /* SOStepDetector.m in Sources */,
 				41B180481FD2E05C00951D67 /* MAURSQLiteHelper.m in Sources */,
 				41B180491FD2E05C00951D67 /* MAURSQLiteOpenHelper.m in Sources */,
@@ -503,10 +536,13 @@
 				41369C222080F23D00EB449C /* ZIMSqlExpression.m in Sources */,
 				41B180501FD2E05C00951D67 /* MAURLogReader.m in Sources */,
 				41B180511FD2E05C00951D67 /* CocoaLumberjack.m in Sources */,
+				41973E9720AECC4A00A7BE7D /* INTULocationRequest.m in Sources */,
+				41973E9620AECC4A00A7BE7D /* INTULocationManager.m in Sources */,
 				41B180521FD2E05C00951D67 /* FMDBLogger.m in Sources */,
 				41BCFA421FE19B3000D4000E /* SOMotionActivity.m in Sources */,
 				41369C212080F23D00EB449C /* NSString+ZIMString.m in Sources */,
 				41B180531FD2E05C00951D67 /* FMDB.m in Sources */,
+				41973E9820AECC4A00A7BE7D /* INTUHeadingRequest.m in Sources */,
 				41B180551FD2E05C00951D67 /* MAURBackgroundTaskManager.m in Sources */,
 				41B180561FD2E05C00951D67 /* MAURBackgroundSync.m in Sources */,
 				4185A96C1FE79636008515B4 /* MAURActivity.m in Sources */,
