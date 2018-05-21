@@ -1,5 +1,5 @@
 //
-//  MAURLocationController.h
+//  MAURLocationManager.h
 //
 //  Created by Jinru on 12/19/09.
 //  Copyright 2009 Arizona State University. All rights reserved.
@@ -10,16 +10,17 @@
 #import "MAURProviderDelegate.h"
 
 // protocol for sending location updates to another view controller
-@protocol LocationControllerDelegate
+@protocol MAURLocationManagerDelegate
 @required
 - (void) onAuthorizationChanged:(MAURLocationAuthorizationStatus)authStatus;
 - (void) onLocationsChanged:(NSArray*)locations;
 - (void) onError:(NSError*)error;
 - (void) onLocationPause:(CLLocationManager*)manager;
 - (void) onLocationResume:(CLLocationManager*)manager;
+- (void) onRegionExit:(CLRegion*)region;
 @end
 
-@interface MAURLocationController : NSObject <CLLocationManagerDelegate>  {
+@interface MAURLocationManager : NSObject <CLLocationManagerDelegate>  {
     
     CLLocationManager* locationManager;
     __weak id delegate;
@@ -32,8 +33,12 @@
 - (BOOL) stop:(NSError * __autoreleasing *)outError;
 - (BOOL) startMonitoringSignificantLocationChanges;
 - (BOOL) stopMonitoringSignificantLocationChanges;
-//- (void) startMonitoringForRegion:(CLRegion*)region;
-//- (void) stopMonitoringForRegion:(CLRegion*)region;
+- (void) startMonitoringForRegion:(CLRegion*)region;
+- (void) stopMonitoringForRegion:(CLRegion*)region;
+- (void) stopMonitoringForRegionIdentifier:(NSString*)identifier;
+- (void) stopMonitoringAllRegions;
+- (NSSet<__kindof CLRegion *>*) monitoredRegions;
+- (void) setShowsBackgroundLocationIndicator:(BOOL)shows;
 - (void) setPausesLocationUpdatesAutomatically:(BOOL)newPausesLocationsUpdatesAutomatically;
 - (BOOL) pausesLocationUpdatesAutomatically;
 - (void) setDistanceFilter:(CLLocationDistance)newDistanceFiler;
@@ -43,6 +48,6 @@
 - (void) setDesiredAccuracy:(CLLocationAccuracy)newDesiredAccuracy;
 - (CLLocationAccuracy) desiredAccuracy;
 
-+ (MAURLocationController*)sharedInstance; // Singleton method
++ (MAURLocationManager*)sharedInstance; // Singleton method
 
 @end

@@ -1,12 +1,12 @@
 //
-//  MAURLocationController.m
+//  MAURLocationManager.m
 //
 //  Created by Jinru on 12/19/09.
 //  Copyright 2009 Arizona State University. All rights reserved.
 //
 
 #import "MAURLocation.h"
-#import "MAURLocationController.h"
+#import "MAURLocationManager.h"
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
@@ -18,10 +18,10 @@
 #define LOCATION_RESTRICTED     "Application's use of location services is restricted."
 #define LOCATION_NOT_DETERMINED "User undecided on application's use of location services."
 
-static MAURLocationController* sharedCLDelegate = nil;
+static MAURLocationManager* sharedCLDelegate = nil;
 static NSString * const Domain = @"com.marianhello";
 
-@implementation MAURLocationController
+@implementation MAURLocationManager
 @synthesize locationManager, delegate;
 
 - (id)init
@@ -103,6 +103,44 @@ static NSString * const Domain = @"com.marianhello";
 {
     [locationManager stopMonitoringSignificantLocationChanges];
     return YES;
+}
+
+- (void) startMonitoringForRegion:(CLRegion*)region
+{
+    [locationManager startMonitoringForRegion:region];
+}
+
+- (void) stopMonitoringForRegion:(CLRegion*)region
+{
+    [locationManager stopMonitoringForRegion:region];
+}
+
+- (void) stopMonitoringForRegionIdentifier:(NSString*)identifier
+{
+    for (CLRegion *region in [locationManager monitoredRegions]){
+        if([region.identifier isEqualToString:identifier]){
+            [locationManager stopMonitoringForRegion:region];
+        }
+    }
+}
+
+- (void) stopMonitoringAllRegions
+{
+    for (CLRegion *region in [locationManager monitoredRegions]){
+        [locationManager stopMonitoringForRegion:region];
+    }
+}
+
+- (NSSet<__kindof CLRegion *>*) monitoredRegions
+{
+    return locationManager.monitoredRegions;
+}
+
+- (void) setShowsBackgroundLocationIndicator:(BOOL)shows
+{
+    if (@available(iOS 11, *)) {
+        locationManager.showsBackgroundLocationIndicator = shows;
+    }
 }
 
 - (void) setPausesLocationUpdatesAutomatically:(BOOL)newPausesLocationsUpdatesAutomatically
@@ -203,11 +241,17 @@ static NSString * const Domain = @"com.marianhello";
     }
 }
 
+- (void) locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onRegionExit:)]) {
+        [self.delegate onRegionExit:region];
+    }
+}
 
 #pragma mark - Singleton implementation in ARC
-+ (MAURLocationController *)sharedInstance
++ (MAURLocationManager *)sharedInstance
 {
-    static MAURLocationController *sharedLocationControllerInstance = nil;
+    static MAURLocationManager *sharedLocationControllerInstance = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         sharedLocationControllerInstance = [[self alloc] init];

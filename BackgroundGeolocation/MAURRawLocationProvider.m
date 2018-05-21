@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MAURRawLocationProvider.h"
-#import "MAURLocationController.h"
+#import "MAURLocationManager.h"
 #import "MAURLogging.h"
 
 static NSString * const TAG = @"RawLocationProvider";
@@ -17,7 +17,7 @@ static NSString * const Domain = @"com.marianhello";
 @implementation MAURRawLocationProvider {
 
     BOOL isStarted;
-    MAURLocationController *locationController;
+    MAURLocationManager *locationManager;
 }
 
 - (instancetype) init
@@ -32,18 +32,18 @@ static NSString * const Domain = @"com.marianhello";
 }
 
 - (void) onCreate {
-    locationController = [MAURLocationController sharedInstance];
-    locationController.delegate = self;
+    locationManager = [MAURLocationManager sharedInstance];
+    locationManager.delegate = self;
 }
 
 - (BOOL) onConfigure:(MAURConfig*)config error:(NSError * __autoreleasing *)outError
 {
     DDLogVerbose(@"%@ configure", TAG);
 
-    locationController.pausesLocationUpdatesAutomatically = [config pauseLocationUpdates];
-    locationController.activityType = [config decodeActivityType];
-    locationController.distanceFilter = config.distanceFilter.integerValue; // meters
-    locationController.desiredAccuracy = [config decodeDesiredAccuracy];
+    locationManager.pausesLocationUpdatesAutomatically = [config pauseLocationUpdates];
+    locationManager.activityType = [config decodeActivityType];
+    locationManager.distanceFilter = config.distanceFilter.integerValue; // meters
+    locationManager.desiredAccuracy = [config decodeDesiredAccuracy];
 
     return YES;
 }
@@ -53,8 +53,8 @@ static NSString * const Domain = @"com.marianhello";
     DDLogInfo(@"%@ will start", TAG);
 
     if (!isStarted) {
-        [locationController stopMonitoringSignificantLocationChanges];
-        isStarted = [locationController start:outError];
+        [locationManager stopMonitoringSignificantLocationChanges];
+        isStarted = [locationManager start:outError];
     }
 
     return isStarted;
@@ -68,8 +68,8 @@ static NSString * const Domain = @"com.marianhello";
         return YES;
     }
 
-    [locationController stopMonitoringSignificantLocationChanges];
-    if ([locationController stop:outError]) {
+    [locationManager stopMonitoringSignificantLocationChanges];
+    if ([locationManager stop:outError]) {
         isStarted = NO;
         return YES;
     }
@@ -80,7 +80,7 @@ static NSString * const Domain = @"com.marianhello";
 - (void) onTerminate
 {
     if (isStarted) {
-        [locationController startMonitoringSignificantLocationChanges];
+        [locationManager startMonitoringSignificantLocationChanges];
     }
 }
 

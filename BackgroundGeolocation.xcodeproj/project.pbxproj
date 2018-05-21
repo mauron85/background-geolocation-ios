@@ -57,7 +57,7 @@
 		41B180571FD2E05C00951D67 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7D1D5E351900F65575 /* Reachability.m */; };
 		41B180581FD2E05C00951D67 /* MAURConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6B1D5E351900F65575 /* MAURConfig.m */; };
 		41B180591FD2E05C00951D67 /* MAURLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E731D5E351900F65575 /* MAURLocation.m */; };
-		41B1805A1FD2E05C00951D67 /* MAURLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198B2201FB08D7700DCC96D /* MAURLocationController.m */; };
+		41B1805A1FD2E05C00951D67 /* MAURLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198B2201FB08D7700DCC96D /* MAURLocationManager.m */; };
 		41B1805B1FD2E05C00951D67 /* MAURBackgroundGeolocationFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E771D5E351900F65575 /* MAURBackgroundGeolocationFacade.m */; };
 		41BCFA421FE19B3000D4000E /* SOMotionActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA411FE19B3000D4000E /* SOMotionActivity.m */; };
 		41BCFA5A1FE19ED300D4000E /* SOMotionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA511FE19ED300D4000E /* SOMotionDetector.m */; };
@@ -142,8 +142,8 @@
 		41973E9420AECC4A00A7BE7D /* INTUHeadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTUHeadingRequest.m; sourceTree = "<group>"; };
 		4198B21C1FB089C900DCC96D /* MAURRawLocationProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURRawLocationProvider.h; sourceTree = "<group>"; };
 		4198B21D1FB08A2B00DCC96D /* MAURRawLocationProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURRawLocationProvider.m; sourceTree = "<group>"; };
-		4198B21F1FB08D7700DCC96D /* MAURLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURLocationController.h; sourceTree = "<group>"; };
-		4198B2201FB08D7700DCC96D /* MAURLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLocationController.m; sourceTree = "<group>"; };
+		4198B21F1FB08D7700DCC96D /* MAURLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURLocationManager.h; sourceTree = "<group>"; };
+		4198B2201FB08D7700DCC96D /* MAURLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLocationManager.m; sourceTree = "<group>"; };
 		41B180341FD1B4EB00951D67 /* MAURConfigurationContract.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURConfigurationContract.h; sourceTree = "<group>"; };
 		41B180351FD1B64F00951D67 /* MAURConfigurationContract.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURConfigurationContract.m; sourceTree = "<group>"; };
 		41B180371FD1BD1300951D67 /* MAURSQLiteConfigurationDAO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURSQLiteConfigurationDAO.h; sourceTree = "<group>"; };
@@ -303,8 +303,8 @@
 				4185A96A1FE79635008515B4 /* MAURActivity.m */,
 				41E82E721D5E351900F65575 /* MAURLocation.h */,
 				41E82E731D5E351900F65575 /* MAURLocation.m */,
-				4198B21F1FB08D7700DCC96D /* MAURLocationController.h */,
-				4198B2201FB08D7700DCC96D /* MAURLocationController.m */,
+				4198B21F1FB08D7700DCC96D /* MAURLocationManager.h */,
+				4198B2201FB08D7700DCC96D /* MAURLocationManager.m */,
 				4152F1B72094F8EA00BFE338 /* MAURPostLocationTask.h */,
 				4152F1B62094F8EA00BFE338 /* MAURPostLocationTask.m */,
 				41E82E761D5E351900F65575 /* MAURBackgroundGeolocationFacade.h */,
@@ -550,7 +550,7 @@
 				41B180571FD2E05C00951D67 /* Reachability.m in Sources */,
 				41B180581FD2E05C00951D67 /* MAURConfig.m in Sources */,
 				41B180591FD2E05C00951D67 /* MAURLocation.m in Sources */,
-				41B1805A1FD2E05C00951D67 /* MAURLocationController.m in Sources */,
+				41B1805A1FD2E05C00951D67 /* MAURLocationManager.m in Sources */,
 				41B1805B1FD2E05C00951D67 /* MAURBackgroundGeolocationFacade.m in Sources */,
 				41BCFA5A1FE19ED300D4000E /* SOMotionDetector.m in Sources */,
 				41BCFA5B1FE19ED300D4000E /* SOLocationManager.m in Sources */,

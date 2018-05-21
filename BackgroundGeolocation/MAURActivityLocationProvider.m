@@ -10,7 +10,7 @@
 #import "MAURActivityLocationProvider.h"
 #import "MAURActivity.h"
 #import "SOMotionDetector.h"
-#import "MAURLocationController.h"
+#import "MAURLocationManager.h"
 #import "MAURLogging.h"
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
@@ -30,7 +30,7 @@ static NSString * const Domain = @"com.marianhello";
     BOOL isTracking;
     SOMotionType lastMotionType;
 
-    MAURLocationController *locationController;
+    MAURLocationManager *locationManager;
 }
 
 - (instancetype) init
@@ -46,8 +46,8 @@ static NSString * const Domain = @"com.marianhello";
 }
 
 - (void) onCreate {
-    locationController = [MAURLocationController sharedInstance];
-    locationController.delegate = self;
+    locationManager = [MAURLocationManager sharedInstance];
+    locationManager.delegate = self;
 
     SOMotionDetector *motionDetector = [SOMotionDetector sharedInstance];
     motionDetector.delegate = self;
@@ -60,10 +60,10 @@ static NSString * const Domain = @"com.marianhello";
 {
     DDLogVerbose(@"%@ configure", TAG);
     
-    locationController.pausesLocationUpdatesAutomatically = [config pauseLocationUpdates];
-    locationController.activityType = [config decodeActivityType];
-    locationController.distanceFilter = config.distanceFilter.integerValue; // meters
-    locationController.desiredAccuracy = [config decodeDesiredAccuracy];
+    locationManager.pausesLocationUpdatesAutomatically = [config pauseLocationUpdates];
+    locationManager.activityType = [config decodeActivityType];
+    locationManager.distanceFilter = config.distanceFilter.integerValue; // meters
+    locationManager.desiredAccuracy = [config decodeDesiredAccuracy];
     [SOMotionDetector sharedInstance].activityDetectionInterval = config.activitiesInterval.intValue / 1000;
     
     return YES;
@@ -102,7 +102,7 @@ static NSString * const Domain = @"com.marianhello";
     }
 
     NSError *error = nil;
-    if ([locationController start:&error]) {
+    if ([locationManager start:&error]) {
         isTracking = YES;
     } else {
         [self.delegate onError:error];
@@ -112,7 +112,7 @@ static NSString * const Domain = @"com.marianhello";
 - (void) stopTracking
 {
     if (isTracking) {
-        [locationController stop:nil];
+        [locationManager stop:nil];
         isTracking = NO;
     }
 }
