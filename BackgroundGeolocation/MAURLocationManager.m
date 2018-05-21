@@ -19,7 +19,8 @@
 #define LOCATION_NOT_DETERMINED "User undecided on application's use of location services."
 
 static MAURLocationManager* sharedCLDelegate = nil;
-static NSString * const Domain = @"com.marianhello";
+static NSString *const TAG = @"MAURLocationManager";
+static NSString *const Domain = @"com.marianhello";
 
 @implementation MAURLocationManager
 @synthesize locationManager, delegate;
@@ -41,7 +42,9 @@ static NSString * const Domain = @"com.marianhello";
 }
 
 - (BOOL) start:(NSError * __autoreleasing *)outError
-{    
+{
+    NSAssert([NSThread isMainThread], @"%@ %@", TAG, @"should only be called from the main thread.");
+
     NSUInteger authStatus;
     
     if ([CLLocationManager respondsToSelector:@selector(authorizationStatus)]) { // iOS 4.2+
@@ -89,34 +92,40 @@ static NSString * const Domain = @"com.marianhello";
 
 - (BOOL) stop:(NSError * __autoreleasing *)outError
 {
+    NSAssert([NSThread isMainThread], @"%@ %@", TAG, @"should only be called from the main thread.");
     [locationManager stopUpdatingLocation];
     return YES;
 }
 
 - (BOOL) startMonitoringSignificantLocationChanges
 {
+    NSAssert([NSThread isMainThread], @"%@ %@", TAG, @"should only be called from the main thread.");
     [locationManager startMonitoringSignificantLocationChanges];
     return YES;
 }
 
 - (BOOL) stopMonitoringSignificantLocationChanges
 {
+    NSAssert([NSThread isMainThread], @"%@ %@", TAG, @"should only be called from the main thread.");
     [locationManager stopMonitoringSignificantLocationChanges];
     return YES;
 }
 
 - (void) startMonitoringForRegion:(CLRegion*)region
 {
+    NSAssert([NSThread isMainThread], @"%@ %@", TAG, @"should only be called from the main thread.");
     [locationManager startMonitoringForRegion:region];
 }
 
 - (void) stopMonitoringForRegion:(CLRegion*)region
 {
+    NSAssert([NSThread isMainThread], @"%@ %@", TAG, @"should only be called from the main thread.");
     [locationManager stopMonitoringForRegion:region];
 }
 
 - (void) stopMonitoringForRegionIdentifier:(NSString*)identifier
 {
+    NSAssert([NSThread isMainThread], @"%@ %@", TAG, @"should only be called from the main thread.");
     for (CLRegion *region in [locationManager monitoredRegions]){
         if([region.identifier isEqualToString:identifier]){
             [locationManager stopMonitoringForRegion:region];
@@ -126,7 +135,8 @@ static NSString * const Domain = @"com.marianhello";
 
 - (void) stopMonitoringAllRegions
 {
-    for (CLRegion *region in [locationManager monitoredRegions]){
+    NSAssert([NSThread isMainThread], @"%@ %@", TAG, @"should only be called from the main thread.");
+    for (CLRegion *region in [locationManager monitoredRegions]) {
         [locationManager stopMonitoringForRegion:region];
     }
 }
