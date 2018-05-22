@@ -21,6 +21,7 @@
 #import "MAURLogging.h"
 #import "FMDBLogger.h"
 #import "MAURLogReader.h"
+#import "MAURLocationManager.h"
 #import "MAURActivityLocationProvider.h"
 #import "MAURDistanceFilterLocationProvider.h"
 #import "MAURRawLocationProvider.h"
@@ -478,10 +479,11 @@ FMDBLogger *sqliteLogger;
     
     MAURConfig *config = [self getConfig];
     if ([config isDebugging]) {
-        [self notify:[NSString stringWithFormat:@"Stationary update: %s\nSPD: %0.0f | DF: %ld | ACY: %0.0f | RAD: %0.0f",
+        double distanceFilter = [MAURLocationManager sharedInstance].distanceFilter;
+        [self notify:[NSString stringWithFormat:@"Stationary update: %s\nSPD: %0.0f | DF: %f | ACY: %0.0f | RAD: %0.0f",
                       ((operationMode == MAURForegroundMode) ? "FG" : "BG"),
                       [location.speed doubleValue],
-                      (long) nil, //locationProvider.distanceFilter,
+                      distanceFilter,
                       [location.accuracy doubleValue],
                       [location.radius doubleValue]
                       ]];
@@ -504,10 +506,11 @@ FMDBLogger *sqliteLogger;
     
     MAURConfig *config = [self getConfig];
     if ([config isDebugging]) {
-        [self notify:[NSString stringWithFormat:@"Location update: %s\nSPD: %0.0f | DF: %ld | ACY: %0.0f",
+        double distanceFilter = [MAURLocationManager sharedInstance].distanceFilter;
+        [self notify:[NSString stringWithFormat:@"Location update: %s\nSPD: %0.0f | DF: %f | ACY: %0.0f",
                       ((operationMode == MAURForegroundMode) ? "FG" : "BG"),
                       [location.speed doubleValue],
-                      (long) nil, //locationProvider.distanceFilter,
+                      distanceFilter,
                       [location.accuracy doubleValue]
                       ]];
         
