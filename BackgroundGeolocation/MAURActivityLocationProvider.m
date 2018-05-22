@@ -131,6 +131,7 @@ static NSString * const Domain = @"com.marianhello";
 {
     if (lastMotionType == MotionTypeNotMoving) {
         [self stopTracking];
+        [self.delegate onStationaryChanged:[MAURLocation fromCLLocation:[locations lastObject]]];
     }
 
     for (CLLocation *location in locations) {
