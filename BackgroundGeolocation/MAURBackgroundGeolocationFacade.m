@@ -363,6 +363,14 @@ FMDBLogger *sqliteLogger;
                  enableHighAccuracy:(BOOL)enableHighAccuracy
                               error:(NSError * __autoreleasing *)outError
 {
+    CLLocation *currentLocation = [MAURLocationManager sharedInstance].locationManager.location;
+    if (currentLocation != nil) {
+        long locationAge = ceil(fabs([currentLocation.timestamp timeIntervalSinceNow]) * 1000);
+        if (locationAge <= maximumAge) {
+            return [MAURLocation fromCLLocation:currentLocation];
+        }
+    }
+
     __block NSError *error = nil;
     __block CLLocation *location = nil;
 
