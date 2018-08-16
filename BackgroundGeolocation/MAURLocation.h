@@ -11,6 +11,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class MAURLocation;
+
+typedef MAURLocation * _Nullable (^ MAURLocationTransform)(MAURLocation * _Nonnull location);
+
 typedef NS_ENUM(NSInteger, MAURLocationStatus) {
     MAURLocationDeleted = 0,
     MAURLocationPostPending = 1,

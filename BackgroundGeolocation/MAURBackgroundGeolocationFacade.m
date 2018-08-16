@@ -26,6 +26,7 @@
 #import "MAURDistanceFilterLocationProvider.h"
 #import "MAURRawLocationProvider.h"
 #import "MAURUncaughtExceptionLogger.h"
+#import "MAURPostLocationTask.h"
 #import "INTULocationManager.h"
 
 // error messages
@@ -584,6 +585,18 @@ FMDBLogger *sqliteLogger;
 {
     DDLogDebug(@"%@ #dealloc", TAG);
     // currently noop
+}
+
+#pragma mark - Location transform
+
++ (void) setLocationTransform:(MAURLocationTransform _Nullable)transform
+{
+    [MAURPostLocationTask setLocationTransform:transform];
+}
+
++ (MAURLocationTransform _Nullable) locationTransform
+{
+    return [MAURPostLocationTask locationTransform];
 }
 
 @end

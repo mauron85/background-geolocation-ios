@@ -14,12 +14,15 @@
 
 @interface MAURPostLocationTask : NSObject
 
-@property (nonatomic, weak) MAURConfig  *config;
+@property (nonatomic, weak) MAURConfig *config;
 
 - (void) add:(MAURLocation*)location;
 - (void) start;
 - (void) stop;
 - (void) sync;
+
++ (void) setLocationTransform:(MAURLocationTransform _Nullable)transform;
++ (MAURLocationTransform _Nullable) locationTransform;
 
 @end
 

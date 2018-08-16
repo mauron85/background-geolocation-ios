@@ -43,6 +43,17 @@
 - (void) forceSync;
 - (void) onAppTerminate;
 
+
+/**
+ * Sets a transform for each coordinate about to be committed (sent or saved for later sync).
+ * You can use this for modifying the coordinates in any way.
+ *
+ * If the transform returns <code>nil</code>, it will prevent the location from being committed.
+ * @param transform - the transform block
+ */
++ (void) setLocationTransform:(MAURLocationTransform _Nullable)transform;
++ (MAURLocationTransform _Nullable) locationTransform;
+
 @end
 
 #endif /* MAURBackgroundGeolocationFacade_h */

@@ -24,6 +24,8 @@ static NSString * const TAG = @"MAURPostLocationTask";
     BOOL hasConnectivity;
 }
 
+static MAURLocationTransform s_locationTransform = nil;
+
 - (instancetype) init
 {
     self = [super init];
@@ -63,9 +65,22 @@ static NSString * const TAG = @"MAURPostLocationTask";
     [reach stopNotifier];
 }
 
-- (void) add:(MAURLocation*)location
+- (void) add:(MAURLocation*)inLocation
 {
+    // Take this variable on the main thread to be safe
+    MAURLocationTransform locationTransform = s_locationTransform;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        MAURLocation *location = inLocation;
+        
+        if (locationTransform != nil) {
+            location = locationTransform(location);
+            
+            if (location == nil) {
+                return;
+            }
+        }
+        
         MAURSQLiteLocationDAO *locationDAO = [MAURSQLiteLocationDAO sharedInstance];
         // TODO: investigate location id always 0
         NSNumber *locationId = [locationDAO persistLocation:location limitRows:_config.maxLocations.integerValue];
@@ -133,6 +148,18 @@ static NSString * const TAG = @"MAURPostLocationTask";
     if ([self.config hasValidSyncUrl]) {
         [uploader sync:self.config.syncUrl withTemplate:self.config._template withHttpHeaders:self.config.httpHeaders];
     }
+}
+
+#pragma mark - Location transform
+
++ (void) setLocationTransform:(MAURLocationTransform _Nullable)transform
+{
+    s_locationTransform = transform;
+}
+
++ (MAURLocationTransform _Nullable) locationTransform
+{
+    return s_locationTransform;
 }
 
 @end
