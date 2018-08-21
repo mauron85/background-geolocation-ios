@@ -54,7 +54,7 @@
     }
 }
 
-- (void) sync:(NSString*)url withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary*)httpHeaders
+- (void) sync:(NSString * _Nonnull)url withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary * _Nullable)httpHeaders
 {
     MAURSQLiteLocationDAO* locationDAO = [MAURSQLiteLocationDAO sharedInstance];
     NSArray *locations = [locationDAO getLocationsForSync];
@@ -132,12 +132,28 @@ NSString *stringFromFileSize(unsigned long long theSize)
 
 
 #pragma mark -
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error
 {
-    DDLogInfo(@"Finished uploading task %zu %@: %@ %@, HTTP %ld", (unsigned long)[task taskIdentifier], task.originalRequest.URL, error ?: @"Success", task.response, (long)[(id)task.response statusCode]);
+    NSInteger statusCode = [(NSHTTPURLResponse *)task.response statusCode];
+    
+    DDLogInfo(@"Finished uploading task %zu %@: %@ %@, HTTP %ld", (unsigned long)[task taskIdentifier], task.originalRequest.URL, error ?: @"Success", task.response, (long)statusCode);
+    
     [tasks removeObject:task];
     NSURL *fullPath = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:task.taskDescription]];
     [[NSFileManager defaultManager] removeItemAtURL:fullPath error:NULL];
+    
+    if (statusCode == 285)
+    {
+        // Okay, but we don't need to continue sending these
+        DDLogDebug(@"Locations were uploaded to the server, and received an \"HTTP 285 Updates Not Required\"");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_delegate && [_delegate respondsToSelector:@selector(backgroundSyncRequestedAbortUpdates:)])
+            {
+                [_delegate backgroundSyncRequestedAbortUpdates:self];
+            }
+        });
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
@@ -145,7 +161,7 @@ NSString *stringFromFileSize(unsigned long long theSize)
     DDLogInfo(@"Response:: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 }
 
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error
 {
     DDLogError(@"Autosync failed :( %@", error);
 }

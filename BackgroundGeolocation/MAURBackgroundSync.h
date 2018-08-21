@@ -10,11 +10,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class MAURBackgroundSync;
+
+@protocol MAURBackgroundSyncDelegate <NSObject>
+
+@optional
+- (void)backgroundSyncRequestedAbortUpdates:(MAURBackgroundSync * _Nonnull)task;
+
+@end
+
 @interface MAURBackgroundSync : NSObject
+
+@property (nonatomic, weak) id<MAURBackgroundSyncDelegate> _Nullable delegate;
 
 - (instancetype) init;
 - (NSString*) status;
-- (void) sync:(NSString*)url withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary*)httpHeaders;
+- (void) sync:(NSString * _Nonnull)url withTemplate:(id)locationTemplate withHttpHeaders:(NSMutableDictionary * _Nullable)httpHeaders;
 - (void) cancel;
 
 @end

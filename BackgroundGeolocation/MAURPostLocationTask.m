@@ -17,6 +17,12 @@
 
 static NSString * const TAG = @"MAURPostLocationTask";
 
+@interface MAURPostLocationTask() <MAURBackgroundSyncDelegate>
+{
+    
+}
+@end
+
 @implementation MAURPostLocationTask
 {
     Reachability *reach;
@@ -37,6 +43,7 @@ static MAURLocationTransform s_locationTransform = nil;
     hasConnectivity = YES;
 
     uploader = [[MAURBackgroundSync alloc] init];
+    uploader.delegate = self;
     
     reach = [Reachability reachabilityWithHostname:@"www.google.com"];
     reach.reachableBlock = ^(Reachability *_reach) {
@@ -65,7 +72,7 @@ static MAURLocationTransform s_locationTransform = nil;
     [reach stopNotifier];
 }
 
-- (void) add:(MAURLocation*)inLocation
+- (void) add:(MAURLocation * _Nonnull)inLocation
 {
     // Take this variable on the main thread to be safe
     MAURLocationTransform locationTransform = s_locationTransform;
@@ -130,12 +137,30 @@ static MAURLocationTransform s_locationTransform = nil;
     NSHTTPURLResponse* urlResponse = nil;
     [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:outError];
     
-    if ([urlResponse statusCode] == 200 || [urlResponse statusCode] == 201) {
+    NSInteger statusCode = urlResponse.statusCode;
+    
+    if (statusCode == 285)
+    {
+        // Okay, but we don't need to continue sending these
+        
+        DDLogDebug(@"Location was sent to the server, and received an \"HTTP 285 Updated Not Required\"");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_delegate && [_delegate respondsToSelector:@selector(postLocationTaskRequestedAbortUpdates:)])
+            {
+                [_delegate postLocationTaskRequestedAbortUpdates:self];
+            }
+        });
+    }
+    
+    // All 2xx statuses are okay
+    if (statusCode >= 200 && statusCode < 300)
+    {
         return YES;
     }
     
     if (*outError == nil) {
-        DDLogDebug(@"%@ Server error while posting locations responseCode: %ld", TAG, [urlResponse statusCode]);
+        DDLogDebug(@"%@ Server error while posting locations responseCode: %ld", TAG, (long)statusCode);
     } else {
         DDLogError(@"%@ Error while posting locations %@", TAG, [*outError localizedDescription]);
     }
@@ -160,6 +185,16 @@ static MAURLocationTransform s_locationTransform = nil;
 + (MAURLocationTransform _Nullable) locationTransform
 {
     return s_locationTransform;
+}
+
+#pragma mark - MAURBackgroundSyncDelegate
+
+- (void)backgroundSyncRequestedAbortUpdates:(MAURBackgroundSync *)task
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(postLocationTaskRequestedAbortUpdates:)])
+    {
+        [_delegate postLocationTaskRequestedAbortUpdates:self];
+    }
 }
 
 @end
