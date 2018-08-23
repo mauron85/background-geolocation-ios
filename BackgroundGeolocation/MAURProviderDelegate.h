@@ -43,6 +43,7 @@ typedef NS_ENUM(NSInteger, MAUROperationalMode) {
 - (void) onLocationPause;
 - (void) onLocationResume;
 - (void) onActivityChanged:(MAURActivity*)activity;
+- (void) onAbortRequested;
 - (void) onError:(NSError*)error;
 
 @end

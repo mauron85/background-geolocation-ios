@@ -45,7 +45,7 @@ static NSString * const TAG = @"BgGeo";
 
 FMDBLogger *sqliteLogger;
 
-@interface MAURBackgroundGeolocationFacade () <MAURProviderDelegate>
+@interface MAURBackgroundGeolocationFacade () <MAURProviderDelegate, MAURPostLocationTaskDelegate>
 @end
 
 @implementation MAURBackgroundGeolocationFacade {
@@ -87,6 +87,7 @@ FMDBLogger *sqliteLogger;
     logger->setEnabled(YES);
     
     postLocationTask = [[MAURPostLocationTask alloc] init];
+    postLocationTask.delegate = self;
     
     localNotification = [[UILocalNotification alloc] init];
     localNotification.timeZone = [NSTimeZone defaultTimeZone];
@@ -597,6 +598,24 @@ FMDBLogger *sqliteLogger;
 + (MAURLocationTransform _Nullable) locationTransform
 {
     return [MAURPostLocationTask locationTransform];
+}
+
+#pragma mark - MAURPostLocationTaskDelegate
+
+- (void) postLocationTaskRequestedAbortUpdates:(MAURPostLocationTask *)task
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(onAbortRequested)])
+    {
+        // We have a delegate, tell it that there's a request.
+        // It will decide whether to stop or not.
+        [_delegate onAbortRequested];
+    }
+    else
+    {
+        // No delegate, we may be running in the background.
+        // Let's just stop.
+        [self stop:nil];
+    }
 }
 
 @end
