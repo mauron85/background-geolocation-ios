@@ -154,6 +154,16 @@ NSString *stringFromFileSize(unsigned long long theSize)
             }
         });
     }
+
+    if (statusCode == 401)
+    {   
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_delegate && [_delegate respondsToSelector:@selector(backgroundSyncHttpAuthorizationUpdates:)])
+            {
+                [_delegate backgroundSyncHttpAuthorizationUpdates:self];
+            }
+        });
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
