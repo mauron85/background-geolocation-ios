@@ -18,6 +18,7 @@
 
 @optional
 - (void)postLocationTaskRequestedAbortUpdates:(MAURPostLocationTask * _Nonnull)task;
+- (void)postLocationTaskHttpAuthorizationUpdates:(MAURPostLocationTask * _Nonnull)task;
 
 @end
 

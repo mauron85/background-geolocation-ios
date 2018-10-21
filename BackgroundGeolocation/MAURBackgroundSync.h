@@ -16,6 +16,7 @@
 
 @optional
 - (void)backgroundSyncRequestedAbortUpdates:(MAURBackgroundSync * _Nonnull)task;
+- (void)backgroundSyncHttpAuthorizationUpdates:(MAURBackgroundSync * _Nonnull)task;
 
 @end
 

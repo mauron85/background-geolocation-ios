@@ -618,4 +618,12 @@ FMDBLogger *sqliteLogger;
     }
 }
 
+- (void) postLocationTaskHttpAuthorizationUpdates:(MAURPostLocationTask *)task
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(onHttpAuthorization)])
+    {
+        [_delegate onHttpAuthorization];
+    }
+}
+
 @end

@@ -152,6 +152,16 @@ static MAURLocationTransform s_locationTransform = nil;
             }
         });
     }
+
+    if (statusCode == 401)
+    {   
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_delegate && [_delegate respondsToSelector:@selector(postLocationTaskHttpAuthorizationUpdates:)])
+            {
+                [_delegate postLocationTaskHttpAuthorizationUpdates:self];
+            }
+        });
+    }
     
     // All 2xx statuses are okay
     if (statusCode >= 200 && statusCode < 300)
@@ -194,6 +204,14 @@ static MAURLocationTransform s_locationTransform = nil;
     if (_delegate && [_delegate respondsToSelector:@selector(postLocationTaskRequestedAbortUpdates:)])
     {
         [_delegate postLocationTaskRequestedAbortUpdates:self];
+    }
+}
+
+- (void)backgroundSyncHttpAuthorizationUpdates:(MAURBackgroundSync *)task
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(postLocationTaskHttpAuthorizationUpdates:)])
+    {
+        [_delegate postLocationTaskHttpAuthorizationUpdates:self];
     }
 }
 
