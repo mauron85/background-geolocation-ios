@@ -13,6 +13,61 @@ enum {
     MAX_SECONDS_FROM_NOW = 86400
 };
 
+@interface MAURLocationMapper : NSObject
+- (NSDictionary*) withDictionary:(NSDictionary*)values;
+- (NSArray*) withArray:(NSArray*)values;
++ (instancetype) map:(MAURLocation*)location;
+@end
+
+@implementation MAURLocationMapper
+MAURLocation* _location;
+
+- (id) mapValue:(id)value
+{
+    if ([value isKindOfClass:[NSString class]]) {
+        id locationValue = [_location getValueForKey:value];
+        return locationValue != nil ? locationValue : value;
+    } else if ([value isKindOfClass:[NSDictionary class]]) {
+        return [self withDictionary:value];
+    } else if ([value isKindOfClass:[NSArray class]]) {
+        return [self withArray:value];
+    }
+
+    return value;
+}
+
+- (NSDictionary*) withDictionary:(NSDictionary*)values
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:values.count];
+
+    for (id key in values) {
+        id value = [values objectForKey:key];
+        [dict setObject:[self mapValue:value] forKey:key];
+    }
+
+    return dict;
+}
+
+- (NSArray*) withArray:(NSArray*)values
+{
+    NSMutableArray *locationArray = [[NSMutableArray alloc] initWithCapacity:values.count];
+
+    for (id value in values) {
+        [locationArray addObject:[self mapValue:value]];
+    }
+
+    return locationArray;
+}
+
++ (instancetype) map:(MAURLocation*)location
+{
+    MAURLocationMapper *instance = [[MAURLocationMapper alloc] init];
+    _location = location;
+    return instance;
+}
+@end
+
+
 @implementation MAURLocation
 
 @synthesize locationId, time, accuracy, altitudeAccuracy, speed, heading, altitude, latitude, longitude, provider, locationProvider, radius, isValid, recordedAt;
@@ -163,45 +218,14 @@ enum {
     return nil;
 }
 
-- (NSArray*) toArrayFromTemplate:(NSArray*)locationTemplate
-{
-    NSMutableArray *locationArray = [[NSMutableArray alloc] initWithCapacity:locationTemplate.count];
-
-    for (id key in locationTemplate) {
-        id value = [self getValueForKey:key];
-        if (value != nil) {
-            [locationArray addObject:value];
-        } else {
-            [locationArray addObject:key];
-        }
-    }
-
-    return locationArray;
-}
-
-- (NSDictionary*) toDictionaryFromTemplate:(NSDictionary*)locationTemplate
-{
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:locationTemplate.count];
-    
-    for (id key in locationTemplate) {
-        id wantedProp = [locationTemplate objectForKey:key];
-        id value = [self getValueForKey:wantedProp];
-        if (value != nil) {
-            [dict setObject:value forKey:key];
-        } else {
-            [dict setObject:wantedProp forKey:key];
-        }
-    }
-    
-    return dict;
-}
-
 - (id) toResultFromTemplate:(id)locationTemplate
 {
     if ([locationTemplate isKindOfClass:[NSArray class]]) {
-        return [self toArrayFromTemplate:locationTemplate];
+        MAURLocationMapper *mapper = [MAURLocationMapper map:self];
+        return [mapper withArray:locationTemplate];
     } else if ([locationTemplate isKindOfClass:[NSDictionary class]]) {
-        return [self toDictionaryFromTemplate:locationTemplate];
+        MAURLocationMapper *mapper = [MAURLocationMapper map:self];
+        return [mapper withDictionary:locationTemplate];
     }
     
     return [self toDictionary];

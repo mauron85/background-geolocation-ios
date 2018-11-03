@@ -52,6 +52,7 @@ typedef NS_ENUM(NSInteger, MAURLocationStatus) {
 - (BOOL) isBetterLocation:(MAURLocation*)location;
 - (BOOL) isBeyond:(MAURLocation*)location radius:(NSInteger)radius;
 - (id) copyWithZone: (NSZone *)zone;
+- (id) getValueForKey:(id)key;
 
 @end
 
