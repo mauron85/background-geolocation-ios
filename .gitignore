@@ -13,3 +13,5 @@ local.properties
 *.iml
 build
 *.skip
+
+Carthage/
