@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
-@import CocoaLumberjack;
-@import CocoaLumberjack.DDAbstractDatabaseLogger;
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import <CocoaLumberjack/DDAbstractDatabaseLogger.h>
 
 @class FMDatabase;
 
