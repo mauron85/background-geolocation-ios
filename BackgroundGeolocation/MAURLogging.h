@@ -10,7 +10,11 @@
 #define MAURLogging_h
 
 #define LOG_LEVEL_DEF ddLogLevel
+#if __has_include(<CocoaLumberjack/CocoaLumberjack.h>)
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#else
+#import "CocoaLumberjack.h"
+#endif
 
 // we will override this global level later
 // https://github.com/CocoaLumberjack/CocoaLumberjack/issues/469

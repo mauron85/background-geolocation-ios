@@ -1,6 +1,15 @@
 #import <Foundation/Foundation.h>
+#if __has_include(<CocoaLumberjack/CocoaLumberjack.h>)
 #import <CocoaLumberjack/CocoaLumberjack.h>
+#else
+#import "CocoaLumberjack.h"
+#endif
+#if __has_include(<CocoaLumberjack/DDAbstractDatabaseLogger.h>)
 #import <CocoaLumberjack/DDAbstractDatabaseLogger.h>
+#else
+#import "DDAbstractDatabaseLogger.h"
+#endif
+
 
 @class FMDatabase;
 
