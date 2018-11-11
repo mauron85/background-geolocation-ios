@@ -27,7 +27,7 @@
 #import "MAURRawLocationProvider.h"
 #import "MAURUncaughtExceptionLogger.h"
 #import "MAURPostLocationTask.h"
-#import "INTULocationManager.h"
+#import <INTULocationManager/INTULocationManager.h>
 
 // error messages
 #define CONFIGURE_ERROR_MSG             "Configuration error."

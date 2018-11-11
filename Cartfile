@@ -1,2 +1,3 @@
 github "CocoaLumberjack/CocoaLumberjack"
+github "intuit/LocationManager"
 github "ccgus/fmdb"
