@@ -8,14 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		412123D6207F582400D23929 /* MAURUncaughtExceptionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 412123D5207F582400D23929 /* MAURUncaughtExceptionLogger.m */; };
-		412123D8207F5C4700D23929 /* MAURUncaughtExceptionLogger.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 412123D4207E9AD600D23929 /* MAURUncaughtExceptionLogger.h */; };
 		412428C71FB5AD2B00B21101 /* MAURBackgroundGeolocationFacade.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 41E82E761D5E351900F65575 /* MAURBackgroundGeolocationFacade.h */; };
-		412428C81FB5AD3E00B21101 /* MAURLogReader.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 41E82E7A1D5E351900F65575 /* MAURLogReader.h */; };
 		412428C91FB5ADDA00B21101 /* MAURLocation.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 41E82E721D5E351900F65575 /* MAURLocation.h */; };
 		412428CA1FB5AE4B00B21101 /* MAURProviderDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 41399A081D941BC7005D6B5D /* MAURProviderDelegate.h */; };
 		412428CC1FB5B04300B21101 /* MAURConfig.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 41E82E6A1D5E351900F65575 /* MAURConfig.h */; };
 		412428D01FB5B43B00B21101 /* MAURBackgroundTaskManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 41E82E641D5E351900F65575 /* MAURBackgroundTaskManager.h */; };
-		412A753A219729E4000F6054 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 412A753721972775000F6054 /* CocoaLumberjack.framework */; };
 		412A7613219736AB000F6054 /* BackgroundGeolocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 412A7611219736AB000F6054 /* BackgroundGeolocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		412A763F21973865000F6054 /* INTURequestIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 41973E8C20AECC4A00A7BE7D /* INTURequestIDGenerator.m */; };
 		412A764021973865000F6054 /* INTULocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41973E8D20AECC4A00A7BE7D /* INTULocationManager.m */; };
@@ -105,6 +102,7 @@
 		41BCFA5A1FE19ED300D4000E /* SOMotionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA511FE19ED300D4000E /* SOMotionDetector.m */; };
 		41BCFA5B1FE19ED300D4000E /* SOLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA521FE19ED300D4000E /* SOLocationManager.m */; };
 		41BCFA5C1FE19ED300D4000E /* SOStepDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA591FE19ED300D4000E /* SOStepDetector.m */; };
+		41C6EE34219870900018396F /* MAURActivity.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4185A96B1FE79635008515B4 /* MAURActivity.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,12 +122,11 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				412123D8207F5C4700D23929 /* MAURUncaughtExceptionLogger.h in Copy Files */,
+				41C6EE34219870900018396F /* MAURActivity.h in Copy Files */,
 				412428D01FB5B43B00B21101 /* MAURBackgroundTaskManager.h in Copy Files */,
 				412428CC1FB5B04300B21101 /* MAURConfig.h in Copy Files */,
 				412428CA1FB5AE4B00B21101 /* MAURProviderDelegate.h in Copy Files */,
 				412428C91FB5ADDA00B21101 /* MAURLocation.h in Copy Files */,
-				412428C81FB5AD3E00B21101 /* MAURLogReader.h in Copy Files */,
 				412428C71FB5AD2B00B21101 /* MAURBackgroundGeolocationFacade.h in Copy Files */,
 			);
 			name = "Copy Files";
@@ -141,7 +138,6 @@
 		412123D4207E9AD600D23929 /* MAURUncaughtExceptionLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURUncaughtExceptionLogger.h; sourceTree = "<group>"; };
 		412123D5207F582400D23929 /* MAURUncaughtExceptionLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURUncaughtExceptionLogger.m; sourceTree = "<group>"; };
 		412428CD1FB5B15D00B21101 /* MAURLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAURLogging.h; sourceTree = "<group>"; };
-		412A753721972775000F6054 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 		412A760F219736AB000F6054 /* BackgroundGeolocation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BackgroundGeolocation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		412A7611219736AB000F6054 /* BackgroundGeolocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackgroundGeolocation.h; sourceTree = "<group>"; };
 		412A7612219736AB000F6054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -251,7 +247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4148982B1FB593B900323454 /* libBackgroundGeolocation-Static.a in Frameworks */,
-				412A753A219729E4000F6054 /* CocoaLumberjack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +272,6 @@
 		413152A5219618C100D1BB05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				412A753721972775000F6054 /* CocoaLumberjack.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -509,7 +503,6 @@
 				412A760B219736AB000F6054 /* Sources */,
 				412A760C219736AB000F6054 /* Frameworks */,
 				412A760D219736AB000F6054 /* Resources */,
-				412A76632197392E000F6054 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -616,25 +609,6 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		412A753B21972A47000F6054 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjack.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-		412A76632197392E000F6054 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -791,6 +765,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -809,6 +784,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mauron85.BackgroundGeolocation;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -836,6 +812,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -853,6 +830,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mauron85.BackgroundGeolocation;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1006,6 +984,7 @@
 		418F75501D02DC3D0045FEA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1014,12 +993,14 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 			};
 			name = Debug;
 		};
 		418F75511D02DC3D0045FEA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEAD_CODE_STRIPPING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1028,6 +1009,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 			};
 			name = Release;
 		};
