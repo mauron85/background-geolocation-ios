@@ -15,7 +15,7 @@
 #define MAURSQLiteOpenHelper_h
 
 #import <Foundation/Foundation.h>
-#import "FMDB.h"
+#import <FMDB/FMDatabaseQueue.h>
 
 @interface MAURSQLiteOpenHelper : NSObject
 

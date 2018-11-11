@@ -1,5 +1,5 @@
 #import "FMDBLogger.h"
-#import "FMDB.h"
+#import <FMDB/FMDB.h>
 
 
 @interface FMDBLogger ()

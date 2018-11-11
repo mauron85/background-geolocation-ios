@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
-#import "FMDB.h"
+#import <FMDB/FMDB.h>
 #import "ZIMSqlSelectStatement.h"
 #import "MAURLogReader.h"
 

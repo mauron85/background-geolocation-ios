@@ -39,7 +39,6 @@
 		412A765521973865000F6054 /* MAURLogReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7B1D5E351900F65575 /* MAURLogReader.m */; };
 		412A765621973865000F6054 /* FMDBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6F1D5E351900F65575 /* FMDBLogger.m */; };
 		412A765721973865000F6054 /* MAURUncaughtExceptionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 412123D5207F582400D23929 /* MAURUncaughtExceptionLogger.m */; };
-		412A765821973865000F6054 /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6D1D5E351900F65575 /* FMDB.m */; };
 		412A765921973865000F6054 /* MAURBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */; };
 		412A765A21973865000F6054 /* MAURBackgroundSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E791D5E351900F65575 /* MAURBackgroundSync.m */; };
 		412A765B21973865000F6054 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7D1D5E351900F65575 /* Reachability.m */; };
@@ -60,7 +59,6 @@
 		41369C232080F23D00EB449C /* ZIMSqlSelectStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C1C2080F23D00EB449C /* ZIMSqlSelectStatement.m */; };
 		41369C252080F27800EB449C /* MAURLogReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C242080F27800EB449C /* MAURLogReaderTest.m */; };
 		41369C262080F2A100EB449C /* NSString+ZIMString.m in Sources */ = {isa = PBXBuildFile; fileRef = 41369C172080F23D00EB449C /* NSString+ZIMString.m */; };
-		4148982B1FB593B900323454 /* libBackgroundGeolocation-Static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 418F75461D02DC3D0045FEA0 /* libBackgroundGeolocation-Static.a */; };
 		414898381FB593E300323454 /* MAURSQLiteHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898311FB593E200323454 /* MAURSQLiteHelperTest.m */; };
 		414898391FB593E300323454 /* MAURLocationUploaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898321FB593E300323454 /* MAURLocationUploaderTest.m */; };
 		4148983A1FB593E300323454 /* MAURSQLiteLocationDAOThreadTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 414898331FB593E300323454 /* MAURSQLiteLocationDAOThreadTest.m */; };
@@ -90,7 +88,6 @@
 		41B1804F1FD2E05C00951D67 /* MAURRawLocationProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198B21D1FB08A2B00DCC96D /* MAURRawLocationProvider.m */; };
 		41B180501FD2E05C00951D67 /* MAURLogReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7B1D5E351900F65575 /* MAURLogReader.m */; };
 		41B180521FD2E05C00951D67 /* FMDBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6F1D5E351900F65575 /* FMDBLogger.m */; };
-		41B180531FD2E05C00951D67 /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6D1D5E351900F65575 /* FMDB.m */; };
 		41B180551FD2E05C00951D67 /* MAURBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */; };
 		41B180561FD2E05C00951D67 /* MAURBackgroundSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E791D5E351900F65575 /* MAURBackgroundSync.m */; };
 		41B180571FD2E05C00951D67 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7D1D5E351900F65575 /* Reachability.m */; };
@@ -103,6 +100,8 @@
 		41BCFA5B1FE19ED300D4000E /* SOLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA521FE19ED300D4000E /* SOLocationManager.m */; };
 		41BCFA5C1FE19ED300D4000E /* SOStepDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA591FE19ED300D4000E /* SOStepDetector.m */; };
 		41C6EE34219870900018396F /* MAURActivity.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4185A96B1FE79635008515B4 /* MAURActivity.h */; };
+		41C6EE692198AE110018396F /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C6EE662198AA880018396F /* FMDB.framework */; };
+		41C6EE6A2198AE480018396F /* libBackgroundGeolocation-Static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 418F75461D02DC3D0045FEA0 /* libBackgroundGeolocation-Static.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,12 +203,11 @@
 		41BCFA571FE19ED300D4000E /* SOMotionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMotionDetector.h; sourceTree = "<group>"; };
 		41BCFA581FE19ED300D4000E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		41BCFA591FE19ED300D4000E /* SOStepDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOStepDetector.m; sourceTree = "<group>"; };
+		41C6EE662198AA880018396F /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
 		41E82E641D5E351900F65575 /* MAURBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURBackgroundTaskManager.h; sourceTree = "<group>"; };
 		41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURBackgroundTaskManager.m; sourceTree = "<group>"; };
 		41E82E6A1D5E351900F65575 /* MAURConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURConfig.h; sourceTree = "<group>"; };
 		41E82E6B1D5E351900F65575 /* MAURConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURConfig.m; sourceTree = "<group>"; };
-		41E82E6C1D5E351900F65575 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
-		41E82E6D1D5E351900F65575 /* FMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDB.m; sourceTree = "<group>"; };
 		41E82E6E1D5E351900F65575 /* FMDBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBLogger.h; sourceTree = "<group>"; };
 		41E82E6F1D5E351900F65575 /* FMDBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBLogger.m; sourceTree = "<group>"; };
 		41E82E701D5E351900F65575 /* MAURGeolocationOpenHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURGeolocationOpenHelper.h; sourceTree = "<group>"; };
@@ -246,7 +244,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4148982B1FB593B900323454 /* libBackgroundGeolocation-Static.a in Frameworks */,
+				41C6EE6A2198AE480018396F /* libBackgroundGeolocation-Static.a in Frameworks */,
+				41C6EE692198AE110018396F /* FMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +271,7 @@
 		413152A5219618C100D1BB05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41C6EE662198AA880018396F /* FMDB.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -357,7 +357,6 @@
 				41FE81251FB114F100E4FC65 /* SQLite */,
 				41FE81241FB114C900E4FC65 /* Providers */,
 				4198B26F1FB0FA0C00DCC96D /* Logger */,
-				4198B26E1FB0F9E400DCC96D /* FMDB */,
 				41E82E641D5E351900F65575 /* MAURBackgroundTaskManager.h */,
 				41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */,
 				41E82E781D5E351900F65575 /* MAURBackgroundSync.h */,
@@ -395,15 +394,6 @@
 				41973E9420AECC4A00A7BE7D /* INTUHeadingRequest.m */,
 			);
 			path = INTULocationManager;
-			sourceTree = "<group>";
-		};
-		4198B26E1FB0F9E400DCC96D /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				41E82E6C1D5E351900F65575 /* FMDB.h */,
-				41E82E6D1D5E351900F65575 /* FMDB.m */,
-			);
-			name = FMDB;
 			sourceTree = "<group>";
 		};
 		4198B26F1FB0FA0C00DCC96D /* Logger */ = {
@@ -521,6 +511,7 @@
 				414898231FB593B900323454 /* Frameworks */,
 				414898241FB593B900323454 /* Resources */,
 				412A753B21972A47000F6054 /* ShellScript */,
+				41C6EE6B2198AE6F0018396F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -627,6 +618,25 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
+		41C6EE6B2198AE6F0018396F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FMDB.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FMDB.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -659,7 +669,6 @@
 				412A765521973865000F6054 /* MAURLogReader.m in Sources */,
 				412A765621973865000F6054 /* FMDBLogger.m in Sources */,
 				412A765721973865000F6054 /* MAURUncaughtExceptionLogger.m in Sources */,
-				412A765821973865000F6054 /* FMDB.m in Sources */,
 				412A765921973865000F6054 /* MAURBackgroundTaskManager.m in Sources */,
 				412A765A21973865000F6054 /* MAURBackgroundSync.m in Sources */,
 				412A765B21973865000F6054 /* Reachability.m in Sources */,
@@ -717,7 +726,6 @@
 				41B180521FD2E05C00951D67 /* FMDBLogger.m in Sources */,
 				41BCFA421FE19B3000D4000E /* SOMotionActivity.m in Sources */,
 				41369C212080F23D00EB449C /* NSString+ZIMString.m in Sources */,
-				41B180531FD2E05C00951D67 /* FMDB.m in Sources */,
 				41973E9820AECC4A00A7BE7D /* INTUHeadingRequest.m in Sources */,
 				41B180551FD2E05C00951D67 /* MAURBackgroundTaskManager.m in Sources */,
 				41B180561FD2E05C00951D67 /* MAURBackgroundSync.m in Sources */,
