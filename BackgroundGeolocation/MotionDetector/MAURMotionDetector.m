@@ -1,5 +1,5 @@
 //
-//  MotionDetecter.m
+//  MAURMotionDetector.m
 //  MotionDetection
 //
 // The MIT License (MIT)
@@ -24,19 +24,19 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
-#import "SOMotionDetector.h"
+#import "MAURMotionDetector.h"
 
 CGFloat kMinimumSpeed        = 0.3f;
 CGFloat kMaximumWalkingSpeed = 1.9f;
 CGFloat kMaximumRunningSpeed = 7.5f;
 CGFloat kMinimumRunningAcceleration = 3.5f;
 
-@interface SOMotionDetector()
+@interface MAURMotionDetector()
 
 @property (strong, nonatomic) NSTimer *shakeDetectingTimer;
 
 @property (strong, nonatomic) CLLocation *currentLocation;
-@property (nonatomic) SOMotionType previousMotionType;
+@property (nonatomic) MAURMotionType previousMotionType;
 
 #pragma mark - Accelerometer manager
 @property (strong, nonatomic) CMMotionManager *motionManager;
@@ -45,11 +45,11 @@ CGFloat kMinimumRunningAcceleration = 3.5f;
 
 @end
 
-@implementation SOMotionDetector
+@implementation MAURMotionDetector
 
-+ (SOMotionDetector *)sharedInstance
++ (MAURMotionDetector *)sharedInstance
 {
-    static SOMotionDetector *instance = nil;
+    static MAURMotionDetector *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
@@ -72,7 +72,7 @@ CGFloat kMinimumRunningAcceleration = 3.5f;
                                                    object:nil];
         self.activityDetectionInterval = 0.01f;
         self.motionManager = [[CMMotionManager alloc] init];
-        _motionActivity = [[SOMotionActivity alloc] init];
+        _motionActivity = [[MAURMotionActivity alloc] init];
     }
     
     return self;
@@ -113,14 +113,14 @@ CGFloat kMinimumRunningAcceleration = 3.5f;
          });
      }];
 
-    if (self.useM7IfAvailable && [SOMotionDetector motionHardwareAvailable]) {
+    if (self.useM7IfAvailable && [MAURMotionDetector motionHardwareAvailable]) {
         if (!self.motionActivityManager) {
             self.motionActivityManager = [[CMMotionActivityManager alloc] init];
         }
         
         [self.motionActivityManager startActivityUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMMotionActivity *activity) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                SOMotionType motionType;
+                MAURMotionType motionType;
                 if (activity.walking) {
                     motionType = MotionTypeWalking;
                 } else if (activity.running) {
@@ -208,7 +208,7 @@ CGFloat kMinimumRunningAcceleration = 3.5f;
 #pragma mark - Private Methods
 - (void)calculateMotionType
 {
-    SOMotionType motionType;
+    MAURMotionType motionType;
     if (_currentSpeed < kMinimumSpeed) {
         motionType = MotionTypeNotMoving;
     } else if (_currentSpeed <= kMaximumWalkingSpeed) {

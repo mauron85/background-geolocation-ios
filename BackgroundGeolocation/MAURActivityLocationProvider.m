@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MAURActivityLocationProvider.h"
 #import "MAURActivity.h"
-#import "SOMotionDetector.h"
+#import "MAURMotionDetector.h"
 #import "MAURLocationManager.h"
 #import "MAURLogging.h"
 
@@ -22,13 +22,13 @@
 static NSString * const TAG = @"ActivityLocationProvider";
 static NSString * const Domain = @"com.marianhello";
 
-@interface MAURActivityLocationProvider () <SOMotionDetectorDelegate>
+@interface MAURActivityLocationProvider () <MAURMotionDetectorDelegate>
 @end
 
 @implementation MAURActivityLocationProvider {
     BOOL isStarted;
     BOOL isTracking;
-    SOMotionType lastMotionType;
+    MAURMotionType lastMotionType;
 
     MAURLocationManager *locationManager;
 }
@@ -49,7 +49,7 @@ static NSString * const Domain = @"com.marianhello";
     locationManager = [MAURLocationManager sharedInstance];
     locationManager.delegate = self;
 
-    SOMotionDetector *motionDetector = [SOMotionDetector sharedInstance];
+    MAURMotionDetector *motionDetector = [MAURMotionDetector sharedInstance];
     motionDetector.delegate = self;
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         motionDetector.useM7IfAvailable = YES; //Use M7 chip if available, otherwise use lib's algorithm
@@ -64,7 +64,7 @@ static NSString * const Domain = @"com.marianhello";
     locationManager.activityType = [config decodeActivityType];
     locationManager.distanceFilter = config.distanceFilter.integerValue; // meters
     locationManager.desiredAccuracy = [config decodeDesiredAccuracy];
-    [SOMotionDetector sharedInstance].activityDetectionInterval = config.activitiesInterval.intValue / 1000;
+    [MAURMotionDetector sharedInstance].activityDetectionInterval = config.activitiesInterval.intValue / 1000;
     
     return YES;
 }
@@ -74,7 +74,7 @@ static NSString * const Domain = @"com.marianhello";
     DDLogInfo(@"%@ will start", TAG);
     
     if (!isStarted) {
-        [[SOMotionDetector sharedInstance] startDetection];
+        [[MAURMotionDetector sharedInstance] startDetection];
         [self startTracking];
         isStarted = YES;
     }
@@ -87,7 +87,7 @@ static NSString * const Domain = @"com.marianhello";
     DDLogInfo(@"%@ will stop", TAG);
     
     if (isStarted) {
-        [[SOMotionDetector sharedInstance] stopDetection];
+        [[MAURMotionDetector sharedInstance] stopDetection];
         [self stopTracking];
         isStarted = NO;
     }
@@ -140,10 +140,10 @@ static NSString * const Domain = @"com.marianhello";
     }
 }
 
-- (void)motionDetector:(SOMotionDetector *)motionDetector activityTypeChanged:(SOMotionActivity *)motionActivity;
+- (void)motionDetector:(MAURMotionDetector *)motionDetector activityTypeChanged:(MAURMotionActivity *)motionActivity;
 {
     int confidence = motionActivity.confidence;
-    SOMotionType motionType = motionActivity.motionType;
+    MAURMotionType motionType = motionActivity.motionType;
     lastMotionType = motionType;
 
     if (motionType != MotionTypeNotMoving) {

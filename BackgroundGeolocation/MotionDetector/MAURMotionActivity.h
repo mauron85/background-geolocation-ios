@@ -1,13 +1,13 @@
 //
-//  SOMotionActivity.h
+//  MAURMotionActivity.h
 //  BackgroundGeolocation
 //
 //  Created by Marian Hello on 13/12/2017.
 //  Copyright © 2017 mauron85. All rights reserved.
 //
 
-#ifndef SOMotionActivity_h
-#define SOMotionActivity_h
+#ifndef MAURMotionActivity_h
+#define MAURMotionActivity_h
 
 #import <Foundation/Foundation.h>
 
@@ -18,13 +18,13 @@ typedef enum
     MotionTypeRunning,
     MotionTypeAutomotive,
     MotionTypeUnknown
-} SOMotionType;
+} MAURMotionType;
 
-@interface SOMotionActivity : NSObject <NSCopying>
+@interface MAURMotionActivity : NSObject <NSCopying>
 
 @property int confidence;
-@property SOMotionType motionType;
+@property MAURMotionType motionType;
 
 @end
 
-#endif /* SOMotionActivity_h */
+#endif /* MAURMotionActivity_h */

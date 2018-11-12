@@ -1,14 +1,14 @@
 //
-//  SOMotionActivity.m
+//  MAURMotionActivity.m
 //  BackgroundGeolocation
 //
 //  Created by Marian Hello on 13/12/2017.
 //  Copyright © 2017 mauron85. All rights reserved.
 //
 
-#import "SOMotionActivity.h"
+#import "MAURMotionActivity.h"
 
-@implementation SOMotionActivity
+@implementation MAURMotionActivity
 
 @synthesize motionType, confidence;
 
@@ -30,7 +30,7 @@
 
 -(id) copyWithZone: (NSZone *) zone
 {
-    SOMotionActivity *copy = [[[self class] allocWithZone: zone] init];
+    MAURMotionActivity *copy = [[[self class] allocWithZone: zone] init];
     if (copy) {
         copy.confidence = confidence;
         copy.motionType = motionType;

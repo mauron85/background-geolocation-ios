@@ -1,5 +1,5 @@
 //
-//  SOMotionDetecter.h
+//  MAURMotionDetector.h
 //  MotionDetection
 //
 // The MIT License (MIT)
@@ -25,36 +25,36 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
 #import <Foundation/Foundation.h>
-#import "SOLocationManager.h"
-#import "SOMotionActivity.h"
+#import <SOMotionDetector/SOLocationManager.h>
+#import "MAURMotionActivity.h"
 #import <CoreMotion/CoreMotion.h>
 
-@class SOMotionDetector;
+@class MAURMotionDetector;
 
-@protocol SOMotionDetectorDelegate <NSObject>
+@protocol MAURMotionDetectorDelegate <NSObject>
 
 @optional
-- (void)motionDetector:(SOMotionDetector *)motionDetector activityTypeChanged:(SOMotionActivity *)motionActivity;
-- (void)motionDetector:(SOMotionDetector *)motionDetector locationChanged:(CLLocation *)location;
-- (void)motionDetector:(SOMotionDetector *)motionDetector accelerationChanged:(CMAcceleration)acceleration;
-- (void)motionDetector:(SOMotionDetector *)motionDetector locationWasPaused:(BOOL)changed;
+- (void)motionDetector:(MAURMotionDetector *)motionDetector activityTypeChanged:(MAURMotionActivity *)motionActivity;
+- (void)motionDetector:(MAURMotionDetector *)motionDetector locationChanged:(CLLocation *)location;
+- (void)motionDetector:(MAURMotionDetector *)motionDetector accelerationChanged:(CMAcceleration)acceleration;
+- (void)motionDetector:(MAURMotionDetector *)motionDetector locationWasPaused:(BOOL)changed;
 
 @end
 
-@interface SOMotionDetector : NSObject
+@interface MAURMotionDetector : NSObject
 
 #pragma mark - Singleton
-+ (SOMotionDetector *)sharedInstance;
++ (MAURMotionDetector *)sharedInstance;
 
 #pragma mark - Properties
-@property (weak, nonatomic) id<SOMotionDetectorDelegate> delegate;
+@property (weak, nonatomic) id<MAURMotionDetectorDelegate> delegate;
 
-@property (copy) void (^activityTypeChangedBlock) (SOMotionActivity *motionActivity);
+@property (copy) void (^activityTypeChangedBlock) (MAURMotionActivity *motionActivity);
 @property (copy) void (^locationChangedBlock) (CLLocation *location);
 @property (copy) void (^accelerationChangedBlock) (CMAcceleration acceleration);
 @property (copy) void (^locationWasPausedBlock) (BOOL changed);
 
-@property (nonatomic, readonly) SOMotionActivity *motionActivity;
+@property (nonatomic, readonly) MAURMotionActivity *motionActivity;
 @property (nonatomic, readonly) double currentSpeed;
 @property (nonatomic, readonly) CMAcceleration acceleration;
 @property (nonatomic, readonly) BOOL isShaking;
