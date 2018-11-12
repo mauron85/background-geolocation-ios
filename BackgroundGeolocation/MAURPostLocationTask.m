@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Reachability.h"
+#import <Reachability/Reachability.h>
 #import "MAURSQLiteLocationDAO.h"
 #import "MAURBackgroundSync.h"
 #import "MAURConfig.h"

@@ -32,7 +32,6 @@
 		412A765721973865000F6054 /* MAURUncaughtExceptionLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 412123D5207F582400D23929 /* MAURUncaughtExceptionLogger.m */; };
 		412A765921973865000F6054 /* MAURBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */; };
 		412A765A21973865000F6054 /* MAURBackgroundSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E791D5E351900F65575 /* MAURBackgroundSync.m */; };
-		412A765B21973865000F6054 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7D1D5E351900F65575 /* Reachability.m */; };
 		412A765C21973865000F6054 /* MAURConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6B1D5E351900F65575 /* MAURConfig.m */; };
 		412A765D21973865000F6054 /* MAURActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4185A96A1FE79635008515B4 /* MAURActivity.m */; };
 		412A765E21973865000F6054 /* MAURLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E731D5E351900F65575 /* MAURLocation.m */; };
@@ -73,7 +72,6 @@
 		41B180521FD2E05C00951D67 /* FMDBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6F1D5E351900F65575 /* FMDBLogger.m */; };
 		41B180551FD2E05C00951D67 /* MAURBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */; };
 		41B180561FD2E05C00951D67 /* MAURBackgroundSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E791D5E351900F65575 /* MAURBackgroundSync.m */; };
-		41B180571FD2E05C00951D67 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E7D1D5E351900F65575 /* Reachability.m */; };
 		41B180581FD2E05C00951D67 /* MAURConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E6B1D5E351900F65575 /* MAURConfig.m */; };
 		41B180591FD2E05C00951D67 /* MAURLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E82E731D5E351900F65575 /* MAURLocation.m */; };
 		41B1805A1FD2E05C00951D67 /* MAURLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4198B2201FB08D7700DCC96D /* MAURLocationManager.m */; };
@@ -175,8 +173,6 @@
 		41E82E791D5E351900F65575 /* MAURBackgroundSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURBackgroundSync.m; sourceTree = "<group>"; };
 		41E82E7A1D5E351900F65575 /* MAURLogReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURLogReader.h; sourceTree = "<group>"; };
 		41E82E7B1D5E351900F65575 /* MAURLogReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURLogReader.m; sourceTree = "<group>"; };
-		41E82E7C1D5E351900F65575 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		41E82E7D1D5E351900F65575 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		41E82E7E1D5E351900F65575 /* MAURSQLiteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURSQLiteHelper.h; sourceTree = "<group>"; };
 		41E82E7F1D5E351900F65575 /* MAURSQLiteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURSQLiteHelper.m; sourceTree = "<group>"; };
 		41E82E801D5E351900F65575 /* MAURSQLiteLocationDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURSQLiteLocationDAO.h; sourceTree = "<group>"; };
@@ -278,8 +274,6 @@
 				41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */,
 				41E82E781D5E351900F65575 /* MAURBackgroundSync.h */,
 				41E82E791D5E351900F65575 /* MAURBackgroundSync.m */,
-				41E82E7C1D5E351900F65575 /* Reachability.h */,
-				41E82E7D1D5E351900F65575 /* Reachability.m */,
 				41E82E6A1D5E351900F65575 /* MAURConfig.h */,
 				41E82E6B1D5E351900F65575 /* MAURConfig.m */,
 				4185A96B1FE79635008515B4 /* MAURActivity.h */,
@@ -539,7 +533,6 @@
 				412A765721973865000F6054 /* MAURUncaughtExceptionLogger.m in Sources */,
 				412A765921973865000F6054 /* MAURBackgroundTaskManager.m in Sources */,
 				412A765A21973865000F6054 /* MAURBackgroundSync.m in Sources */,
-				412A765B21973865000F6054 /* Reachability.m in Sources */,
 				412A765C21973865000F6054 /* MAURConfig.m in Sources */,
 				412A765D21973865000F6054 /* MAURActivity.m in Sources */,
 				412A765E21973865000F6054 /* MAURLocation.m in Sources */,
@@ -590,7 +583,6 @@
 				41B180561FD2E05C00951D67 /* MAURBackgroundSync.m in Sources */,
 				4185A96C1FE79636008515B4 /* MAURActivity.m in Sources */,
 				4152F1B82094F8EA00BFE338 /* MAURPostLocationTask.m in Sources */,
-				41B180571FD2E05C00951D67 /* Reachability.m in Sources */,
 				41B180581FD2E05C00951D67 /* MAURConfig.m in Sources */,
 				41B180591FD2E05C00951D67 /* MAURLocation.m in Sources */,
 				41B1805A1FD2E05C00951D67 /* MAURLocationManager.m in Sources */,
