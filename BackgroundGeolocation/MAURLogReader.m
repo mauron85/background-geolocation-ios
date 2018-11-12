@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 #import <FMDB/FMDB.h>
-#import "ZIMSqlSelectStatement.h"
+#import <ZIMSqlQueryBuilder/ZIMSqlSelectStatement.h>
 #import "MAURLogReader.h"
 
 // Convert DDLogFlag to string

@@ -1,3 +1,5 @@
 github "CocoaLumberjack/CocoaLumberjack" "3.4.2"
 github "ccgus/fmdb" "2.7.5"
 github "intuit/LocationManager" "v4.3.2"
+github "mauron85/SOMotionDetector" "b6a130ae4f86a9766c97e1e7d36f73eaef2b265b"
+github "mauron85/objective-c-sql-query-builder" "1317bb8c0f9028491367fd4beabad0f1c6edf569"
