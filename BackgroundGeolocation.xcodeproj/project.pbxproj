@@ -81,7 +81,6 @@
 		41BCFA421FE19B3000D4000E /* MAURMotionActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA411FE19B3000D4000E /* MAURMotionActivity.m */; };
 		41BCFA5A1FE19ED300D4000E /* MAURMotionDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BCFA511FE19ED300D4000E /* MAURMotionDetector.m */; };
 		41C6EE34219870900018396F /* MAURActivity.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4185A96B1FE79635008515B4 /* MAURActivity.h */; };
-		41C6EE692198AE110018396F /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C6EE662198AA880018396F /* FMDB.framework */; };
 		41C6EE6A2198AE480018396F /* libBackgroundGeolocation-Static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 418F75461D02DC3D0045FEA0 /* libBackgroundGeolocation-Static.a */; };
 /* End PBXBuildFile section */
 
@@ -158,7 +157,6 @@
 		41BCFA411FE19B3000D4000E /* MAURMotionActivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAURMotionActivity.m; sourceTree = "<group>"; };
 		41BCFA511FE19ED300D4000E /* MAURMotionDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURMotionDetector.m; sourceTree = "<group>"; };
 		41BCFA571FE19ED300D4000E /* MAURMotionDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURMotionDetector.h; sourceTree = "<group>"; };
-		41C6EE662198AA880018396F /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
 		41E82E641D5E351900F65575 /* MAURBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURBackgroundTaskManager.h; sourceTree = "<group>"; };
 		41E82E651D5E351900F65575 /* MAURBackgroundTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAURBackgroundTaskManager.m; sourceTree = "<group>"; };
 		41E82E6A1D5E351900F65575 /* MAURConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAURConfig.h; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				41C6EE6A2198AE480018396F /* libBackgroundGeolocation-Static.a in Frameworks */,
-				41C6EE692198AE110018396F /* FMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +223,6 @@
 		413152A5219618C100D1BB05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				41C6EE662198AA880018396F /* FMDB.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -407,7 +403,6 @@
 				414898221FB593B900323454 /* Sources */,
 				414898231FB593B900323454 /* Frameworks */,
 				414898241FB593B900323454 /* Resources */,
-				412A753B21972A47000F6054 /* ShellScript */,
 				41C6EE6B2198AE6F0018396F /* ShellScript */,
 			);
 			buildRules = (
@@ -496,25 +491,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		412A753B21972A47000F6054 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjack.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		41C6EE6B2198AE6F0018396F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -524,11 +500,15 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/FMDB.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ZIMSqlQueryBuilder.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FMDB.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ZIMSqlQueryBuilder.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjack.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
