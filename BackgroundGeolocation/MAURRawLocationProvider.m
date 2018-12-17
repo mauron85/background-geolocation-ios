@@ -18,6 +18,8 @@ static NSString * const Domain = @"com.marianhello";
 
     BOOL isStarted;
     MAURLocationManager *locationManager;
+    
+    MAURConfig *_config;
 }
 
 - (instancetype) init
@@ -39,6 +41,7 @@ static NSString * const Domain = @"com.marianhello";
 - (BOOL) onConfigure:(MAURConfig*)config error:(NSError * __autoreleasing *)outError
 {
     DDLogVerbose(@"%@ configure", TAG);
+    _config = config;
 
     locationManager.pausesLocationUpdatesAutomatically = [config pauseLocationUpdates];
     locationManager.activityType = [config decodeActivityType];
@@ -79,7 +82,7 @@ static NSString * const Domain = @"com.marianhello";
 
 - (void) onTerminate
 {
-    if (isStarted) {
+    if (isStarted && !_config.stopOnTerminate) {
         [locationManager startMonitoringSignificantLocationChanges];
     }
 }
