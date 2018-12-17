@@ -35,6 +35,7 @@ enum {
     BOOL isUpdatingLocation;
     BOOL isAcquiringStationaryLocation;
     BOOL isAcquiringSpeed;
+    BOOL isStarted;
     
     CLCircularRegion *stationaryRegion;
     NSDate *stationarySince;
@@ -58,6 +59,7 @@ enum {
         isAcquiringStationaryLocation = NO;
         isAcquiringSpeed = NO;
         stationaryRegion = nil;
+        isStarted = NO;
     }
 
     return self;
@@ -142,7 +144,9 @@ enum {
     }
     
     [self switchMode:MAURForegroundMode];
-    
+
+    isStarted = YES;
+
     return YES;
 }
 
@@ -156,7 +160,9 @@ enum {
     [self stopUpdatingLocation];
     [self stopMonitoringSignificantLocationChanges];
     [self stopMonitoringForRegion];
-    
+
+    isStarted = NO;
+
     return YES;
 }
 
@@ -412,6 +418,13 @@ enum {
     if (!isUpdatingLocation) {
         [locationManager startUpdatingLocation];
         isUpdatingLocation = YES;
+    }
+}
+
+- (void) onTerminate
+{
+    if (isStarted && !_config.stopOnTerminate) {
+        [locationManager startMonitoringSignificantLocationChanges];
     }
 }
 
