@@ -1755,11 +1755,11 @@ return ret;
 @synthesize openFlags=_openFlags;
 
 
-+ (instancetype)databasePoolWithPath:(NSString*)aPath {
++ (instancetype)myDatabasePoolWithPath:(NSString*)aPath {
     return FMDBReturnAutoreleased([[self alloc] initWithPath:aPath]);
 }
 
-+ (instancetype)databasePoolWithPath:(NSString*)aPath flags:(int)openFlags {
++ (instancetype)myDatabasePoolWithPath:(NSString*)aPath flags:(int)openFlags {
     return FMDBReturnAutoreleased([[self alloc] initWithPath:aPath flags:openFlags]);
 }
 
@@ -1872,7 +1872,7 @@ return ret;
         BOOL success = [db open];
 #endif
         if (success) {
-            if ([self->_delegate respondsToSelector:@selector(databasePool:shouldAddDatabaseToPool:)] && ![self->_delegate databasePool:self shouldAddDatabaseToPool:db]) {
+            if ([self->_delegate respondsToSelector:@selector(myDatabasePool:shouldAddDatabaseToPool:)] && ![self->_delegate myDatabasePool:self shouldAddDatabaseToPool:db]) {
                 [db close];
                 db = 0x00;
             }
@@ -1881,8 +1881,8 @@ return ret;
                 if (![self->_databaseOutPool containsObject:db]) {
                     [self->_databaseOutPool addObject:db];
                     
-                    if (shouldNotifyDelegate && [self->_delegate respondsToSelector:@selector(databasePool:didAddDatabase:)]) {
-                        [self->_delegate databasePool:self didAddDatabase:db];
+                    if (shouldNotifyDelegate && [self->_delegate respondsToSelector:@selector(myDatabasePool:didAddDatabase:)]) {
+                        [self->_delegate myDatabasePool:self didAddDatabase:db];
                     }
                 }
             }

@@ -2207,7 +2207,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @return The `FMDatabasePool` object. `nil` on error.
  */
 
-+ (instancetype)databasePoolWithPath:(NSString*)aPath;
++ (instancetype)myDatabasePoolWithPath:(NSString*)aPath;
 
 /** Create pool using path and specified flags
  
@@ -2217,7 +2217,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  @return The `FMDatabasePool` object. `nil` on error.
  */
 
-+ (instancetype)databasePoolWithPath:(NSString*)aPath flags:(int)openFlags;
++ (instancetype)myDatabasePoolWithPath:(NSString*)aPath flags:(int)openFlags;
 
 /** Create pool using path.
  
@@ -2342,7 +2342,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (BOOL)databasePool:(FMDatabasePool*)pool shouldAddDatabaseToPool:(FMDatabase*)database;
+- (BOOL)myDatabasePool:(FMDatabasePool*)pool shouldAddDatabaseToPool:(FMDatabase*)database;
 
 /** Tells the delegate that database was added to the pool.
  
@@ -2351,7 +2351,7 @@ typedef int(^FMDBExecuteStatementsCallbackBlock)(NSDictionary *resultsDictionary
  
  */
 
-- (void)databasePool:(FMDatabasePool*)pool didAddDatabase:(FMDatabase*)database;
+- (void)myDatabasePool:(FMDatabasePool*)pool didAddDatabase:(FMDatabase*)database;
 
 @end
 
