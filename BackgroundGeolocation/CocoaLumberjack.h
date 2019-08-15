@@ -24,7 +24,7 @@
 Disable legacy macros by importing CocoaLumberjack.h or DDLogMacros.h instead of DDLog.h or add `#define DD_LEGACY_MACROS 0` before importing DDLog.h.
 
 #ifndef LOG_LEVEL_DEF
-    #define LOG_LEVEL_DEF ddLogLevel
+    #define LOG_LEVEL_DEF myDdLogLevel
 #endif
 
 #define LOG_FLAG_ERROR    DDLogFlagError
@@ -752,23 +752,23 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  * The implementation can be very straight-forward:
  *
  * ```
- * + (int)ddLogLevel
+ * + (int)myDdLogLevel
  * {
  *     return ddLogLevel;
  * }
  *
- * + (void)ddSetLogLevel:(DDLogLevel)level
+ * + (void)myDdSetLogLevel:(DDLogLevel)level
  * {
  *     ddLogLevel = level;
  * }
  * ```
  **/
-+ (DDLogLevel)ddLogLevel;
++ (DDLogLevel)myDdLogLevel;
 
 /**
  *  See the above description for `ddLogLevel`
  */
-+ (void)ddSetLogLevel:(DDLogLevel)level;
++ (void)myDdSetLogLevel:(DDLogLevel)level;
 
 @end
 
