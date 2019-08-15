@@ -763,12 +763,12 @@ NSString * DDExtractFileNameWithoutExtension(const char *filePath, BOOL copy);
  * }
  * ```
  **/
-+ (DDLogLevel)ddLogLevel;
++ (DDLogLevel)myDdLogLevel;
 
 /**
  *  See the above description for `ddLogLevel`
  */
-+ (void)ddSetLogLevel:(DDLogLevel)level;
++ (void)myDdSetLogLevel:(DDLogLevel)level;
 
 @end
 
