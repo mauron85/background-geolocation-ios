@@ -51,6 +51,7 @@
     @COMMA_SEP @LC_COLUMN_NAME_ALTITUDE
     @COMMA_SEP @LC_COLUMN_NAME_LATITUDE
     @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE
+    @COMMA_SEP @LC_COLUMN_NAME_FLOOR
     @COMMA_SEP @LC_COLUMN_NAME_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_RECORDED_AT
@@ -69,8 +70,9 @@
             location.altitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:5]];
             location.latitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:6]];
             location.longitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:7]];
-            location.provider = [rs stringForColumnIndex:8];
-            location.locationProvider = [NSNumber numberWithInt:[rs intForColumnIndex:9]];
+            location.floor = [NSNumber numberWithDouble:[rs doubleForColumnIndex:8]];
+            location.provider = [rs stringForColumnIndex:9];
+            location.locationProvider = [NSNumber numberWithInt:[rs intForColumnIndex:10]];
             NSTimeInterval recordedAt = [rs longForColumnIndex:11];
             location.recordedAt = [NSDate dateWithTimeIntervalSince1970:recordedAt];
 
@@ -98,6 +100,7 @@
     @COMMA_SEP @LC_COLUMN_NAME_ALTITUDE
     @COMMA_SEP @LC_COLUMN_NAME_LATITUDE
     @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE
+    @COMMA_SEP @LC_COLUMN_NAME_FLOOR
     @COMMA_SEP @LC_COLUMN_NAME_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_STATUS
@@ -117,10 +120,11 @@
             location.altitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:5]];
             location.latitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:6]];
             location.longitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:7]];
-            location.provider = [rs stringForColumnIndex:8];
-            location.locationProvider = [NSNumber numberWithInt:[rs intForColumnIndex:9]];
-            location.isValid = [rs intForColumnIndex:10] == 1 ? YES : NO;
-            NSTimeInterval recordedAt = [rs longForColumnIndex:11];
+            location.floor = [NSNumber numberWithDouble:[rs doubleForColumnIndex:8]];
+            location.provider = [rs stringForColumnIndex:9];
+            location.locationProvider = [NSNumber numberWithInt:[rs intForColumnIndex:10]];
+            location.isValid = [rs intForColumnIndex:11] == 1 ? YES : NO;
+            NSTimeInterval recordedAt = [rs longForColumnIndex:12];
             location.recordedAt = [NSDate dateWithTimeIntervalSince1970:recordedAt];
 
             [locations addObject:location];
@@ -148,6 +152,7 @@
         @COMMA_SEP @LC_COLUMN_NAME_ALTITUDE
         @COMMA_SEP @LC_COLUMN_NAME_LATITUDE
         @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE
+        @COMMA_SEP @LC_COLUMN_NAME_FLOOR
         @COMMA_SEP @LC_COLUMN_NAME_PROVIDER
         @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER
         @" FROM " @LC_TABLE_NAME @" WHERE " @LC_COLUMN_NAME_STATUS @" = ? ORDER BY " @LC_COLUMN_NAME_RECORDED_AT;
@@ -164,8 +169,9 @@
             location.altitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:5]];
             location.latitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:6]];
             location.longitude = [NSNumber numberWithDouble:[rs doubleForColumnIndex:7]];
-            location.provider = [rs stringForColumnIndex:8];
-            location.locationProvider = [NSNumber numberWithInt:[rs intForColumnIndex:9]];
+            location.floor = [NSNumber numberWithDouble:[rs doubleForColumnIndex:8]];
+            location.provider = [rs stringForColumnIndex:9];
+            location.locationProvider = [NSNumber numberWithInt:[rs intForColumnIndex:10]];
 
             [locations addObject:location];
         }
@@ -212,6 +218,7 @@
     @COMMA_SEP @LC_COLUMN_NAME_ALTITUDE
     @COMMA_SEP @LC_COLUMN_NAME_LATITUDE
     @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE
+    @COMMA_SEP @LC_COLUMN_NAME_FLOOR
     @COMMA_SEP @LC_COLUMN_NAME_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER
     @COMMA_SEP @LC_COLUMN_NAME_STATUS
@@ -226,6 +233,7 @@
         location.altitude,
         location.latitude,
         location.longitude,
+        location.floor,
         location.provider ?: [NSNull null],
         location.locationProvider ?: [NSNull null],
         location.isValid == YES ? @(1) : @(0),
@@ -296,6 +304,7 @@
         @COMMA_SEP @LC_COLUMN_NAME_ALTITUDE @EQ_BIND
         @COMMA_SEP @LC_COLUMN_NAME_LATITUDE @EQ_BIND
         @COMMA_SEP @LC_COLUMN_NAME_LONGITUDE @EQ_BIND
+        @COMMA_SEP @LC_COLUMN_NAME_FLOOR @EQ_BIND
         @COMMA_SEP @LC_COLUMN_NAME_PROVIDER @EQ_BIND
         @COMMA_SEP @LC_COLUMN_NAME_LOCATION_PROVIDER @EQ_BIND
         @COMMA_SEP @LC_COLUMN_NAME_STATUS @EQ_BIND
@@ -310,6 +319,7 @@
             location.altitude,
             location.latitude,
             location.longitude,
+            location.floor,
             location.provider ?: [NSNull null],
             location.locationProvider ?: [NSNull null],
             location.isValid == YES ? @(1) : @(0),
