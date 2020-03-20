@@ -19,6 +19,7 @@
 #define LC_COLUMN_NAME_ALTITUDE            "altitude"
 #define LC_COLUMN_NAME_LATITUDE            "latitude"
 #define LC_COLUMN_NAME_LONGITUDE           "longitude"
+#define LC_COLUMN_NAME_FLOOR               "floor"
 #define LC_COLUMN_NAME_PROVIDER            "provider"
 #define LC_COLUMN_NAME_LOCATION_PROVIDER   "service_provider"
 #define LC_COLUMN_NAME_STATUS              "valid"

@@ -406,6 +406,7 @@
              @"altitude": @"@altitude",
              @"latitude": @"@latitude",
              @"longitude": @"@longitude",
+             @"floor": @"@floor",
              @"provider": @"provider",
              @"locationProvider": @"@locationProvider",
              @"radius": @"@radius",

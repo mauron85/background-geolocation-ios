@@ -23,6 +23,7 @@
         @{ @"name": @LC_COLUMN_NAME_ALTITUDE, @"type": [SQLColumnType sqlColumnWithType: kReal]},
         @{ @"name": @LC_COLUMN_NAME_LATITUDE, @"type": [SQLColumnType sqlColumnWithType: kReal]},
         @{ @"name": @LC_COLUMN_NAME_LONGITUDE, @"type": [SQLColumnType sqlColumnWithType: kReal]},
+        @{ @"name": @LC_COLUMN_NAME_FLOOR, @"type": [SQLColumnType sqlColumnWithType: kReal]},
         @{ @"name": @LC_COLUMN_NAME_PROVIDER, @"type": [SQLColumnType sqlColumnWithType: kText]},
         @{ @"name": @LC_COLUMN_NAME_LOCATION_PROVIDER, @"type": [SQLColumnType sqlColumnWithType: kText]},
         @{ @"name": @LC_COLUMN_NAME_STATUS, @"type": [SQLColumnType sqlColumnWithType: kInteger]},

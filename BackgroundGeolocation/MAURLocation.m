@@ -70,7 +70,7 @@ MAURLocation* _location;
 
 @implementation MAURLocation
 
-@synthesize locationId, time, accuracy, altitudeAccuracy, speed, heading, altitude, latitude, longitude, provider, locationProvider, radius, isValid, recordedAt;
+@synthesize locationId, time, accuracy, altitudeAccuracy, speed, heading, altitude, latitude, longitude, floor, provider, locationProvider, radius, isValid, recordedAt;
 
 + (instancetype) fromCLLocation:(CLLocation*)location;
 {
@@ -84,6 +84,7 @@ MAURLocation* _location;
     instance.altitude = [NSNumber numberWithDouble:location.altitude];
     instance.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
     instance.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+    instance.floor = [NSNumber numberWithDouble:location.floor.level];
 
     return instance;
 }
@@ -107,6 +108,7 @@ MAURLocation* _location;
     [dict setObject:[NSNumber numberWithDouble:location.altitude] forKey:@"altitude"];
     [dict setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:@"latitude"];
     [dict setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"longitude"];
+    [dict setObject:[NSNumber numberWithDouble:location.floor.level] forKey:@"floor"];
 
     return dict;
 }
@@ -158,6 +160,7 @@ MAURLocation* _location;
     if (altitude != nil) [dict setObject:altitude forKey:@"altitude"];
     if (latitude != nil) [dict setObject:latitude forKey:@"latitude"];
     if (longitude != nil) [dict setObject:longitude forKey:@"longitude"];
+    if (floor != nil) [dict setObject:floor forKey:@"floor"];
     if (provider != nil) [dict setObject:provider forKey:@"provider"];
     if (locationProvider != nil) [dict setObject:locationProvider forKey:@"locationProvider"];
     if (radius != nil) [dict setObject:radius forKey:@"radius"];
@@ -201,6 +204,9 @@ MAURLocation* _location;
     }
     if ([key isEqualToString:@"@longitude"]) {
         return longitude;
+    }
+    if ([key isEqualToString:@"@floor"]) {
+        return floor;
     }
     if ([key isEqualToString:@"@provider"]) {
         return provider;
@@ -322,7 +328,7 @@ MAURLocation* _location;
 
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"Location: id=%@ time=%@ lat=%@ lon=%@ accu=%@ aaccu=%@ speed=%@ bear=%@ alt=%@", locationId, time, latitude, longitude, accuracy, altitudeAccuracy, speed, heading, altitude];
+    return [NSString stringWithFormat:@"Location: id=%@ time=%@ lat=%@ lon=%@ floor=%@ accu=%@ aaccu=%@ speed=%@ bear=%@ alt=%@", locationId, time, latitude, longitude, floor, accuracy, altitudeAccuracy, speed, heading, altitude];
 }
 
 -(id) copyWithZone: (NSZone *) zone
@@ -337,6 +343,7 @@ MAURLocation* _location;
         copy.altitude = altitude;
         copy.latitude = latitude;
         copy.longitude = longitude;
+        copy.floor = floor;
         copy.provider = provider;
         copy.locationProvider = locationProvider;
         copy.radius = radius;

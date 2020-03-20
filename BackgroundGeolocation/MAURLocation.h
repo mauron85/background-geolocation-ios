@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, MAURLocationStatus) {
 @property (nonatomic, retain) NSNumber *heading;
 @property (nonatomic, retain) NSNumber *altitude;
 @property (nonatomic, retain) NSNumber *latitude;
+@property (nonatomic, retain) NSNumber *floor;
 @property (nonatomic, retain) NSNumber *longitude;
 @property (nonatomic, retain) NSString *provider;
 @property (nonatomic, retain) NSNumber *locationProvider;
