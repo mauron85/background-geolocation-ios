@@ -13,6 +13,15 @@ enum {
     MAX_SECONDS_FROM_NOW = 86400
 };
 
+// some CLLocation properties use -1 to indicate they are not defined
+NSNumber * parseDouble(double value, bool nullifyNegativeOne) {
+    if (nullifyNegativeOne && value == -1) {
+        return nil;
+    }
+
+    return [NSNumber numberWithDouble:value];
+}
+
 @interface MAURLocationMapper : NSObject
 - (NSDictionary*) withDictionary:(NSDictionary*)values;
 - (NSArray*) withArray:(NSArray*)values;
@@ -77,13 +86,13 @@ MAURLocation* _location;
     MAURLocation *instance = [[MAURLocation alloc] init];
 
     instance.time = location.timestamp;
-    instance.accuracy = [NSNumber numberWithDouble:location.horizontalAccuracy];
-    instance.altitudeAccuracy = [NSNumber numberWithDouble:location.verticalAccuracy];
-    instance.speed = [NSNumber numberWithDouble:location.speed];
-    instance.heading = [NSNumber numberWithDouble:location.course]; // will be deprecated
-    instance.altitude = [NSNumber numberWithDouble:location.altitude];
-    instance.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
-    instance.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+    instance.accuracy = parseDouble(location.horizontalAccuracy, false);
+    instance.altitudeAccuracy = parseDouble(location.verticalAccuracy, false);
+    instance.speed = parseDouble(location.speed, true);
+    instance.heading = parseDouble(location.course, true); // will be deprecated
+    instance.altitude = parseDouble(location.altitude, false);
+    instance.latitude = parseDouble(location.coordinate.latitude, false);
+    instance.longitude = parseDouble(location.coordinate.longitude, false);
 
     return instance;
 }
@@ -99,14 +108,14 @@ MAURLocation* _location;
 
     NSNumber* timestamp = [NSNumber numberWithDouble:([location.timestamp timeIntervalSince1970] * 1000)];
     [dict setObject:timestamp forKey:@"time"];
-    [dict setObject:[NSNumber numberWithDouble:location.horizontalAccuracy] forKey:@"accuracy"];
-    [dict setObject:[NSNumber numberWithDouble:location.verticalAccuracy] forKey:@"altitudeAccuracy"];
-    [dict setObject:[NSNumber numberWithDouble:location.speed] forKey:@"speed"];
-    [dict setObject:[NSNumber numberWithDouble:location.course] forKey:@"heading"];
-    [dict setObject:[NSNumber numberWithDouble:location.course] forKey:@"bearing"];
-    [dict setObject:[NSNumber numberWithDouble:location.altitude] forKey:@"altitude"];
-    [dict setObject:[NSNumber numberWithDouble:location.coordinate.latitude] forKey:@"latitude"];
-    [dict setObject:[NSNumber numberWithDouble:location.coordinate.longitude] forKey:@"longitude"];
+    [dict setObject:parseDouble(location.horizontalAccuracy, false) forKey:@"accuracy"];
+    [dict setObject:parseDouble(location.verticalAccuracy, false) forKey:@"altitudeAccuracy"];
+    [dict setObject:parseDouble(location.speed, true) forKey:@"speed"];
+    [dict setObject:parseDouble(location.course, true) forKey:@"heading"];
+    [dict setObject:parseDouble(location.course, true) forKey:@"bearing"];
+    [dict setObject:parseDouble(location.altitude, false) forKey:@"altitude"];
+    [dict setObject:parseDouble(location.coordinate.latitude, false) forKey:@"latitude"];
+    [dict setObject:parseDouble(location.coordinate.longitude, false) forKey:@"longitude"];
 
     return dict;
 }
